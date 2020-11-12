@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+include_once "forms/connect_mysql.php";
+
+$date = $_SESSION['date'];
+$result = mysqli_query($conn, "SELECT * FROM `chore` WHERE date='$date'");
+
 ?>
 
 <!DOCTYPE html>
@@ -27,15 +33,45 @@ session_start();
             <div id="dateContainer"></div>
             </div>
         <div class="col-12 col-lg-5 left-divider">
-            <h4>Day Information</h4>
-            <?php
-                echo $_SESSION['date'];
-            ?>
+            <div class="row m-0 p-0">
+                <div class="col-12 p-0">
+                    <h4>Day Information</h4>
+                    <?php
+                        echo $_SESSION['date'];
+                    ?>
+                    <button href="#addForm" data-toggle="collapse" class="btn btn-dark float-right mb-2">Add</button>
+                </div>
+                <div class="col-12 m-0 p-0">
+                    <div id="addForm" class="collapse">
+                        <form action="add_date_data.php" method="POST">
+                        <select class="form-control mt-2">
+                                <option>Alex</option>
+                                <option>Melissa</option>
+                            </select>
+                            <select  class="form-control mt-2">
+                                <option>Pots</option>
+                                <option>Hoover</option>
+                            </select>
+                            <button class="btn btn-success mt-2 container-fluid" type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-12 m-0 p-0">
+                    <ol>
+                        <?php
+                            foreach ($result as $chore) {
+                                echo '<li>'.$chore['name'].'</li>';
+                            }
+                        ?>
+                    </ol>
+                </div>
+            </div>
         </div>
     </div>
    
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <script src="assets/js/calendar.js"></script>
     <script>
         // Append the month calenders to the page.

@@ -1,8 +1,12 @@
 <?php
 
+include_once 'connect_mysql.php';
+
 session_start();
 
 $_SESSION['date'] = $_GET['date'];
+
+
 
 
 // Redriect the user to the index page

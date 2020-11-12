@@ -1,6 +1,6 @@
 var months = [
     "January",
-    "Febuaray",
+    "February",
     "March",
     "April",
     "May",
@@ -42,7 +42,7 @@ function createMonthCalendar(year, month) {
 
     // Add the total days in the month.
     for (let i = 0; i < monthDays; i++) {
-        calendarDays.push(`<a class="day-container" id="date-${i+1}-${month + 1}-${year}" href="forms/get_date_data.php?date=${i+1}-${month + 1}-${year}">${i + 1}</a>`);
+        calendarDays.push(`<a class="day-container" id="date-${i+1}-${month + 1}-${year}" href="forms/get_date_data.php?date=${year}-${month + 1}-${i+1}">${i + 1}</a>`);
     }
 
     // Add the conatiner to the page.
