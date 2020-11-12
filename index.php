@@ -43,27 +43,42 @@ $result = mysqli_query($conn, "SELECT * FROM `chore` WHERE date='$date'");
                 </div>
                 <div class="col-12 m-0 p-0">
                     <div id="addForm" class="collapse">
-                        <form action="add_date_data.php" method="POST">
-                        <select class="form-control mt-2">
-                                <option>Alex</option>
-                                <option>Melissa</option>
+                        <form action="forms/add_date_data.php" method="POST">
+                        <select class="form-control mt-2" name="name">
+                                <option value="Alex">Alex</option>
+                                <option value="Melissa">Melissa</option>
                             </select>
-                            <select  class="form-control mt-2">
-                                <option>Pots</option>
-                                <option>Hoover</option>
+                            <select class="form-control mt-2" name="chore">
+                                <option value="Pots">Pots</option>
+                                <option value="Hoover">Hoover</option>
+                                <option value="Bedding">Bedding</option>
+                                <option value="House Bins">House Bins</option>
+                                <option value="Outside Bins">Outside Bins</option>
+                                <option value="Outside Bins">Cooked Dinner</option>
+                                <option value="Cut Lawn">Cut Lawn</option>
                             </select>
                             <button class="btn btn-success mt-2 container-fluid" type="submit">Submit</button>
                         </form>
                     </div>
                 </div>
                 <div class="col-12 m-0 p-0">
-                    <ol>
+                    <table class="chore-table">
+                        <tr>
+                            <th>Name</th>
+                            <th>Chore</th>
+                            <th>Remove</th>
+                        </tr>
                         <?php
                             foreach ($result as $chore) {
-                                echo '<li>'.$chore['name'].'</li>';
+                                $id = $chore['id'];
+                                echo '<tr>';
+                                echo '<td>'.$chore['name'].'</td>';
+                                echo '<td>'.$chore['chore'].'</td>';
+                                echo "<td><a href='forms/remove_date_data.php?id=$id'>Delete</a></td>";
+                                echo '</tr>';
                             }
                         ?>
-                    </ol>
+                    </table>
                 </div>
             </div>
         </div>
