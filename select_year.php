@@ -13,30 +13,14 @@
 
     <?php include_once 'templates/navigation.html' ?>
 
-    <div class="row m-0 p-0">
-        <div class="col-12">
-            <h1 class="text-center">
-                <?php echo $year = $_POST['year'];?>
-            </h1>
-        </div>
-        <div class="col-6">
-            
-        <div id="dateContainer"></div>
-        </div>
-        <div class="col-6">
-
-        </div>
-    </div>
+    <form action="index.php" method="POST">
+        <input type="number" name="year" min="2020" max="2200" value="2020">
+        <button type="submit">Go To</button>
+    </form>
    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     <script src="assets/js/calendar.js"></script>
-    <script>
-        // Append the month calenders to the page.
-        for (let i = 0; i < 12; i++) {
-            createMonthCalendar(<?php echo $year = $_POST['year'];?>, i);
-        }
-    </script>
 </body>
 
 </html>

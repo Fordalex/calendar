@@ -55,11 +55,6 @@ function daysInMonth(year, month) {
     return new Date(year, month + 1, 0).getDate();
 }
 
-// Append the month calenders to the page.
-for (let i = 0; i < 12; i++) {
-    createMonthCalendar(2020, i);
-}
-
 // Style set days/holidays.
 var today = new Date();
 var todayId = `#date-${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`;

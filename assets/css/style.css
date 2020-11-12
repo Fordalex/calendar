@@ -27,10 +27,10 @@ ul {
 }
 
 .day {
-    font-size: 14px;
-    margin-right: 11px;
+    font-size: 10px;
     display: inline-block;
     margin-bottom: 1px;
+    width: 32.5px;
 }
 
 .day-container {
@@ -51,10 +51,10 @@ ul {
 }
 
 .month-container {
-    width: 260px;
+    width: 230px;
     height: 320px;
     margin-right: 15px;
-    display: inline-block;
+    float: left;
 }
 
 
