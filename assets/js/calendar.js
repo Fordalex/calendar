@@ -54,10 +54,3 @@ function createMonthCalendar(year, month) {
 function daysInMonth(year, month) {
     return new Date(year, month + 1, 0).getDate();
 }
-
-// Style set days/holidays.
-var today = new Date();
-var todayId = `#date-${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`;
-
-$(todayId).addClass('today');
-$('#date-25-12-2020').addClass('christmas');

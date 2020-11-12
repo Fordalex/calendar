@@ -36,6 +36,12 @@
         for (let i = 0; i < 12; i++) {
             createMonthCalendar(<?php echo $year = $_POST['year'];?>, i);
         }
+        // Style set days/holidays.
+        var today = new Date();
+        var todayId = `#date-${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`;
+
+        $(todayId).addClass('today');
+        $('#date-25-12-2020').addClass('christmas');
     </script>
 </body>
 
