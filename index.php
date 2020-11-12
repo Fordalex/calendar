@@ -23,11 +23,14 @@ session_start();
                 <?php echo $_SESSION['year'];?>
             </h1>
         </div>
-        <div class="col-7 d-flex justify-content-center pl-5">
+        <div class="col-12 col-lg-7 d-flex justify-content-center pl-5">
             <div id="dateContainer"></div>
             </div>
-        <div class="col-5 left-divider">
+        <div class="col-12 col-lg-5 left-divider">
             <h4>Day Information</h4>
+            <?php
+                echo $_SESSION['date'];
+            ?>
         </div>
     </div>
    

@@ -57,6 +57,12 @@ ul {
     background-color: rgb(255, 255, 255);
 }
 
+.blank-day-container:hover {
+    background-color: white;
+    text-decoration: none;
+    cursor: default;
+}
+
 .month-container {
     width: 230px;
     height: 320px;
