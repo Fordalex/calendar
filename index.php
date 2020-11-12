@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +20,7 @@
     <div class="row m-0 p-0">
         <div class="col-12 my-4">
             <h1 class="text-center">
-                <?php echo $year = $_POST['year'];?>
+                <?php echo $_SESSION['year'];?>
             </h1>
         </div>
         <div class="col-7 d-flex justify-content-center pl-5">
@@ -33,19 +37,19 @@
     <script>
         // Append the month calenders to the page.
         for (let i = 0; i < 12; i++) {
-            createMonthCalendar(<?php echo $year = $_POST['year'];?>, i);
+            createMonthCalendar(<?php echo $_SESSION['year'];?>, i);
         }
 
-        $('#date-25-12-<?php echo $year = $_POST['year'];?>').addClass('christmas');
-        $('#date-25-12-<?php echo $year = $_POST['year'];?>').append('<img src="https://img.icons8.com/doodle/25/000000/gift.png"/>');
+        $('#date-25-12-<?php echo $_SESSION['year'];?>').addClass('christmas');
+        $('#date-25-12-<?php echo $_SESSION['year'];?>').append('<img src="https://img.icons8.com/doodle/25/000000/gift.png"/>');
 
         // my birthday
-        $('#date-9-7-<?php echo $year = $_POST['year'];?>').addClass('boy');
-        $('#date-9-7-<?php echo $year = $_POST['year'];?>').append('<img src="https://img.icons8.com/cotton/25/000000/birthday-cake.png"/>');
+        $('#date-9-7-<?php echo $_SESSION['year'];?>').addClass('boy');
+        $('#date-9-7-<?php echo $_SESSION['year'];?>').append('<img src="https://img.icons8.com/cotton/25/000000/birthday-cake.png"/>');
         
         // Melissas birthday
-        $('#date-27-1-<?php echo $year = $_POST['year'];?>').addClass('girl');
-        $('#date-27-1-<?php echo $year = $_POST['year'];?>').append('<img src="https://img.icons8.com/cotton/25/000000/birthday-cake.png"/>');
+        $('#date-27-1-<?php echo $_SESSION['year'];?>').addClass('girl');
+        $('#date-27-1-<?php echo $_SESSION['year'];?>').append('<img src="https://img.icons8.com/cotton/25/000000/birthday-cake.png"/>');
 
     </script>
 </body>
