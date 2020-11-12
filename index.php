@@ -14,17 +14,16 @@
     <?php include_once 'templates/navigation.html' ?>
 
     <div class="row m-0 p-0">
-        <div class="col-12">
+        <div class="col-12 my-4">
             <h1 class="text-center">
                 <?php echo $year = $_POST['year'];?>
             </h1>
         </div>
-        <div class="col-6">
-            
-        <div id="dateContainer"></div>
-        </div>
-        <div class="col-6">
-
+        <div class="col-7 d-flex justify-content-center pl-5">
+            <div id="dateContainer"></div>
+            </div>
+        <div class="col-5 left-divider">
+            <h4>Day Information</h4>
         </div>
     </div>
    
@@ -36,12 +35,18 @@
         for (let i = 0; i < 12; i++) {
             createMonthCalendar(<?php echo $year = $_POST['year'];?>, i);
         }
-        // Style set days/holidays.
-        var today = new Date();
-        var todayId = `#date-${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`;
 
-        $(todayId).addClass('today');
-        $('#date-25-12-2020').addClass('christmas');
+        $('#date-25-12-<?php echo $year = $_POST['year'];?>').addClass('christmas');
+        $('#date-25-12-<?php echo $year = $_POST['year'];?>').append('<img src="https://img.icons8.com/doodle/25/000000/gift.png"/>');
+
+        // my birthday
+        $('#date-9-7-<?php echo $year = $_POST['year'];?>').addClass('boy');
+        $('#date-9-7-<?php echo $year = $_POST['year'];?>').append('<img src="https://img.icons8.com/cotton/25/000000/birthday-cake.png"/>');
+        
+        // Melissas birthday
+        $('#date-27-1-<?php echo $year = $_POST['year'];?>').addClass('girl');
+        $('#date-27-1-<?php echo $year = $_POST['year'];?>').append('<img src="https://img.icons8.com/cotton/25/000000/birthday-cake.png"/>');
+
     </script>
 </body>
 

@@ -42,15 +42,24 @@ function createMonthCalendar(year, month) {
 
     // Add the total days in the month.
     for (let i = 0; i < monthDays; i++) {
-        calendarDays.push(`<div class="day-container" id="date-${i+1}-${month + 1}-${year}">${i + 1}</div>`);
+        calendarDays.push(`<a class="day-container" id="date-${i+1}-${month + 1}-${year}" href="get_date_data.php">${i + 1}</a>`);
     }
 
     // Add the conatiner to the page.
     calendarDays.push('</div>')
     $('#dateContainer').append(calendarDays.join(""));
+    findToday();
 }
 
 // Return the number of days in that month.
 function daysInMonth(year, month) {
     return new Date(year, month + 1, 0).getDate();
+}
+
+function findToday() {
+    // Style set days/holidays.
+    var today = new Date();
+    var todayId = `#date-${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`;
+
+    $(todayId).addClass('today');
 }
