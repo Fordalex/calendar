@@ -60,6 +60,12 @@ nav a:hover {
     color: rgb(87, 87, 87);
     position: relative;
     cursor: pointer;
+    overflow: hidden;
+}
+
+.day-container span {
+    position: absolute;
+    left: 3px;
 }
 
 .day-container:hover {
@@ -107,19 +113,7 @@ th {
 
 .today {
     position: relative;
-}
-
-.today::before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: -6px;
-    right: -6px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
     border: solid red 3px;
-    z-index: 5;
 }
 
 .day-container img {
@@ -129,9 +123,23 @@ th {
 }
 
 .selected-day {
-    background-color: rgb(242, 208, 164);
+    background-color: rgb(255, 222, 91);
+    box-shadow: inset 0px 0px 5px 5px rgba(0, 0, 0, 0.08);
 }
 
 .no-text {
     color: rgba(0, 0, 0, 0);
+}
+
+.chore-done {
+    width: 28%;
+    height: 28%;
+    background-color: rgba(75, 147, 225, 0.8);
+    float: left;
+    border-radius: 20%;
+    margin: 0.5px;
+}
+
+.bg-orange {
+    background-color: rgba(245, 156, 73, 0.8);
 }

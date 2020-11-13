@@ -9,6 +9,7 @@ $month = $_SESSION['month'];
 $day = $_SESSION['day'];
 $choreResult = mysqli_query($conn, "SELECT * FROM `chore` WHERE date='$date'");
 $occasionResult = mysqli_query($conn, "SELECT * FROM `occasion`");
+$allChoresResult = mysqli_query($conn, "SELECT * FROM `chore`");
 
 
 include_once 'templates/header.html';
@@ -38,7 +39,7 @@ include_once 'templates/navigation.html';
                 </div>
                 <div class="col-12 m-0 p-0">
                     <div id="addForm" class="collapse">
-                        <form action="forms/add_date_data.php" method="POST">
+                        <form action="forms/add_date_data.php?redirect=view_monthly" method="POST">
                             <select class="form-control mt-2" name="name">
                                 <option value="Alex">Alex</option>
                                 <option value="Melissa">Melissa</option>
@@ -90,8 +91,8 @@ include_once 'templates/navigation.html';
         // style the selected day
         $('#date-<?php echo $_SESSION['date']; ?>').addClass('selected-day');
 
-        // style all the events created by the user
         <?php
+         // style all the events created by the user
             foreach ($occasionResult as $occasion) {
                 $occasionDate = $occasion['date'];
                 $color = $occasion['style'];
@@ -103,6 +104,17 @@ include_once 'templates/navigation.html';
                 echo "$('#date-$occasionDate').css('background-color', '$color');";
                 echo "$('#date-$occasionDate').addClass('no-text');";
                 echo "$('#date-$occasionDate').append('$icon');";
+            }
+            // add the chores to the relevant day.
+            foreach ($allChoresResult as $chore) {
+                $choreDate = $chore['date'];
+                if ($chore['name'] == 'Alex') {
+                    $choreDiv = '<div class="chore-done"></div>';
+                } else {
+                    $choreDiv = '<div class="chore-done bg-orange"></div>';
+                }
+                
+                echo "$('#date-$choreDate').append('$choreDiv');";
             }
         ?>
  

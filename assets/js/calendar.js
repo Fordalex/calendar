@@ -38,7 +38,7 @@ function createMonthCalendar(year, month, redirect) {
     // Add blank days to start the month off on the correct day.
     var blankDays = new Date(year, month, 1).getDay();
     for (let i = 0; i < blankDays; i++) {
-        calendarDays.push(`<div class="day-container blank-day-container">.</div>`);
+        calendarDays.push(`<div class="day-container blank-day-container"><span></span></div>`);
     }
 
     // Add the total days in the month.
@@ -51,7 +51,7 @@ function createMonthCalendar(year, month, redirect) {
         if (day.toString().length < 2) {
             day = "0" + day;
         }
-        calendarDays.push(`<a class="day-container" id="date-${year}-${month}-${day}" href="forms/set_date.php?date=${year}-${month}-${day}&redirect=${redirect}">${day}</a>`);
+        calendarDays.push(`<a class="day-container" id="date-${year}-${month}-${day}" href="forms/set_date.php?date=${year}-${month}-${day}&redirect=${redirect}"><span><b>${day}</b></span></a>`);
     }
 
     // Add the conatiner to the page.
