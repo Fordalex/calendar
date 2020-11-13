@@ -1,6 +1,8 @@
 <?php
-$host = "localhost";
-$user = "root";
-$password = "";
-$database = "calendar";
+include_once "env.php";
+
+$host = "eu-cdbr-west-03.cleardb.net";
+$user = "b21c69c31b54a8";
+$password = $password;
+$database = "heroku_597ac4b19cc2c9f";
 $conn = mysqli_connect($host, $user, $password, $database) or die("Couldn't connect to the database!");
