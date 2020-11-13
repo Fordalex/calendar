@@ -24,11 +24,11 @@ var days = [
 ]
 
 // Add days to a month container and append the the dateContainer.
-function createMonthCalendar(year, month) {
+function createMonthCalendar(year, month, redirect) {
     var monthDays = daysInMonth(year, month);
     var calendarDays = [];
 
-    calendarDays.push('<div class="month-container">')
+    calendarDays.push('<div class="month-container">');
     calendarDays.push(`<h2>${months[month]}</h2>`)
 
     // Add the day titles at the top of the container.
@@ -51,7 +51,7 @@ function createMonthCalendar(year, month) {
         if (day.toString().length < 2) {
             day = "0" + day;
         }
-        calendarDays.push(`<a class="day-container" href="forms/set_date.php?date=${year}-${month}-${day}">${day}</a>`);
+        calendarDays.push(`<a class="day-container" id="date-${year}-${month}-${day}" href="forms/set_date.php?date=${year}-${month}-${day},redirect=${redirect}">${day}</a>`);
     }
 
     // Add the conatiner to the page.
@@ -68,7 +68,16 @@ function daysInMonth(year, month) {
 function findToday() {
     // Style set days/holidays.
     var today = new Date();
-    var todayId = `#date-${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`;
+    var day = today.getDate();
+    var month = today.getMonth() + 1;
+    var year = today.getFullYear();
+    if (month.toString().length < 2) {
+        month = "0" + month;
+    }
+    if (day.toString().length < 2) {
+        day = "0" + day;
+    }
+    var todayId = `#date-${year}-${month}-${day}`;
 
     $(todayId).addClass('today');
 }
