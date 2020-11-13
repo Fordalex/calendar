@@ -65,6 +65,7 @@ nav a:hover {
 .day-container:hover {
     background-color: rgb(255, 254, 212);
     text-decoration: none;
+    font-weight: 800;
 }
 
 .blank-day-container {
@@ -121,39 +122,16 @@ th {
     z-index: 5;
 }
 
-.christmas {
-    background-color: rgb(168, 253, 134);
-    color: rgba(0, 0, 0, 0);
-}
-
-.christmas img {
+.day-container img {
     position: absolute;
     right: 1.5px;
     top: 2px;
 }
 
-.boy {
-    background-color: rgb(134, 215, 253);
-    color: rgba(0, 0, 0, 0);
-}
-
-.boy img {
-    position: absolute;
-    right: 1.5px;
-    top: 0px;
-}
-
-.girl {
-    background-color: rgb(253, 134, 203);
-    color: rgba(0, 0, 0, 0);
-}
-
-.girl img {
-    position: absolute;
-    right: 1.5px;
-    top: 0px;
-}
-
 .selected-day {
     background-color: rgb(242, 208, 164);
+}
+
+.no-text {
+    color: rgba(0, 0, 0, 0);
 }

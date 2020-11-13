@@ -53,7 +53,7 @@ include_once 'templates/navigation.html';
                                 }
                                 echo '<tr>';
                                 echo '<td>' . $occasion['event'] . '</td>';
-                                echo "<td class='text-center' style='background-color:$color;'>" . $icon . '</td>';
+                                echo "<td class='text-center' style='background-color:$color;'>" . $icon . "</td>";
                                 echo '<td>' . $occasion['date'] . '</td>';
                                 echo "<td><a href='forms/remove_event.php?id=$id'>Delete</a></td>";
                                 echo '</tr>';

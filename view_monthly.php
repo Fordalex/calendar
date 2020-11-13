@@ -7,7 +7,8 @@ $date = $_SESSION['date'];
 $year = $_SESSION['year'];
 $month = $_SESSION['month'];
 $day = $_SESSION['day'];
-$result = mysqli_query($conn, "SELECT * FROM `chore` WHERE date='$date'");
+$choreResult = mysqli_query($conn, "SELECT * FROM `chore` WHERE date='$date'");
+$occasionResult = mysqli_query($conn, "SELECT * FROM `occasion`");
 
 
 include_once 'templates/header.html';
@@ -63,7 +64,7 @@ include_once 'templates/navigation.html';
                             <th>Remove</th>
                         </tr>
                         <?php
-                        foreach ($result as $chore) {
+                        foreach ($choreResult as $chore) {
                             $id = $chore['id'];
                             echo '<tr>';
                             echo '<td>' . $chore['name'] . '</td>';
@@ -89,17 +90,22 @@ include_once 'templates/navigation.html';
         // style the selected day
         $('#date-<?php echo $_SESSION['date']; ?>').addClass('selected-day');
 
-        $('#date-<?php echo $_SESSION['year']; ?>-12-25').addClass('christmas');
-        $('#date-<?php echo $_SESSION['year']; ?>-12-25').append('<img src="https://img.icons8.com/doodle/25/000000/gift.png"/>');
-
-        // my birthday
-        $('#date-<?php echo $_SESSION['year']; ?>-07-09').addClass('boy');
-        $('#date-<?php echo $_SESSION['year']; ?>-07-09').append('<img src="https://img.icons8.com/cotton/25/000000/birthday-cake.png"/>');
-
-        // Melissas birthday
-        $('#date-<?php echo $_SESSION['year']; ?>-01-27').addClass('girl');
-        $('#date-<?php echo $_SESSION['year']; ?>-01-27').append('<img src="https://img.icons8.com/cotton/25/000000/birthday-cake.png"/>');
-        
+        // style all the events created by the user
+        <?php
+            foreach ($occasionResult as $occasion) {
+                $occasionDate = $occasion['date'];
+                $color = $occasion['style'];
+                if ($occasion['icon'] == 'cake') {
+                    $icon = '<img src="https://img.icons8.com/cotton/25/000000/birthday-cake.png"/>';
+                } elseif ($occasion['icon'] == 'present') {
+                    $icon = '<img src="https://img.icons8.com/doodle/25/000000/gift.png"/>';
+                }
+                echo "$('#date-$occasionDate').css('background-color', '$color');";
+                echo "$('#date-$occasionDate').addClass('no-text');";
+                echo "$('#date-$occasionDate').append('$icon');";
+            }
+        ?>
+ 
     </script>
 </body>
 
