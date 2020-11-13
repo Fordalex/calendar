@@ -4,8 +4,10 @@ session_start();
 include_once "forms/connect_mysql.php";
 
 $date = $_SESSION['date'];
+$year = $_SESSION['year'];
+$month = $_SESSION['month'];
+$day = $_SESSION['day'];
 $result = mysqli_query($conn, "SELECT * FROM `chore` WHERE date='$date'");
-
 
 
 include_once 'templates/header.html';

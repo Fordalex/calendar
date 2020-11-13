@@ -27,6 +27,7 @@ var days = [
 function createMonthCalendar(year, month) {
     var monthDays = daysInMonth(year, month);
     var calendarDays = [];
+
     calendarDays.push('<div class="month-container">')
     calendarDays.push(`<h2>${months[month]}</h2>`)
 
@@ -41,8 +42,16 @@ function createMonthCalendar(year, month) {
     }
 
     // Add the total days in the month.
+    month++;
+    if (month.toString().length < 2) {
+        month = "0" + month;
+    }
     for (let i = 0; i < monthDays; i++) {
-        calendarDays.push(`<a class="day-container" id="date-${i+1}-${month + 1}-${year}" href="forms/get_date_data.php?date=${year}-${month + 1}-${i+1}">${i + 1}</a>`);
+        day = i + 1;
+        if (day.toString().length < 2) {
+            day = "0" + day;
+        }
+        calendarDays.push(`<a class="day-container" href="forms/set_date.php?date=${year}-${month}-${day}">${day}</a>`);
     }
 
     // Add the conatiner to the page.
