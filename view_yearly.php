@@ -13,12 +13,12 @@ $allChores = mysqli_query($conn, "SELECT * FROM `chore`");
 
 
 include_once 'templates/header.html';
-include_once 'templates/navigation.html';
 ?>
 
 <!-- start of page content -->
 
 <body>
+    <?php include_once 'templates/navigation.html'; ?>
     <div class="row m-0 p-0">
         <div class="col-12 my-4">
             <h1 class="text-center">

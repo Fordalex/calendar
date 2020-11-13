@@ -10,13 +10,12 @@ $day = $_SESSION['day'];
 $result = mysqli_query($conn, "SELECT * FROM `chore`");
 
 include_once 'templates/header.html';
-include_once 'templates/navigation.html';
 ?>
 
 <!-- start of page content -->
 
 <body>
-
+<?php include_once 'templates/navigation.html'; ?>
     <?php echo $date; ?>
 
     <div class="row m-0 p-0 py-5">

@@ -10,12 +10,12 @@ $day = $_SESSION['day'];
 $result = mysqli_query($conn, "SELECT * FROM `occasion`");
 
 include_once 'templates/header.html';
-include_once 'templates/navigation.html';
 ?>
 
 <!-- start of page content -->
 
 <body>
+<?php include_once 'templates/navigation.html'; ?>
     <div class="row m-0 p-0 py-5">
         <div class="col-12 d-flex justify-content-center mb-4">
             <form action="forms/add_event.php" method="GET" class="d-inline-block">
