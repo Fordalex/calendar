@@ -51,7 +51,7 @@ function createMonthCalendar(year, month, redirect) {
         if (day.toString().length < 2) {
             day = "0" + day;
         }
-        calendarDays.push(`<a class="day-container" id="date-${year}-${month}-${day}" href="forms/set_date.php?date=${year}-${month}-${day},redirect=${redirect}">${day}</a>`);
+        calendarDays.push(`<a class="day-container" id="date-${year}-${month}-${day}" href="forms/set_date.php?date=${year}-${month}-${day}&redirect=${redirect}">${day}</a>`);
     }
 
     // Add the conatiner to the page.

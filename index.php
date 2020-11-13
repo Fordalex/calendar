@@ -21,13 +21,13 @@ include_once 'templates/navigation.html';
 
     <div class="row m-0 p-0 py-5">
         <div class="col-12 d-flex justify-content-center mb-4">
-            <form action="forms/set_date.php?redirect=index" method="GET" class="d-inline-block">
+            <form action="forms/set_date.php" method="GET" class="d-inline-block">
                 <input type="date" name="date" class="form-control my-3" value="<?php echo "$date"; ?>">
-                <button type="submit" class="btn btn-success container-fluid">Set Date</button>
+                <button type="submit" class="btn btn-success container-fluid" name="redirect" value="index">Set Date</button>
             </form>
         </div>
         <div class="col-6 m-0 p-0">
-            <h4>Month searched</h4>
+            <h4>Month Searched</h4>
             <table class="chore-table">
                         <tr>
                             <th>Name</th>
@@ -61,7 +61,6 @@ include_once 'templates/navigation.html';
                         </tr>
                         <?php
                         foreach ($result as $chore) {
-                          
                                 $id = $chore['id'];
                                 echo '<tr>';
                                 echo '<td>' . $chore['name'] . '</td>';
@@ -69,7 +68,6 @@ include_once 'templates/navigation.html';
                                 echo '<td>' . $chore['date'] . '</td>';
                                 echo "<td><a href='forms/remove_date_data.php?id=$id'>Delete</a></td>";
                                 echo '</tr>';
-                            
                         }
                         ?>
             </table>

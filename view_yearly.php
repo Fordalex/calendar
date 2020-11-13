@@ -84,19 +84,22 @@ include_once 'templates/navigation.html';
     <script>
         // Append the month calenders to the page.
         for (let i = 0; i < 12; i++) {
-            createMonthCalendar(<?php echo $_SESSION['year']; ?>, i);
+            createMonthCalendar(<?php echo $_SESSION['year']; ?>, i, 'view_yearly');
         }
 
-        $('#date-25-12-<?php echo $_SESSION['year']; ?>').addClass('christmas');
-        $('#date-25-12-<?php echo $_SESSION['year']; ?>').append('<img src="https://img.icons8.com/doodle/25/000000/gift.png"/>');
+        // style the selected day
+        $('#date-<?php echo $_SESSION['date']; ?>').addClass('selected-day');
+
+        $('#date-<?php echo $_SESSION['year']; ?>-12-25').addClass('christmas');
+        $('#date-<?php echo $_SESSION['year']; ?>-12-25').append('<img src="https://img.icons8.com/doodle/25/000000/gift.png"/>');
 
         // my birthday
-        $('#date-9-7-<?php echo $_SESSION['year']; ?>').addClass('boy');
-        $('#date-9-7-<?php echo $_SESSION['year']; ?>').append('<img src="https://img.icons8.com/cotton/25/000000/birthday-cake.png"/>');
+        $('#date-<?php echo $_SESSION['year']; ?>-07-09').addClass('boy');
+        $('#date-<?php echo $_SESSION['year']; ?>-07-09').append('<img src="https://img.icons8.com/cotton/25/000000/birthday-cake.png"/>');
 
         // Melissas birthday
-        $('#date-27-1-<?php echo $_SESSION['year']; ?>').addClass('girl');
-        $('#date-27-1-<?php echo $_SESSION['year']; ?>').append('<img src="https://img.icons8.com/cotton/25/000000/birthday-cake.png"/>');
+        $('#date-<?php echo $_SESSION['year']; ?>-01-27').addClass('girl');
+        $('#date-<?php echo $_SESSION['year']; ?>-01-27').append('<img src="https://img.icons8.com/cotton/25/000000/birthday-cake.png"/>');
     </script>
 </body>
 

@@ -92,6 +92,15 @@ nav a:hover {
     width: 400px;
 }
 
+.chore-table td,
+th {
+    border: solid grey 1px;
+}
+
+.chore-table tr:nth-child(even) {
+    background-color: rgb(242, 242, 242);
+}
+
 
 /* style days */
 
@@ -143,4 +152,8 @@ nav a:hover {
     position: absolute;
     right: 1.5px;
     top: 0px;
+}
+
+.selected-day {
+    background-color: rgb(242, 208, 164);
 }
