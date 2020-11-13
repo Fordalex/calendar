@@ -1,6 +1,8 @@
 <?php
 include_once "env.php";
 
+$password = getenv('DB_PASSWORD');
+
 $host = "eu-cdbr-west-03.cleardb.net";
 $user = "b21c69c31b54a8";
 $password = $password;
