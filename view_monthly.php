@@ -33,7 +33,17 @@ include_once 'templates/header.html';
             </h1>
         </div>
         <div class="col-12 col-md-9 d-flex justify-content-center">
+            <div class="d-flex align-items-center mr-2">
+                <a href="forms/change_month.php?crement=decrement">
+                    <img src="https://img.icons8.com/material-outlined/30/000000/circled-left.png"/>
+                </a>
+            </div>
             <div id="dateContainer" class="container-fluid"></div>
+            <div class="d-flex align-items-center">
+                <a href="forms/change_month.php?crement=increment">
+                    <img src="https://img.icons8.com/material-outlined/30/000000/circled-right.png"/>
+                </a>
+            </div>
         </div>
         <div class="col-12 col-md-3 left-divider">
             <div class="row m-0 p-0">
