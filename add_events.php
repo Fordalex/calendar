@@ -31,6 +31,13 @@ include_once 'templates/header.html';
                 <input type="text" name="event" class="form-control">
                 <label>Style</label>
                 <input type="color" name="style" class="form-control">
+                <label>Repeat</label>
+                 <select class="form-control" name="repeat">
+                    <!-- <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option> -->
+                    <option value="yearly">Yearly</option>
+                    <option value="once">Once</option>
+                </select>
                 <label>Icon</label>
                 <select class="form-control" name="icon">
                     <option value="cake">Cake</option>
@@ -48,6 +55,7 @@ include_once 'templates/header.html';
                             <th>Event</th>
                             <th>Style</th>
                             <th>Date</th>
+                            <th>Repeat</th>
                             <th>Remove</th>
                         </tr>
                         <?php
@@ -62,7 +70,12 @@ include_once 'templates/header.html';
                                 echo '<tr>';
                                 echo '<td>' . $occasion['event'] . '</td>';
                                 echo "<td class='text-center' style='background-color:$color;'>" . $icon . "</td>";
-                                echo '<td>' . $occasion['date'] . '</td>';
+                                if ($occasion['repeat'] == 'yearly') {
+                                    echo '<td>' . substr($occasion['date'], 5,12) . '</td>';
+                                } else {
+                                    echo '<td>' . $occasion['date'] . '</td>';
+                                }
+                                echo '<td>' . $occasion['repeat'] . '</td>';
                                 echo "<td><a href='forms/remove_event.php?id=$id'>Delete</a></td>";
                                 echo '</tr>';
                         }
