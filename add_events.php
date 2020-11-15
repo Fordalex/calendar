@@ -25,8 +25,8 @@ include_once 'templates/header.html';
 <body>
 <?php include_once 'templates/navigation.php'; ?>
     <div class="row m-0 p-0 py-5">
-        <div class="col-12 d-flex justify-content-center mb-4">
-            <form action="forms/add_event.php" method="GET" class="d-inline-block">
+        <div class="col-12 col-md-6 d-flex justify-content-center mb-4">
+            <form action="forms/add_event.php" method="GET" class="container-fluid">
                 <label>Event</label>
                 <input type="text" name="event" class="form-control">
                 <label>Style</label>
@@ -48,7 +48,7 @@ include_once 'templates/header.html';
                 <button type="submit" class="btn btn-success container-fluid">Create Event</button>
             </form>
         </div>
-       <div class="col-12 m-0 p-0">
+       <div class="col-12 col-md-6 m-0">
 
             <table class="chore-table">
                         <tr>

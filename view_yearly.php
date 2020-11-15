@@ -27,15 +27,17 @@ include_once 'templates/header.html';
 <body>
     <?php include_once 'templates/navigation.php'; ?>
     <div class="row m-0 p-0">
-        <div class="col-12 my-4">
-            <h1 class="text-center">
+    <div class="col-12 pt-4 px-0 header">
+            <h1 class="text-center mb-0">
                 <?php echo $_SESSION['year']; ?>
             </h1>
+            <h5 class="text-secondary text-center">Calendar Title</h5>
+            <hr class="mb-0">
         </div>
-        <div class="col-12 col-lg-7 d-flex justify-content-center pl-5">
+        <div class="col-12 col-lg-7 d-flex justify-content-center pl-5 py-4">
             <div id="dateContainer"></div>
         </div>
-        <div class="col-12 col-lg-5 left-divider">
+        <div class="col-12 col-lg-5 left-divider py-4">
             <div class="row m-0 p-0">
                 <div class="col-12 p-0">
                     <h4><?php echo $_SESSION['date'];?></h4>

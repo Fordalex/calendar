@@ -25,8 +25,8 @@ include_once 'templates/header.html';
 <body>
 <?php include_once 'templates/navigation.php'; ?>
     <div class="row m-0 p-0 py-5">
-        <div class="col-12 d-flex justify-content-center mb-4">
-            <form action="forms/add_custom_chore.php" method="GET" class="d-inline-block">
+        <div class="col-12 col-md-6 d-flex justify-content-center mb-4">
+            <form action="forms/add_custom_chore.php" method="GET" class="container-fluid">
                 <label>Chore</label>
                 <input type="text" name="chore" class="form-control">
                 <label>Style</label>
@@ -39,7 +39,7 @@ include_once 'templates/header.html';
                 <button type="submit" class="btn btn-success container-fluid mt-3">Create Chore</button>
             </form>
         </div>
-       <div class="col-12 m-0 p-0">
+       <div class="col-12 col-md-6 m-0 ">
 
             <table class="chore-table">
                         <tr>

@@ -2,7 +2,7 @@
 session_start();
 
 // Check if the user is logged in, if not then redirect him to login page
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: user_profile/login.php");
     exit;
 }
@@ -17,7 +17,7 @@ $day = $_SESSION['day'];
 include_once 'database/get_all_users_chores.php';
 include_once 'database/get_date_users_chores.php';
 include_once 'database/get_all_occasions.php';
-
+include_once 'database/get_list_of_chores.php';
 
 include_once 'templates/header.html';
 ?>
@@ -27,27 +27,29 @@ include_once 'templates/header.html';
 <!-- start of page content -->
 
 <body>
-<?php include_once 'templates/navigation.php'; ?>
+    <?php include_once 'templates/navigation.php'; ?>
     <div class="row m-0 p-0">
-        <div class="col-12 my-4">
-            <h1 class="text-center">
+        <div class="col-12 pt-4 px-0 header">
+            <h1 class="text-center mb-0">
                 <?php echo $_SESSION['year']; ?>
             </h1>
+            <h5 class="text-secondary text-center">Calendar Title</h5>
+            <hr class="mb-0">
         </div>
-        <div class="col-12 col-md-9 d-flex justify-content-center">
+        <div class="col-12 col-md-9 py-4 d-flex justify-content-center">
             <div class="d-flex align-items-center mr-2">
                 <a href="forms/change_month.php?crement=decrement">
-                    <img src="https://img.icons8.com/material-outlined/30/000000/circled-left.png"/>
+                    <img src="https://img.icons8.com/material-outlined/30/000000/circled-left.png" />
                 </a>
             </div>
             <div id="dateContainer" class="container-fluid"></div>
             <div class="d-flex align-items-center">
                 <a href="forms/change_month.php?crement=increment">
-                    <img src="https://img.icons8.com/material-outlined/30/000000/circled-right.png"/>
+                    <img src="https://img.icons8.com/material-outlined/30/000000/circled-right.png" />
                 </a>
             </div>
         </div>
-        <div class="col-12 col-md-3 left-divider">
+        <div class="col-12 col-md-3 left-divider py-4">
             <div class="row m-0 p-0">
                 <div class="col-12 p-0">
                     <h4>Day Information</h4>
@@ -59,18 +61,13 @@ include_once 'templates/header.html';
                 <div class="col-12 m-0 p-0">
                     <div id="addForm" class="collapse">
                         <form action="forms/add_date_data.php?redirect=view_monthly" method="POST">
-                            <select class="form-control mt-2" name="name">
-                                <option value="Alex">Alex</option>
-                                <option value="Melissa">Melissa</option>
-                            </select>
                             <select class="form-control mt-2" name="chore">
-                                <option value="Pots">Pots</option>
-                                <option value="Hoover">Hoover</option>
-                                <option value="Bedding">Bedding</option>
-                                <option value="House Bins">House Bins</option>
-                                <option value="Outside Bins">Outside Bins</option>
-                                <option value="Outside Bins">Cooked Dinner</option>
-                                <option value="Cut Lawn">Cut Lawn</option>
+                                <?php
+                                foreach ($customChores as $customChore) {
+                                    $customChoreChore = $customChore['chore'];
+                                    echo "<option value='$customChoreChore'>$customChoreChore</option>";
+                                }
+                                ?>
                             </select>
                             <button class="btn btn-success mt-2 container-fluid" type="submit">Submit</button>
                         </form>
@@ -86,7 +83,7 @@ include_once 'templates/header.html';
                         <?php
                         foreach ($choresByDate as $chore) {
                             $id = $chore['id'];
-                            echo "<tr style='background-color:$color;'>";
+                            echo "<tr style='background-color:;'>";
                             echo '<td>' . $chore['user'] . '</td>';
                             echo '<td>' . $chore['chore'] . '</td>';
                             echo "<td><a href='forms/remove_date_data.php?id=$id'>Delete</a></td>";
@@ -105,45 +102,44 @@ include_once 'templates/header.html';
     <script>
         // Append the month calenders to the page.
         <?php $month = $month - 1; ?>
-        createMonthCalendar(<?php echo $_SESSION['year'].','.$month; ?>, 'view_monthly');
+        createMonthCalendar(<?php echo $_SESSION['year'] . ',' . $month; ?>, 'view_monthly');
 
         // style the selected day
         $('#date-<?php echo $_SESSION['date']; ?>').addClass('selected-day');
 
         <?php
-         // style all the events created by the user
-            foreach ($occasions as $occasion) {
-                $occasionDate = $occasion['date'];
-                $color = $occasion['style'];
-                if ($occasion['icon'] == 'cake') {
-                    $icon = '<img src="https://img.icons8.com/cotton/25/000000/birthday-cake.png"/>';
-                } elseif ($occasion['icon'] == 'present') {
-                    $icon = '<img src="https://img.icons8.com/doodle/25/000000/gift.png"/>';
-                }
-                echo "$('#date-$occasionDate').css('background-color', '$color');";
-                echo "$('#date-$occasionDate').addClass('no-text');";
-                echo "$('#date-$occasionDate').append('$icon');";
+        // style all the events created by the user
+        foreach ($occasions as $occasion) {
+            $occasionDate = $occasion['date'];
+            $color = $occasion['style'];
+            if ($occasion['icon'] == 'cake') {
+                $icon = '<img src="https://img.icons8.com/cotton/25/000000/birthday-cake.png"/>';
+            } elseif ($occasion['icon'] == 'present') {
+                $icon = '<img src="https://img.icons8.com/doodle/25/000000/gift.png"/>';
             }
-            // add the chores to the relevant day.
-            foreach ($allChores as $chore) {
-                $choreDate = $chore['date'];
-                $choreChore = $chore['chore'];
-                $icon;
-                if ($choreChore == 'Pots') {
-                    $icon = "<img src='https://img.icons8.com/ios/50/000000/washing-dishes.png'/>";
-                } else {
-                    $icon = '';
-                }
-                if ($chore['user'] == 'Alex') {
-                    $choreDiv = "<div class='chore-done'>$icon</div>";
-                } else {
-                    $choreDiv = "<div class='chore-done bg-orange'>$icon</div>";
-                }
-                
-                echo "$('#date-$choreDate').append(".'"'.$choreDiv.'"'.");";
+            echo "$('#date-$occasionDate').css('background-color', '$color');";
+            echo "$('#date-$occasionDate').addClass('no-text');";
+            echo "$('#date-$occasionDate').append('$icon');";
+        }
+        // add the chores to the relevant day.
+        foreach ($allChores as $chore) {
+            $choreDate = $chore['date'];
+            $choreChore = $chore['chore'];
+            $icon;
+            if ($choreChore == 'Pots') {
+                $icon = "<img src='https://img.icons8.com/ios/50/000000/washing-dishes.png'/>";
+            } else {
+                $icon = '';
             }
+            if ($chore['user'] == 'Alex') {
+                $choreDiv = "<div class='chore-done'>$icon</div>";
+            } else {
+                $choreDiv = "<div class='chore-done bg-orange'>$icon</div>";
+            }
+
+            echo "$('#date-$choreDate').append(" . '"' . $choreDiv . '"' . ");";
+        }
         ?>
- 
     </script>
 </body>
 

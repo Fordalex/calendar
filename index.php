@@ -39,7 +39,7 @@ include_once 'templates/header.html';
                 <button type="submit" class="btn btn-success container-fluid" name="redirect" value="index">Set Date</button>
             </form>
         </div>
-        <div class="col-6 m-0 p-0">
+        <div class="col-12 col-md-6 m-0">
             <h4>Day Searched</h4>
             <table class="chore-table">
                         <tr>
@@ -63,7 +63,7 @@ include_once 'templates/header.html';
                         ?>
             </table>
         </div>
-        <div class="col-6 m-0 p-0">
+        <div class="col-12 col-md-6 m-0">
             <h4>All</h4>
             <table class="chore-table">
                         <tr>

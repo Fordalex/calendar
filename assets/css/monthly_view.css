@@ -26,6 +26,7 @@
 
 .day-container span {
     position: absolute;
+    top: 4%;
     font-size: 1em;
     left: 3px;
 }
