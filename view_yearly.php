@@ -46,10 +46,6 @@ include_once 'templates/header.html';
                 <div class="col-12 m-0 p-0">
                     <div id="addForm" class="collapse">
                         <form action="forms/add_date_data.php?redirect=view_yearly" method="POST">
-                            <select class="form-control mt-2" name="name">
-                                <option value="Alex">Alex</option>
-                                <option value="Melissa">Melissa</option>
-                            </select>
                             <select class="form-control mt-2" name="chore">
                                 <option value="Pots">Pots</option>
                                 <option value="Hoover">Hoover</option>
@@ -66,7 +62,7 @@ include_once 'templates/header.html';
                 <div class="col-12 m-0 p-0">
                     <table class="chore-table">
                         <tr>
-                            <th>Name</th>
+                            <th>User</th>
                             <th>Chore</th>
                             <th>Remove</th>
                         </tr>
@@ -74,7 +70,7 @@ include_once 'templates/header.html';
                         foreach ($choresByDate as $chore) {
                             $id = $chore['id'];
                             echo '<tr>';
-                            echo '<td>' . $chore['name'] . '</td>';
+                            echo '<td>' . $chore['user'] . '</td>';
                             echo '<td>' . $chore['chore'] . '</td>';
                             echo "<td><a href='forms/remove_date_data.php?id=$id'>Delete</a></td>";
                             echo '</tr>';
@@ -116,7 +112,7 @@ include_once 'templates/header.html';
             // add the chores to the relevant day.
             foreach ($allChores as $chore) {
                 $choreDate = $chore['date'];
-                if ($chore['name'] == 'Alex') {
+                if ($chore['user'] == 'Alex') {
                     $choreDiv = '<div class="chore-done"></div>';
                 } else {
                     $choreDiv = '<div class="chore-done bg-orange"></div>';

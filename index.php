@@ -53,7 +53,7 @@ include_once 'templates/header.html';
                             if (substr($chore['date'], 5, 2) == $month) {
                                 $id = $chore['id'];
                                 echo '<tr>';
-                                echo '<td>' . $chore['name'] . '</td>';
+                                echo '<td>' . $chore['user'] . '</td>';
                                 echo '<td>' . $chore['chore'] . '</td>';
                                 echo '<td>' . $chore['date'] . '</td>';
                                 echo "<td><a href='forms/remove_date_data.php?id=$id'>Delete</a></td>";
@@ -76,7 +76,7 @@ include_once 'templates/header.html';
                         foreach ($allChores as $chore) {
                                 $id = $chore['id'];
                                 echo '<tr>';
-                                echo '<td>' . $chore['name'] . '</td>';
+                                echo '<td>' . $chore['user'] . '</td>';
                                 echo '<td>' . $chore['chore'] . '</td>';
                                 echo '<td>' . $chore['date'] . '</td>';
                                 echo "<td><a href='forms/remove_date_data.php?id=$id'>Delete</a></td>";

@@ -79,20 +79,15 @@ include_once 'templates/header.html';
                 <div class="col-12 m-0 p-0">
                     <table class="chore-table container-fluid mt-3">
                         <tr>
-                            <th>Name</th>
+                            <th>User</th>
                             <th>Chore</th>
                             <th>Remove</th>
                         </tr>
                         <?php
                         foreach ($choresByDate as $chore) {
                             $id = $chore['id'];
-                            if ($chore['name'] == 'Alex') {
-                                $color = 'blue';
-                            } else {
-                                $color = 'orange';
-                            }
                             echo "<tr style='background-color:$color;'>";
-                            echo '<td>' . $chore['name'] . '</td>';
+                            echo '<td>' . $chore['user'] . '</td>';
                             echo '<td>' . $chore['chore'] . '</td>';
                             echo "<td><a href='forms/remove_date_data.php?id=$id'>Delete</a></td>";
                             echo '</tr>';
@@ -139,7 +134,7 @@ include_once 'templates/header.html';
                 } else {
                     $icon = '';
                 }
-                if ($chore['name'] == 'Alex') {
+                if ($chore['user'] == 'Alex') {
                     $choreDiv = "<div class='chore-done'>$icon</div>";
                 } else {
                     $choreDiv = "<div class='chore-done bg-orange'>$icon</div>";
