@@ -45,32 +45,19 @@ include_once 'templates/header.html';
                         <tr>
                             <th>Event</th>
                             <th>Style</th>
-                            <th>Date</th>
-                            <th>Repeat</th>
                             <th>Remove</th>
                         </tr>
-                        <!-- <?php
-                        foreach ($occasions as $occasion) {
-                                $id = $occasion['id'];
-                                $color = $occasion['style'];
-                                if ($occasion['icon'] == 'cake') {
-                                    $icon = '<img src="https://img.icons8.com/cotton/25/000000/birthday-cake.png"/>';
-                                } elseif ($occasion['icon'] == 'present') {
-                                    $icon = '<img src="https://img.icons8.com/doodle/25/000000/gift.png"/>';
-                                }
+                        <?php
+                        foreach ($customChores as $customChore) {
+                                $id = $customChore['id'];
+                                $color = $customChore['style'];
                                 echo '<tr>';
-                                echo '<td>' . $occasion['event'] . '</td>';
-                                echo "<td class='text-center' style='background-color:$color;'>" . $icon . "</td>";
-                                if ($occasion['repeat'] == 'yearly') {
-                                    echo '<td>' . substr($occasion['date'], 5,12) . '</td>';
-                                } else {
-                                    echo '<td>' . $occasion['date'] . '</td>';
-                                }
-                                echo '<td>' . $occasion['repeat'] . '</td>';
+                                echo '<td>' . $customChore['chore'] . '</td>';
+                                echo "<td class='text-center' style='background-color:$color;'></td>";
                                 echo "<td><a href='forms/remove_event.php?id=$id'>Delete</a></td>";
                                 echo '</tr>';
                         }
-                        ?> -->
+                        ?>
             </table>
        </div>
     </div>

@@ -17,7 +17,7 @@ $day = $_SESSION['day'];
 include_once 'database/get_all_users_chores.php';
 include_once 'database/get_date_users_chores.php';
 include_once 'database/get_all_occasions.php';
-
+include_once 'database/get_list_of_chores.php';
 
 include_once 'templates/header.html';
 ?>
@@ -47,13 +47,12 @@ include_once 'templates/header.html';
                     <div id="addForm" class="collapse">
                         <form action="forms/add_date_data.php?redirect=view_yearly" method="POST">
                             <select class="form-control mt-2" name="chore">
-                                <option value="Pots">Pots</option>
-                                <option value="Hoover">Hoover</option>
-                                <option value="Bedding">Bedding</option>
-                                <option value="House Bins">House Bins</option>
-                                <option value="Outside Bins">Outside Bins</option>
-                                <option value="Outside Bins">Cooked Dinner</option>
-                                <option value="Cut Lawn">Cut Lawn</option>
+                                <?php
+                                    foreach ($customChores as $customChore) {
+                                        $customChoreChore = $customChore['chore'];
+                                        echo "<option value='$customChoreChore'>$customChoreChore</option>";
+                                    }
+                                ?>
                             </select>
                             <button class="btn btn-success mt-2 container-fluid" type="submit">Submit</button>
                         </form>
