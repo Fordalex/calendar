@@ -13,7 +13,8 @@ $date = $_SESSION['date'];
 $year = $_SESSION['year'];
 $month = $_SESSION['month'];
 $day = $_SESSION['day'];
-$result = mysqli_query($conn, "SELECT * FROM `occasion`");
+
+include_once "database/get_all_occasions.php";
 
 include_once 'templates/header.html';
 
@@ -50,7 +51,7 @@ include_once 'templates/header.html';
                             <th>Remove</th>
                         </tr>
                         <?php
-                        foreach ($result as $occasion) {
+                        foreach ($occasions as $occasion) {
                                 $id = $occasion['id'];
                                 $color = $occasion['style'];
                                 if ($occasion['icon'] == 'cake') {

@@ -13,9 +13,11 @@ $date = $_SESSION['date'];
 $year = $_SESSION['year'];
 $month = $_SESSION['month'];
 $day = $_SESSION['day'];
-$choreResult = mysqli_query($conn, "SELECT * FROM `chore` WHERE date='$date'");
-$occasionResult = mysqli_query($conn, "SELECT * FROM `occasion`");
-$allChoresResult = mysqli_query($conn, "SELECT * FROM `chore`");
+
+include_once 'database/get_all_users_chores.php';
+include_once 'database/get_date_users_chores.php';
+include_once 'database/get_all_occasions.php';
+
 
 include_once 'templates/header.html';
 ?>
@@ -82,7 +84,7 @@ include_once 'templates/header.html';
                             <th>Remove</th>
                         </tr>
                         <?php
-                        foreach ($choreResult as $chore) {
+                        foreach ($choresByDate as $chore) {
                             $id = $chore['id'];
                             if ($chore['name'] == 'Alex') {
                                 $color = 'blue';
@@ -115,7 +117,7 @@ include_once 'templates/header.html';
 
         <?php
          // style all the events created by the user
-            foreach ($occasionResult as $occasion) {
+            foreach ($occasions as $occasion) {
                 $occasionDate = $occasion['date'];
                 $color = $occasion['style'];
                 if ($occasion['icon'] == 'cake') {
@@ -128,7 +130,7 @@ include_once 'templates/header.html';
                 echo "$('#date-$occasionDate').append('$icon');";
             }
             // add the chores to the relevant day.
-            foreach ($allChoresResult as $chore) {
+            foreach ($allChores as $chore) {
                 $choreDate = $chore['date'];
                 $choreChore = $chore['chore'];
                 $icon;

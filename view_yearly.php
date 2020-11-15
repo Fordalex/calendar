@@ -13,9 +13,10 @@ $date = $_SESSION['date'];
 $year = $_SESSION['year'];
 $month = $_SESSION['month'];
 $day = $_SESSION['day'];
-$choreResult = mysqli_query($conn, "SELECT * FROM `chore` WHERE date='$date'");
-$occasionResult = mysqli_query($conn, "SELECT * FROM `occasion`");
-$allChores = mysqli_query($conn, "SELECT * FROM `chore`");
+
+include_once 'database/get_all_users_chores.php';
+include_once 'database/get_date_users_chores.php';
+include_once 'database/get_all_occasions.php';
 
 
 include_once 'templates/header.html';
@@ -70,7 +71,7 @@ include_once 'templates/header.html';
                             <th>Remove</th>
                         </tr>
                         <?php
-                        foreach ($choreResult as $chore) {
+                        foreach ($choresByDate as $chore) {
                             $id = $chore['id'];
                             echo '<tr>';
                             echo '<td>' . $chore['name'] . '</td>';
@@ -100,7 +101,7 @@ include_once 'templates/header.html';
        
         <?php
          // style all the events created by the user
-            foreach ($occasionResult as $occasion) {
+            foreach ($occasions as $occasion) {
                 $occasionDate = $occasion['date'];
                 $color = $occasion['style'];
                 if ($occasion['icon'] == 'cake') {

@@ -14,14 +14,14 @@ if (!isset($_SESSION['date'])) {
     $_SESSION['day'] = substr($_SESSION['date'], 8, 10);
 }
 
-
-include_once "forms/connect_mysql.php";
-
 $date = $_SESSION['date'];
 $year = $_SESSION['year'];
 $month = $_SESSION['month'];
 $day = $_SESSION['day'];
-$result = mysqli_query($conn, "SELECT * FROM `chore`");
+$username = $_SESSION['username'];
+
+include_once 'database/get_all_users_chores.php';
+include_once 'database/get_date_users_chores.php';
 
 include_once 'templates/header.html';
 ?>
@@ -40,7 +40,7 @@ include_once 'templates/header.html';
             </form>
         </div>
         <div class="col-6 m-0 p-0">
-            <h4>Month Searched</h4>
+            <h4>Day Searched</h4>
             <table class="chore-table">
                         <tr>
                             <th>Name</th>
@@ -49,7 +49,7 @@ include_once 'templates/header.html';
                             <th>Remove</th>
                         </tr>
                         <?php
-                        foreach ($result as $chore) {
+                        foreach ($choresByDate as $chore) {
                             if (substr($chore['date'], 5, 2) == $month) {
                                 $id = $chore['id'];
                                 echo '<tr>';
@@ -73,7 +73,7 @@ include_once 'templates/header.html';
                             <th>Remove</th>
                         </tr>
                         <?php
-                        foreach ($result as $chore) {
+                        foreach ($allChores as $chore) {
                                 $id = $chore['id'];
                                 echo '<tr>';
                                 echo '<td>' . $chore['name'] . '</td>';
