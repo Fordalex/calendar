@@ -1,6 +1,12 @@
 <?php
 session_start();
 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: user_profile/login.php");
+    exit;
+}
+
 include_once "forms/connect_mysql.php";
 
 $date = $_SESSION['date'];
@@ -11,7 +17,6 @@ $choreResult = mysqli_query($conn, "SELECT * FROM `chore` WHERE date='$date'");
 $occasionResult = mysqli_query($conn, "SELECT * FROM `occasion`");
 $allChoresResult = mysqli_query($conn, "SELECT * FROM `chore`");
 
-
 include_once 'templates/header.html';
 ?>
 
@@ -20,7 +25,7 @@ include_once 'templates/header.html';
 <!-- start of page content -->
 
 <body>
-<?php include_once 'templates/navigation.html'; ?>
+<?php include_once 'templates/navigation.php'; ?>
     <div class="row m-0 p-0">
         <div class="col-12 my-4">
             <h1 class="text-center">

@@ -1,6 +1,12 @@
 <?php 
 session_start();
 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: user_profile/login.php");
+    exit;
+}
+
 include_once "forms/connect_mysql.php";
 
 $date = $_SESSION['date'];
@@ -15,7 +21,7 @@ include_once 'templates/header.html';
 <!-- start of page content -->
 </head>
 <body>
-<?php include_once 'templates/navigation.html'; ?>
+<?php include_once 'templates/navigation.php'; ?>
     <?php echo $date; ?>
 
     <div class="row m-0 p-0 py-5">

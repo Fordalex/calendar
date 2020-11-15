@@ -1,6 +1,12 @@
 <?php 
 session_start();
 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+
 include_once "forms/connect_mysql.php";
 
 $date = $_SESSION['date'];
@@ -10,12 +16,13 @@ $day = $_SESSION['day'];
 $result = mysqli_query($conn, "SELECT * FROM `occasion`");
 
 include_once 'templates/header.html';
+
 ?>
 
 <!-- start of page content -->
 
 <body>
-<?php include_once 'templates/navigation.html'; ?>
+<?php include_once 'templates/navigation.php'; ?>
     <div class="row m-0 p-0 py-5">
         <div class="col-12 d-flex justify-content-center mb-4">
             <form action="forms/add_event.php" method="GET" class="d-inline-block">
