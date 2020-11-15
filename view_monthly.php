@@ -115,13 +115,20 @@ include_once 'templates/header.html';
             // add the chores to the relevant day.
             foreach ($allChoresResult as $chore) {
                 $choreDate = $chore['date'];
-                if ($chore['name'] == 'Alex') {
-                    $choreDiv = '<div class="chore-done"></div>';
+                $choreChore = $chore['chore'];
+                $icon;
+                if ($choreChore == 'Pots') {
+                    $icon = "<img src='https://img.icons8.com/ios/50/000000/washing-dishes.png'/>";
                 } else {
-                    $choreDiv = '<div class="chore-done bg-orange"></div>';
+                    $icon = '';
+                }
+                if ($chore['name'] == 'Alex') {
+                    $choreDiv = "<div class='chore-done'>$icon</div>";
+                } else {
+                    $choreDiv = "<div class='chore-done bg-orange'>$icon</div>";
                 }
                 
-                echo "$('#date-$choreDate').append('$choreDiv');";
+                echo "$('#date-$choreDate').append(".'"'.$choreDiv.'"'.");";
             }
         ?>
  
