@@ -7,6 +7,13 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     exit;
 }
 
+if (!$_SESSION['date']) {
+    $_SESSION['date'] = date("Y-m-d");
+    $_SESSION['year'] = substr($_SESSION['date'], 0, 4);
+    $_SESSION['month'] = substr($_SESSION['date'], 5, 2);
+    $_SESSION['day'] = substr($_SESSION['date'], 8, 10);
+}
+
 include_once "forms/connect_mysql.php";
 
 $date = $_SESSION['date'];
