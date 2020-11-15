@@ -2,6 +2,8 @@
 
 I'm creating a calendar connected to a database to get used to hosting a php project on heroku.
 
+View project [Link](https://daily-todo-calendar.herokuapp.com/user_profile/login.php)
+
 ### Bugs
 
 - When creating an event, if the input has "'" the data won't save to the database.
@@ -15,4 +17,4 @@ I'm creating a calendar connected to a database to get used to hosting a php pro
 ### Acknowledgements
 
 - [Hosting on heroku](https://www.youtube.com/watch?v=LXb6f8GJ0qs)
-= [Login System](https://www.tutorialrepublic.com/php-tutorial/php-mysql-login-system.php)
+- [Login System](https://www.tutorialrepublic.com/php-tutorial/php-mysql-login-system.php)

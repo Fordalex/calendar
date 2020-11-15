@@ -22,6 +22,9 @@
             <li class="nav-item active">
                 <a class="nav-link text-light" href="add_events.php">Add Events</a>
             </li>
+            <li class="nav-item active">
+                <a class="nav-link text-light" href="add_custom_chore.php">Add Chore</a>
+            </li>
         </ul>
       
         <li class="nav-item dropdown">
