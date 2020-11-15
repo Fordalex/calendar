@@ -1,0 +1,74 @@
+#dateContainer {
+    display: inline;
+}
+
+.day {
+    font-size: 14px;
+    display: inline-block;
+    margin-bottom: 3px;
+    width: 13.8%;
+}
+
+.day-container {
+    width: 13.5%;
+    height: 11vw;
+    border: solid rgb(197, 197, 197) 1px;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 1px;
+    font-size: 10px;
+    text-align: center;
+    color: rgb(87, 87, 87);
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.day-container span {
+    position: absolute;
+    font-size: 1em;
+    left: 3px;
+}
+
+.day-container:hover {
+    background-color: rgb(255, 254, 212);
+    text-decoration: none;
+    font-weight: 800;
+}
+
+.blank-day-container {
+    background-color: rgb(255, 255, 255);
+}
+
+.blank-day-container:hover {
+    background-color: white;
+    text-decoration: none;
+    cursor: default;
+}
+
+.month-container {
+    height: auto;
+    width: 100%;
+    margin-right: 15px;
+    float: left;
+}
+
+.chore-done {
+    width: 28%;
+    height: 28%;
+    background-color: rgba(75, 147, 225, 0.8);
+    float: left;
+    border-radius: 20%;
+    margin: 2%;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
+}
+
+.bg-orange {
+    background-color: rgba(245, 156, 73, 0.8);
+}
+
+@media only screen and (min-width: 767px) {
+    .day-container {
+        height: 8vw;
+    }
+}

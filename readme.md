@@ -5,6 +5,12 @@ I'm creating a calendar connected to a database to get used to hosting a php pro
 ### Bugs
 
 - When creating an event, if the input has "'" the data won't save to the database.
+- If a date isn't saved in the session the yearly and monthly calendar won't be displayed.
+
+### Left to implement
+
+- Need to give the user the ability to repeat an event yearly or it be a one time occasion.
+- Add a carousel for the monthly calendar view.
 
 ### Acknowledgements
 

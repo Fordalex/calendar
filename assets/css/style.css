@@ -1,6 +1,7 @@
 body {
     margin: 0;
     padding: 0;
+    min-width: 350px;
 }
 
 
@@ -96,7 +97,7 @@ nav a:hover {
 }
 
 .chore-table {
-    width: 400px;
+    width: 100%;
 }
 
 .chore-table td,

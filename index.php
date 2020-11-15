@@ -13,7 +13,7 @@ include_once 'templates/header.html';
 ?>
 
 <!-- start of page content -->
-
+</head>
 <body>
 <?php include_once 'templates/navigation.html'; ?>
     <?php echo $date; ?>

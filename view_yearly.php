@@ -16,7 +16,7 @@ include_once 'templates/header.html';
 ?>
 
 <!-- start of page content -->
-
+</head>
 <body>
     <?php include_once 'templates/navigation.html'; ?>
     <div class="row m-0 p-0">

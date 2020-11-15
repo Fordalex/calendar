@@ -15,6 +15,8 @@ $allChoresResult = mysqli_query($conn, "SELECT * FROM `chore`");
 include_once 'templates/header.html';
 ?>
 
+<link rel="stylesheet" href="assets/css/monthly_view.css">
+</head>
 <!-- start of page content -->
 
 <body>
@@ -25,10 +27,10 @@ include_once 'templates/header.html';
                 <?php echo $_SESSION['year']; ?>
             </h1>
         </div>
-        <div class="col-12 col-lg-7 d-flex justify-content-center pl-5">
-            <div id="dateContainer"></div>
+        <div class="col-12 col-md-9 d-flex justify-content-center">
+            <div id="dateContainer" class="container-fluid"></div>
         </div>
-        <div class="col-12 col-lg-5 left-divider">
+        <div class="col-12 col-md-3 left-divider">
             <div class="row m-0 p-0">
                 <div class="col-12 p-0">
                     <h4>Day Information</h4>
@@ -58,7 +60,7 @@ include_once 'templates/header.html';
                     </div>
                 </div>
                 <div class="col-12 m-0 p-0">
-                    <table class="chore-table">
+                    <table class="chore-table container-fluid mt-3">
                         <tr>
                             <th>Name</th>
                             <th>Chore</th>
@@ -67,7 +69,12 @@ include_once 'templates/header.html';
                         <?php
                         foreach ($choreResult as $chore) {
                             $id = $chore['id'];
-                            echo '<tr>';
+                            if ($chore['name'] == 'Alex') {
+                                $color = 'blue';
+                            } else {
+                                $color = 'orange';
+                            }
+                            echo "<tr style='background-color:$color;'>";
                             echo '<td>' . $chore['name'] . '</td>';
                             echo '<td>' . $chore['chore'] . '</td>';
                             echo "<td><a href='forms/remove_date_data.php?id=$id'>Delete</a></td>";
