@@ -31,7 +31,7 @@ include_once 'templates/header.html';
             <h1 class="text-center mb-0">
                 <?php echo $_SESSION['year']; ?>
             </h1>
-            <h5 class="text-secondary text-center">Calendar Title</h5>
+            <h5 class="text-secondary text-center">All Categories</h5>
             <hr class="mb-0">
         </div>
         <div class="col-12 col-lg-7 d-flex justify-content-center pl-5 py-4">
@@ -41,18 +41,19 @@ include_once 'templates/header.html';
             <div class="row m-0 p-0">
                 <div class="col-12 p-0">
                     <h4><?php echo $_SESSION['date'];?></h4>
-                    <h6 class="text-secondary">Occasion</h6>
+                    <h6 class="text-secondary" id="occasion"></h6>
                     
                     <button href="#addForm" data-toggle="collapse" class="btn btn-dark float-right mb-2">Add</button>
                 </div>
                 <div class="col-12 m-0 p-0">
                     <div id="addForm" class="collapse">
                         <form action="forms/add_date_data.php?redirect=view_yearly" method="POST">
-                            <select class="form-control mt-2" name="chore">
+                            <select class="form-control mt-2" name="choreId">
                                 <?php
                                     foreach ($customChores as $customChore) {
                                         $customChoreChore = $customChore['chore'];
-                                        echo "<option value='$customChoreChore'>$customChoreChore</option>";
+                                        $customChoreId = $customChore['id'];
+                                        echo "<option value='$customChoreId'>$customChoreChore</option>";
                                     }
                                 ?>
                             </select>
@@ -73,8 +74,8 @@ include_once 'templates/header.html';
                             $id = $chore['id'];
                             echo '<tr>';
                             echo '<td>' . $chore['user'] . '</td>';
-                            echo '<td>' . $chore['category'] . '</td>';
                             echo '<td>' . $chore['chore'] . '</td>';
+                            echo '<td>' . $chore['category'] . '</td>';
                             echo "<td><a href='forms/remove_date_data.php?id=$id'>Delete</a></td>";
                             echo '</tr>';
                         }
@@ -103,6 +104,7 @@ include_once 'templates/header.html';
             foreach ($occasions as $occasion) {
                 $repeat = $occasion['repeat'];
                 $color = $occasion['style'];
+                $event = $occasion['event'];
                 if ($occasion['icon'] == 'cake') {
                     $icon = '<img src="https://img.icons8.com/cotton/25/000000/birthday-cake.png"/>';
                 } elseif ($occasion['icon'] == 'present') {
@@ -116,6 +118,9 @@ include_once 'templates/header.html';
                 echo "$('#date-$occasionDate').css('background-color', '$color');";
                 echo "$('#date-$occasionDate').addClass('no-text');";
                 echo "$('#date-$occasionDate').append('$icon');";
+                if ($occasion['date'] == $date) {
+                    echo "$('#occasion').html('$event');";
+                }
             }
             // add the chores to the relevant day.
             foreach ($allChores as $chore) {

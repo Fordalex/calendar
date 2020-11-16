@@ -33,7 +33,7 @@ include_once 'templates/header.html';
             <h1 class="text-center mb-0">
                 <?php echo $_SESSION['year']; ?>
             </h1>
-            <h5 class="text-secondary text-center">Calendar Title</h5>
+            <h5 class="text-secondary text-center">All Categories</h5>
             <hr class="mb-0">
         </div>
         <div class="col-12 col-md-9 py-4 d-flex justify-content-center">
@@ -53,6 +53,7 @@ include_once 'templates/header.html';
             <div class="row m-0 p-0">
                 <div class="col-12 p-0">
                     <h4>Day Information</h4>
+                    <h6 id="occasion"></h6>
                     <?php
                     echo $_SESSION['date'];
                     ?>
@@ -74,18 +75,20 @@ include_once 'templates/header.html';
                     </div>
                 </div>
                 <div class="col-12 m-0 p-0">
-                    <table class="chore-table container-fluid mt-3">
+                <table class="chore-table">
                         <tr>
                             <th>User</th>
                             <th>Chore</th>
+                            <th>Category</th>
                             <th>Remove</th>
                         </tr>
                         <?php
                         foreach ($choresByDate as $chore) {
                             $id = $chore['id'];
-                            echo "<tr style='background-color:;'>";
+                            echo '<tr>';
                             echo '<td>' . $chore['user'] . '</td>';
                             echo '<td>' . $chore['chore'] . '</td>';
+                            echo '<td>' . $chore['category'] . '</td>';
                             echo "<td><a href='forms/remove_date_data.php?id=$id'>Delete</a></td>";
                             echo '</tr>';
                         }
@@ -108,37 +111,39 @@ include_once 'templates/header.html';
         $('#date-<?php echo $_SESSION['date']; ?>').addClass('selected-day');
 
         <?php
-        // style all the events created by the user
-        foreach ($occasions as $occasion) {
-            $occasionDate = $occasion['date'];
-            $color = $occasion['style'];
-            if ($occasion['icon'] == 'cake') {
-                $icon = '<img src="https://img.icons8.com/cotton/25/000000/birthday-cake.png"/>';
-            } elseif ($occasion['icon'] == 'present') {
-                $icon = '<img src="https://img.icons8.com/doodle/25/000000/gift.png"/>';
+         // style all the events created by the user
+            foreach ($occasions as $occasion) {
+                $repeat = $occasion['repeat'];
+                $color = $occasion['style'];
+                $event = $occasion['event'];
+                if ($occasion['icon'] == 'cake') {
+                    $icon = '<img src="https://img.icons8.com/cotton/25/000000/birthday-cake.png"/>';
+                } elseif ($occasion['icon'] == 'present') {
+                    $icon = '<img src="https://img.icons8.com/doodle/25/000000/gift.png"/>';
+                }
+                if ($repeat == 'yearly') {
+                    $occasionDate = $year.substr($occasion['date'], 4,12);
+                } else {
+                    $occasionDate = $occasion['date'];
+                }
+                echo "$('#date-$occasionDate').css('background-color', '$color');";
+                echo "$('#date-$occasionDate').addClass('no-text');";
+                echo "$('#date-$occasionDate').append('$icon');";
+                if ($occasion['date'] == $date) {
+                    echo "$('#occasion').html('$event');";
+                }
             }
-            echo "$('#date-$occasionDate').css('background-color', '$color');";
-            echo "$('#date-$occasionDate').addClass('no-text');";
-            echo "$('#date-$occasionDate').append('$icon');";
-        }
-        // add the chores to the relevant day.
-        foreach ($allChores as $chore) {
-            $choreDate = $chore['date'];
-            $choreChore = $chore['chore'];
-            $icon;
-            if ($choreChore == 'Pots') {
-                $icon = "<img src='https://img.icons8.com/ios/50/000000/washing-dishes.png'/>";
-            } else {
-                $icon = '';
+            // add the chores to the relevant day.
+            foreach ($allChores as $chore) {
+                $choreDate = $chore['date'];
+                if ($chore['user'] == 'Alex') {
+                    $choreDiv = '<div class="chore-done"></div>';
+                } else {
+                    $choreDiv = '<div class="chore-done bg-orange"></div>';
+                }
+                
+                echo "$('#date-$choreDate').append('$choreDiv');";
             }
-            if ($chore['user'] == 'Alex') {
-                $choreDiv = "<div class='chore-done'>$icon</div>";
-            } else {
-                $choreDiv = "<div class='chore-done bg-orange'>$icon</div>";
-            }
-
-            echo "$('#date-$choreDate').append(" . '"' . $choreDiv . '"' . ");";
-        }
         ?>
     </script>
 </body>

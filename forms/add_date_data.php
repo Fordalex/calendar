@@ -4,11 +4,18 @@ session_start();
 include_once 'connect_mysql.php';
 
 $date = $_SESSION['date'];
-$chore = $_POST['chore'];
+$choreId = $_POST['choreId'];
 $redirect = $_GET['redirect'];
 $username = $_SESSION['username'];
 
-mysqli_query($conn, "INSERT INTO chore (`chore`, `date`,`user`) VALUES ('$chore','$date', '$username')") or die('There was a problem submitting the form!');
+$customChore = mysqli_query($conn, "SELECT * FROM `custom_chore` WHERE id='$choreId'");
+
+foreach ($customChore as $cat) {
+    $category = $cat['category'];
+    $chore = $cat['chore'];
+}
+
+mysqli_query($conn, "INSERT INTO chore (`chore`, `date`,`user`, `category`) VALUES ('$chore','$date', '$username', '$category')") or die('There was a problem submitting the form!');
 
 // Redriect the user back to the calendar
 header("Location: ../$redirect.php");
