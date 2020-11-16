@@ -31,6 +31,10 @@ include_once 'templates/header.html';
                 <input type="text" name="chore" class="form-control">
                 <label>Style</label>
                 <input type="color" name="style" class="form-control">
+                <label>Category</label>
+                <select name="category" class="form-control">
+                   
+                </select>
                 <label>Icon</label>
                 <select class="form-control" name="icon">
                     <option value="cake">Cake</option>
@@ -40,14 +44,21 @@ include_once 'templates/header.html';
             </form>
         </div>
        <div class="col-12 col-md-6 m-0 ">
-
+            <p>
+                <?php 
+                    echo mysqli_fetch_lengths( $customChores );
+                ?>
+            </p>
             <table class="chore-table">
+                        
+                      
                         <tr>
                             <th>Event</th>
                             <th>Style</th>
                             <th>Remove</th>
                         </tr>
                         <?php
+                        
                         foreach ($customChores as $customChore) {
                                 $id = $customChore['id'];
                                 $color = $customChore['style'];

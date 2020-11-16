@@ -19,11 +19,15 @@
                     <a class="dropdown-item" href="view_yearly.php">Yearly</a>
                 </div>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link text-light" href="add_events.php">Add Events</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link text-light" href="add_custom_chore.php">Add Chore</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Add
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="add_events.php">Events</a>
+                    <a class="dropdown-item" href="add_custom_chore.php">Chore</a>
+                    <a class="dropdown-item" href="add_category.php">Category</a>
+                </div>
             </li>
             <li class="nav-item dropdown d-block d-lg-none">
             <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
