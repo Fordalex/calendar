@@ -24,15 +24,15 @@ include_once 'templates/header.html';
 
 <body>
 <?php include_once 'templates/navigation.php'; ?>
-    <div class="row m-0 p-0 py-5">
-        <div class="col-12 col-md-6 d-flex justify-content-center mb-4">
+    <div class="row m-0 p-0 py-5 justify-content-center">
+        <div class="col-12 col-md-4 d-flex justify-content-center mb-4">
             <form action="forms/add_category.php" method="GET" class="container-fluid">
                 <label>Category</label>
                 <input type="text" name="category" class="form-control">
                 <button type="submit" class="btn btn-success container-fluid mt-3">Create Category</button>
             </form>
         </div>
-       <div class="col-12 col-md-6 m-0 ">
+       <div class="col-12 col-md-4 m-0 ">
 
             <table class="chore-table">
                         <tr>
