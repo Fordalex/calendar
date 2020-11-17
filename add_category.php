@@ -52,7 +52,7 @@ include_once 'templates/header.html';
                         $id = $category['id'];
                         echo '<tr>';
                         echo '<td>' . $category['category'] . '</td>';
-                        echo "<td><a href='forms/remove_event.php?id=$id'>Delete</a></td>";
+                        echo "<td><a href='forms/remove_category.php?id=$id'>Delete</a></td>";
                         echo '</tr>';
                     }
                     ?>

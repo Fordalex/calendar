@@ -25,7 +25,7 @@ include_once 'templates/header.html';
 <body>
     <?php include_once 'templates/navigation.php'; ?>
     <div class="row m-0 p-0 justify-content-center">
-        <div class="col-12 header">
+        <div class="col-12 header mb-4">
             <h3 class="text-center">Add Event</h3>
             <p class="text-secondary text-center">Create events so you don't forget birthdays/occasions ect.</p>
             <hr class="mb-0">
@@ -41,8 +41,8 @@ include_once 'templates/header.html';
                     <select class="form-control" name="repeat">
                         <!-- <option value="weekly">Weekly</option>
                     <option value="monthly">Monthly</option> -->
-                        <option value="yearly">Yearly</option>
-                        <option value="once">Once</option>
+                        <option value="Yearly">Yearly</option>
+                        <option value="Once">Once</option>
                     </select>
                     <label>Icon</label>
                     <select class="form-control" name="icon">

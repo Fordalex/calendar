@@ -13,7 +13,7 @@ foreach ($occasions as $occasion) {
     } elseif ($occasion['icon'] == 'present') {
         $icon = '<img src="https://img.icons8.com/doodle/25/000000/gift.png"/>';
     }
-    if ($repeat == 'yearly') {
+    if ($repeat == 'Yearly') {
         $occasionDate = $year.substr($occasion['date'], 4,12);
     } else {
         $occasionDate = $occasion['date'];

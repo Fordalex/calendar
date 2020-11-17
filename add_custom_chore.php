@@ -26,7 +26,7 @@ include_once 'templates/header.html';
 <body>
     <?php include_once 'templates/navigation.php'; ?>
     <div class="row m-0 p-0 justify-content-center">
-        <div class="col-12 header">
+        <div class="col-12 header mb-4">
             <h3 class="text-center">Add Chore</h3>
             <p class="text-secondary text-center">Create chores to be added to the calendar.</p>
             <hr class="mb-0">
@@ -76,7 +76,7 @@ include_once 'templates/header.html';
                         echo '<tr>';
                         echo '<td>' . $customChore['chore'] . '</td>';
                         echo "<td class='text-center' style='background-color:$color;'></td>";
-                        echo "<td><a href='forms/remove_event.php?id=$id'>Delete</a></td>";
+                        echo "<td><a href='forms/remove_custom_chore.php?id=$id'>Delete</a></td>";
                         echo '</tr>';
                     }
 

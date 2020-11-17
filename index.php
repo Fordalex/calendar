@@ -34,15 +34,19 @@ include_once 'templates/header.html';
 
     <div class="row m-0 p-0 py-5 justify-content-center">
         <div class="col-12 d-flex justify-content-center mb-4">
-        <div class="box-container">
-            <form action="forms/set_date.php" method="GET" class="d-inline-block">
-                <h4 class="mb-0">Search A Date</h4>
-                <input type="date" name="date" class="form-control my-3" value="<?php echo "$date"; ?>">
-                <button type="submit" class="btn btn-success container-fluid" name="redirect" value="index">Set Date</button>
-            </form>
+            <div class="row m-0 p-0 justify-content-center">
+                <div class="col m-0 p-0">
+                    <div class="box-container">
+                        <form action="forms/set_date.php" method="GET" class="d-inline-block">
+                            <h4 class="mb-0">Search A Date</h4>
+                            <input type="date" name="date" class="form-control my-3" value="<?php echo "$date"; ?>">
+                            <button type="submit" class="btn btn-success container-fluid" name="redirect" value="index">Set Date</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        </div>
-        <div class="col-12 col-md-4 m-0">
+        <div class="col-12 col-md-4 m-0 mb-4">
             <div class="box-container">
                 <h4>Day Searched</h4>
                 <!-- table with all chores from the selected data -->
@@ -62,10 +66,11 @@ include_once 'templates/header.html';
                     <?php
                     foreach ($allChores as $chore) {
                         $id = $chore['id'];
+                        $choreDate = $chore['date'];
                         echo '<tr>';
                         echo '<td>' . $chore['user'] . '</td>';
                         echo '<td>' . $chore['chore'] . '</td>';
-                        echo '<td>' . $chore['date'] . '</td>';
+                        echo "<td><a href='forms/set_date.php?date=$choreDate&redirect=index'>$choreDate</a></td>";
                         echo "<td><a href='forms/remove_date_data.php?id=$id'>Delete</a></td>";
                         echo '</tr>';
                     }
