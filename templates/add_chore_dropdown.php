@@ -1,0 +1,22 @@
+<div class="col-12 p-0">
+    <h4><?php echo $_SESSION['date'];?></h4>
+    <h6 class="text-secondary" id="occasion"></h6>
+    
+    <button href="#addForm" data-toggle="collapse" class="btn btn-dark float-right mb-2">Add</button>
+</div>
+<div class="col-12 m-0 p-0">
+    <div id="addForm" class="collapse">
+        <form action="forms/add_date_data.php?redirect=view_yearly" method="POST">
+            <select class="form-control mt-2" name="choreId">
+                <?php
+                    foreach ($customChores as $customChore) {
+                        $customChoreChore = $customChore['chore'];
+                        $customChoreId = $customChore['id'];
+                        echo "<option value='$customChoreId'>$customChoreChore</option>";
+                    }
+                ?>
+            </select>
+            <button class="btn btn-success mt-2 container-fluid" type="submit">Submit</button>
+        </form>
+    </div>
+</div>

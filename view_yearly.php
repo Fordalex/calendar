@@ -39,48 +39,11 @@ include_once 'templates/header.html';
         </div>
         <div class="col-12 col-lg-5 left-divider py-4">
             <div class="row m-0 p-0">
-                <div class="col-12 p-0">
-                    <h4><?php echo $_SESSION['date'];?></h4>
-                    <h6 class="text-secondary" id="occasion"></h6>
-                    
-                    <button href="#addForm" data-toggle="collapse" class="btn btn-dark float-right mb-2">Add</button>
-                </div>
+                <!-- Add chore to calendar drop down -->
+                <?php include_once 'templates/add_chore_dropdown.php'; ?> 
                 <div class="col-12 m-0 p-0">
-                    <div id="addForm" class="collapse">
-                        <form action="forms/add_date_data.php?redirect=view_yearly" method="POST">
-                            <select class="form-control mt-2" name="choreId">
-                                <?php
-                                    foreach ($customChores as $customChore) {
-                                        $customChoreChore = $customChore['chore'];
-                                        $customChoreId = $customChore['id'];
-                                        echo "<option value='$customChoreId'>$customChoreChore</option>";
-                                    }
-                                ?>
-                            </select>
-                            <button class="btn btn-success mt-2 container-fluid" type="submit">Submit</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-12 m-0 p-0">
-                    <table class="chore-table">
-                        <tr>
-                            <th>User</th>
-                            <th>Chore</th>
-                            <th>Category</th>
-                            <th>Remove</th>
-                        </tr>
-                        <?php
-                        foreach ($choresByDate as $chore) {
-                            $id = $chore['id'];
-                            echo '<tr>';
-                            echo '<td>' . $chore['user'] . '</td>';
-                            echo '<td>' . $chore['chore'] . '</td>';
-                            echo '<td>' . $chore['category'] . '</td>';
-                            echo "<td><a href='forms/remove_date_data.php?id=$id'>Delete</a></td>";
-                            echo '</tr>';
-                        }
-                        ?>
-                    </table>
+                    <!-- table with all chores from the selected data -->
+                    <?php include_once 'templates/chores_by_date_table.php'; ?>    
                 </div>
             </div>
         </div>

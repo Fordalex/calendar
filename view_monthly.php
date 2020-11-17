@@ -51,49 +51,10 @@ include_once 'templates/header.html';
         </div>
         <div class="col-12 col-md-3 left-divider py-4">
             <div class="row m-0 p-0">
-                <div class="col-12 p-0">
-                    <h4>Day Information</h4>
-                    <h6 id="occasion"></h6>
-                    <?php
-                    echo $_SESSION['date'];
-                    ?>
-                    <button href="#addForm" data-toggle="collapse" class="btn btn-dark float-right mb-2">Add</button>
-                </div>
+                <!-- Add chore to calendar drop down -->
+                <?php include_once 'templates/add_chore_dropdown.php'; ?> 
                 <div class="col-12 m-0 p-0">
-                    <div id="addForm" class="collapse">
-                        <form action="forms/add_date_data.php?redirect=view_monthly" method="POST">
-                            <select class="form-control mt-2" name="chore">
-                                <?php
-                                foreach ($customChores as $customChore) {
-                                    $customChoreChore = $customChore['chore'];
-                                    echo "<option value='$customChoreChore'>$customChoreChore</option>";
-                                }
-                                ?>
-                            </select>
-                            <button class="btn btn-success mt-2 container-fluid" type="submit">Submit</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-12 m-0 p-0">
-                <table class="chore-table">
-                        <tr>
-                            <th>User</th>
-                            <th>Chore</th>
-                            <th>Category</th>
-                            <th>Remove</th>
-                        </tr>
-                        <?php
-                        foreach ($choresByDate as $chore) {
-                            $id = $chore['id'];
-                            echo '<tr>';
-                            echo '<td>' . $chore['user'] . '</td>';
-                            echo '<td>' . $chore['chore'] . '</td>';
-                            echo '<td>' . $chore['category'] . '</td>';
-                            echo "<td><a href='forms/remove_date_data.php?id=$id'>Delete</a></td>";
-                            echo '</tr>';
-                        }
-                        ?>
-                    </table>
+                    <?php include_once 'templates/chores_by_date_table.php'; ?>
                 </div>
             </div>
         </div>
@@ -111,39 +72,39 @@ include_once 'templates/header.html';
         $('#date-<?php echo $_SESSION['date']; ?>').addClass('selected-day');
 
         <?php
-         // style all the events created by the user
-            foreach ($occasions as $occasion) {
-                $repeat = $occasion['repeat'];
-                $color = $occasion['style'];
-                $event = $occasion['event'];
-                if ($occasion['icon'] == 'cake') {
-                    $icon = '<img src="https://img.icons8.com/cotton/25/000000/birthday-cake.png"/>';
-                } elseif ($occasion['icon'] == 'present') {
-                    $icon = '<img src="https://img.icons8.com/doodle/25/000000/gift.png"/>';
-                }
-                if ($repeat == 'yearly') {
-                    $occasionDate = $year.substr($occasion['date'], 4,12);
-                } else {
-                    $occasionDate = $occasion['date'];
-                }
-                echo "$('#date-$occasionDate').css('background-color', '$color');";
-                echo "$('#date-$occasionDate').addClass('no-text');";
-                echo "$('#date-$occasionDate').append('$icon');";
-                if ($occasion['date'] == $date) {
-                    echo "$('#occasion').html('$event');";
-                }
+        // style all the events created by the user
+        foreach ($occasions as $occasion) {
+            $repeat = $occasion['repeat'];
+            $color = $occasion['style'];
+            $event = $occasion['event'];
+            if ($occasion['icon'] == 'cake') {
+                $icon = '<img src="https://img.icons8.com/cotton/25/000000/birthday-cake.png"/>';
+            } elseif ($occasion['icon'] == 'present') {
+                $icon = '<img src="https://img.icons8.com/doodle/25/000000/gift.png"/>';
             }
-            // add the chores to the relevant day.
-            foreach ($allChores as $chore) {
-                $choreDate = $chore['date'];
-                if ($chore['user'] == 'Alex') {
-                    $choreDiv = '<div class="chore-done"></div>';
-                } else {
-                    $choreDiv = '<div class="chore-done bg-orange"></div>';
-                }
-                
-                echo "$('#date-$choreDate').append('$choreDiv');";
+            if ($repeat == 'yearly') {
+                $occasionDate = $year . substr($occasion['date'], 4, 12);
+            } else {
+                $occasionDate = $occasion['date'];
             }
+            echo "$('#date-$occasionDate').css('background-color', '$color');";
+            echo "$('#date-$occasionDate').addClass('no-text');";
+            echo "$('#date-$occasionDate').append('$icon');";
+            if ($occasion['date'] == $date) {
+                echo "$('#occasion').html('$event');";
+            }
+        }
+        // add the chores to the relevant day.
+        foreach ($allChores as $chore) {
+            $choreDate = $chore['date'];
+            if ($chore['user'] == 'Alex') {
+                $choreDiv = '<div class="chore-done"></div>';
+            } else {
+                $choreDiv = '<div class="chore-done bg-orange"></div>';
+            }
+
+            echo "$('#date-$choreDate').append('$choreDiv');";
+        }
         ?>
     </script>
 </body>
