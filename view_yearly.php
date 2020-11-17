@@ -38,7 +38,7 @@ include_once 'templates/header.html';
             <div id="dateContainer"></div>
         </div>
         <div class="col-12 col-lg-5 left-divider py-4">
-            <div class="row m-0 p-0">
+            <div class="row m-0 box-container">
                 <!-- Add chore to calendar drop down -->
                 <?php include_once 'templates/add_chore_dropdown.php'; ?> 
                 <div class="col-12 m-0 p-0">
@@ -58,46 +58,7 @@ include_once 'templates/header.html';
             createMonthCalendar(<?php echo $_SESSION['year']; ?>, i, 'view_yearly');
         }
 
-        // style the selected day
-        $('#date-<?php echo $_SESSION['date']; ?>').addClass('selected-day');
-
-       
-        <?php
-         // style all the events created by the user
-            foreach ($occasions as $occasion) {
-                $repeat = $occasion['repeat'];
-                $color = $occasion['style'];
-                $event = $occasion['event'];
-                if ($occasion['icon'] == 'cake') {
-                    $icon = '<img src="https://img.icons8.com/cotton/25/000000/birthday-cake.png"/>';
-                } elseif ($occasion['icon'] == 'present') {
-                    $icon = '<img src="https://img.icons8.com/doodle/25/000000/gift.png"/>';
-                }
-                if ($repeat == 'yearly') {
-                    $occasionDate = $year.substr($occasion['date'], 4,12);
-                } else {
-                    $occasionDate = $occasion['date'];
-                }
-                echo "$('#date-$occasionDate').css('background-color', '$color');";
-                echo "$('#date-$occasionDate').addClass('no-text');";
-                echo "$('#date-$occasionDate').append('$icon');";
-                if ($occasion['date'] == $date) {
-                    echo "$('#occasion').html('$event');";
-                }
-            }
-            // add the chores to the relevant day.
-            foreach ($allChores as $chore) {
-                $choreDate = $chore['date'];
-                if ($chore['user'] == 'Alex') {
-                    $choreDiv = '<div class="chore-done"></div>';
-                } else {
-                    $choreDiv = '<div class="chore-done bg-orange"></div>';
-                }
-                
-                echo "$('#date-$choreDate').append('$choreDiv');";
-            }
-        ?>
-
+        <?php include_once 'templates/add_chores_events_to_calendar.php' ?>
         
     </script>
 </body>

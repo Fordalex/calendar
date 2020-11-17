@@ -16,7 +16,7 @@
                     }
                 ?>
             </select>
-            <button class="btn btn-success mt-2 container-fluid" type="submit">Submit</button>
+            <button class="btn btn-success my-3 container-fluid" type="submit">Submit</button>
         </form>
     </div>
 </div>
