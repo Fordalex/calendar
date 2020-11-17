@@ -72,6 +72,7 @@ include_once 'templates/header.html';
             <div class="box-container">
                 <h3>Friends</h3>
                 <hr>
+                <a href="search_users.php" class="btn btn-dark container-fluid">Find Users</a>
             </div>
         </div>
         <div class="col-12 col-md-6 col-lg-3 m-0 mb-3">

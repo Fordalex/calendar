@@ -33,29 +33,28 @@ include_once 'templates/header.html';
     <?php include_once 'templates/navigation.php'; ?>
 
     <div class="row m-0 p-0 py-5 justify-content-center">
-        <div class="col-12 d-flex justify-content-center mb-4">
-            <div class="row m-0 p-0 justify-content-center">
-                <div class="col m-0 p-0">
-                    <div class="box-container">
-                        <form action="forms/set_date.php" method="GET" class="d-inline-block">
-                            <h4 class="mb-0">Search A Date</h4>
-                            <input type="date" name="date" class="form-control my-3" value="<?php echo "$date"; ?>">
-                            <button type="submit" class="btn btn-success container-fluid" name="redirect" value="index">Set Date</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-4 m-0 mb-4">
+        <div class="col-12 col-md-3 m-0 mb-4">
             <div class="box-container">
                 <h4>Day Searched</h4>
+                <hr>
                 <!-- table with all chores from the selected data -->
                 <?php include_once 'templates/chores_by_date_table.php'; ?>
             </div>
         </div>
-        <div class="col-12 col-md-4 m-0">
+        <div class="col-12 col-md-3 d-flex justify-content-center mb-4">
+            <div class="box-container">
+                <form action="forms/set_date.php" method="GET" class="d-inline-block container-fluid p-0">
+                    <h4 class="mb-0">Search A Date</h4>
+                    <hr>
+                    <input type="date" name="date" class="form-control my-3" value="<?php echo "$date"; ?>">
+                    <button type="submit" class="btn btn-success container-fluid" name="redirect" value="index">Set Date</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-12 col-md-3 m-0">
             <div class="box-container">
                 <h4>All</h4>
+                <hr>
                 <table class="chore-table">
                     <tr>
                         <th>Name</th>
