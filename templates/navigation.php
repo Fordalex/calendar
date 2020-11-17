@@ -34,7 +34,7 @@
                 <?php echo $_SESSION['username'] ?>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="view_daily.php">Profile</a>
+                <a class="dropdown-item" href="profile.php">Profile</a>
                 <hr class="my-0">
                 <a class="dropdown-item" href="user_profile/logout.php">Logout</a>
             </div>
@@ -47,7 +47,7 @@
                 <?php echo $_SESSION['username'] ?>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="view_daily.php">Profile</a>
+                <a class="dropdown-item" href="profile.php">Profile</a>
                 <hr class="my-0">
                 <a class="dropdown-item" href="user_profile/logout.php">Logout</a>
             </div>
