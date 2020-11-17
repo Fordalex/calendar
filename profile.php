@@ -39,18 +39,33 @@ include_once 'templates/header.html';
             <div class="box-container">
                 <h3>Account Information</h3>
                 <hr>
-                <h6><b>Username:</b> <?php echo $_SESSION['username'] ?></h6>
+                <h6><b>Username:</b> <span class="float-right"><?php echo $_SESSION['username'] ?></span></h6>
                 <h6><b>Friends:</b> <?php echo "N/A" ?></h6>
                 <h6><b>Events:</b> <?php echo $occasions->num_rows ?></h6>
                 <h6><b>Categories:</b> <?php echo $categories->num_rows ?></h6>
                 <h6><b>Custom Chores:</b> <?php echo $customChores->num_rows ?></h6>
-                <h6><b>Chores Completed:</b> <?php echo $allChores->num_rows ?></h6>
+                <h6><b>Total Chores Completed:</b> <?php echo $allChores->num_rows ?></h6>
             </div>
         </div>
         <div class="col-12 col-md-6 col-lg-3 m-0 mb-3">
             <div class="box-container">
-                <h3>Stats</h3>
+                <h3>Basic Stats</h3>
                 <hr>
+                <?php
+                    if ($categories->num_rows > 0) {
+                        echo "<a href='stats.php' class='btn btn-dark container-fluid mb-3'>Advanced Stats</a>";
+                        echo "<p class='text-secondary'>All Chores Completed for each category.</p>";
+                        foreach ($categories as $category) {
+                            $cat = $category['category'];
+                            $chores = mysqli_query($conn, "SELECT * FROM `chore` WHERE category='$cat'");
+                            $choresCount = $chores->num_rows;
+                            echo "<h6><b>$cat</b>". "<span class='float-right'>$choresCount</span></h6>";
+                        }
+                    } else {
+                        echo "<p>No categories have been created yet</p>";
+                        echo "<a href='add_category.php' class='btn btn-warning'>Create Category</a>";
+                    }
+                ?>
             </div>
         </div>
         <div class="col-12 col-md-6 col-lg-3 m-0 mb-3">
@@ -63,6 +78,9 @@ include_once 'templates/header.html';
             <div class="box-container">
                 <h3>Account Settings</h3>
                 <hr>
+                <div class="container-fluid d-flex justify-content-end p-0">
+                    <a class="btn btn-danger">Remove Account</a>
+                </div>
             </div>
         </div>
     </div>
