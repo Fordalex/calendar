@@ -15,6 +15,7 @@ $month = $_SESSION['month'];
 $day = $_SESSION['day'];
 
 include_once "database/get_all_categories.php";
+include_once "database/get_list_of_chores.php";
 
 include_once 'templates/header.html';
 
@@ -34,7 +35,7 @@ include_once 'templates/header.html';
             <div class="box-container">
                 <form action="forms/add_category.php" method="GET" class="container-fluid p-0">
                     <label>Category</label>
-                    <input type="text" name="category" class="form-control">
+                    <input type="text" name="category" class="form-control" id="categoryInput">
                     <button type="submit" class="btn btn-success container-fluid mt-3">Create Category</button>
                 </form>
             </div>
@@ -71,6 +72,71 @@ include_once 'templates/header.html';
     <!-- end of page content -->
 
     <?php include_once 'templates/footer.html' ?>
+            
+    <!-- user guide -->
+    <script>    
+        const tour = new Shepherd.Tour({
+        defaultStepOptions: {
+            classes: 'shadow-md bg-purple-dark',
+            scrollTo: { behavior: 'smooth', block: 'center' }
+        }
+        });
+
+        // Tell the user to create a category.
+        tour.addStep({
+        title: 'Categories',
+        text: `Create different categories to keep track off different activaties. e.g. House Work, Studying, Fitness, Work...`,
+        attachTo: {
+            element: '#categoryInput',
+            on: 'top'
+        },
+        buttons: [
+            {
+            action() {
+                $('.shepherd-modal-overlay-container').css('display', 'none');
+                return this.next();
+            },
+            text: 'Next'
+            }
+        ],
+        id: 'creating'
+        });
+
+        // Tell the user to create a chore.
+        tour.addStep({
+        title: 'Chores',
+        text: `Add chores that you would like to keep track of.`,
+        attachTo: {
+            element: '#addNavLink',
+            on: 'top'
+        },
+        buttons: [
+            {
+            action() {
+                $('.shepherd-modal-overlay-container').css('display', 'none');
+                window.location.href = "http://localhost/calendar/add_custom_chore.php";
+                return this.next();
+            },
+            text: 'Next'
+            }
+        ],
+        id: 'creating'
+        });
+
+        $('.shepherd-modal-overlay-container').css('display', 'visible');
+
+        if (<?php echo $categoriesCount ?> == 0) {
+            tour.start();
+        } else if (<?php echo $customChores->num_rows ?> == 0) {
+            tour.start();
+            tour.next();
+        } else {
+            $('.shepherd-modal-overlay-container').css('display', 'none');
+        }
+
+        
+
+    </script>
 
 </body>
 

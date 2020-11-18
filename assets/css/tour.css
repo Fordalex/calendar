@@ -1,5 +1,20 @@
 .shepherd-modal-overlay-container {
     height: 100vh;
     background-color: black;
-    opacity: 0.3;
+    opacity: 0.35;
+}
+
+.shepherd-footer {
+    padding-top: 10px;
+    background-color: rgb(116, 116, 116);
+}
+
+.shepherd-button {
+    background-color: black;
+    color: white;
+}
+
+.shepherd-button:hover {
+    background-color: white;
+    color: black;
 }

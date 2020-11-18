@@ -117,8 +117,7 @@ include_once 'templates/header.html';
 
     <?php include_once 'templates/footer.html' ?>
 
-    <script>
-        
+    <script>    
         const tour = new Shepherd.Tour({
         defaultStepOptions: {
             classes: 'shadow-md bg-purple-dark',
@@ -128,23 +127,13 @@ include_once 'templates/header.html';
 
         tour.addStep({
         title: 'Welcome!',
-        text: `Creating a Shepherd tour is easy. too!\
-        Just create a \`Tour\` instance, and add as many steps as you want.`,
+        text: `Calendar will help you track your, work, studies, fitness or any custom category and give you insights on your hard work.`,
         attachTo: {
-            element: '.box-container',
-            on: 'top'
+            on: 'center'
         },
         buttons: [
             {
             action() {
-                return this.back();
-            },
-            classes: 'shepherd-button-secondary',
-            text: 'Back'
-            },
-            {
-            action() {
-                $('.shepherd-modal-overlay-container').css('display', 'none');
                 return this.next();
             },
             text: 'Next'
@@ -153,8 +142,32 @@ include_once 'templates/header.html';
         id: 'creating'
         });
 
-        tour.start();
-        $('.shepherd-modal-overlay-container').css('display', 'visable');
+        tour.addStep({
+        title: 'Profile',
+        text: `This page is your profile and you'll be able to keep track of your chores, categories and events. Also, you can add other users and view your stats.`,
+        attachTo: {
+            element: '#userNavLink',
+            on: 'top'
+        },
+        buttons: [
+            {
+            action() {
+                $('.shepherd-modal-overlay-container').css('display', 'none');
+                window.location.href = "http://localhost/calendar/add_category.php";
+                return this.next();
+            },
+            text: 'Next',
+            }
+        ],
+        id: 'creating'
+        });
+
+        if (<?php echo $customChores->num_rows ?> == 0) {
+            tour.start();
+            $('.shepherd-modal-overlay-container').css('display', 'visable');
+        }
+
+      
     </script>
 
 </body>

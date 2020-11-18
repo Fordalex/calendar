@@ -19,7 +19,7 @@
                     <a class="dropdown-item" href="view_yearly.php">Yearly</a>
                 </div>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown" id="addNavLink">
                 <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Add
                 </a>
@@ -42,7 +42,7 @@
 
         </ul>
 
-        <li class="nav-item dropdown d-none d-lg-block">
+        <li class="nav-item dropdown d-none d-lg-block" id="userNavLink">
             <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <?php echo $_SESSION['username'] ?>
             </a>
