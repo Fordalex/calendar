@@ -65,6 +65,7 @@ include_once 'templates/header.html';
                 <table class="chore-table">
                     <tr>
                         <th>Chore</th>
+                        <th>Category</th>
                         <th>Style</th>
                         <th>Remove</th>
                     </tr>
@@ -75,11 +76,11 @@ include_once 'templates/header.html';
                         $color = $customChore['style'];
                         echo '<tr>';
                         echo '<td>' . $customChore['chore'] . '</td>';
+                        echo '<td>' . $customChore['category'] . '</td>';
                         echo "<td class='text-center' style='background-color:$color;'></td>";
                         echo "<td><a href='forms/remove_custom_chore.php?id=$id'>Delete</a></td>";
                         echo '</tr>';
                     }
-
                     ?>
                 </table>
                 <p class="m-0 mt-1">Chores: <b><?php echo $customChores->num_rows ?></b></p>

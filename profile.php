@@ -55,11 +55,30 @@ include_once 'templates/header.html';
                     if ($categories->num_rows > 0) {
                         echo "<a href='stats.php' class='btn btn-dark container-fluid mb-3'>Advanced Stats</a>";
                         echo "<p class='text-secondary'>All Chores Completed for each category.</p>";
+                        // Display the chores for each category and display the category.
                         foreach ($categories as $category) {
                             $cat = $category['category'];
-                            $chores = mysqli_query($conn, "SELECT * FROM `chore` WHERE category='$cat'");
-                            $choresCount = $chores->num_rows;
-                            echo "<h6><b>$cat</b>". "<span class='float-right'>$choresCount</span></h6>";
+                            $catChores = mysqli_query($conn, "SELECT * FROM `chore` WHERE category='$cat'");
+                            $choresCount = $catChores->num_rows;
+                            echo "<h4>$cat". "<span class='float-right mr-2'>$choresCount</span></h4>";
+                            echo "<table class='container-fluid chore-table mb-3'>";
+                            echo "<tr><th>Chore</th><th>Count</th></tr>";
+                            // Find the chores completed related to this category and remove doubles.
+                            $listChores = Array();
+                            foreach ($catChores as $chore) {
+                                if (!in_array($chore['chore'], $listChores)) {
+                                    array_push($listChores, $chore['chore']);
+                                }
+                            }
+                            // Count the chores completed in the category and display them in the table.
+                            foreach ($listChores as $chore) {
+                                $chores = mysqli_query($conn, "SELECT * FROM `chore` WHERE chore='$chore'");
+                                echo "<tr>";
+                                echo "<td>$chore</td>";
+                                echo "<td>" . $chores->num_rows . "</td>";
+                                echo "</tr>";
+                            }
+                            echo "</table>";
                         }
                     } else {
                         echo "<p>No categories have been created yet</p>";
