@@ -40,11 +40,11 @@ include_once 'templates/header.html';
                 <h3>Account Information</h3>
                 <hr>
                 <h6><b>Username:</b> <span class="float-right"><?php echo $_SESSION['username'] ?></span></h6>
-                <h6><b>Friends:</b> <?php echo "N/A" ?></h6>
-                <h6><b>Events:</b> <?php echo $occasions->num_rows ?></h6>
-                <h6><b>Categories:</b> <?php echo $categories->num_rows ?></h6>
-                <h6><b>Custom Chores:</b> <?php echo $customChores->num_rows ?></h6>
-                <h6><b>Total Chores Completed:</b> <?php echo $allChores->num_rows ?></h6>
+                <h6><b>Friends:</b> <span class="float-right"><?php echo "N/A" ?></span></h6>
+                <h6><b>Events:</b> <span class="float-right"><?php echo $occasions->num_rows ?></span></h6>
+                <h6><b>Categories:</b> <span class="float-right"><?php echo $categories->num_rows ?></span></h6>
+                <h6><b>Custom Chores:</b> <span class="float-right"><?php echo $customChores->num_rows ?></span></h6>
+                <h6><b>Total Chores Completed:</b> <span class="float-right"><?php echo $allChores->num_rows ?></span></h6>
             </div>
         </div>
         <div class="col-12 col-md-6 col-lg-3 m-0 mb-3">
