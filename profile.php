@@ -27,7 +27,6 @@ include_once 'database/get_list_of_chores.php';
 
 include_once 'templates/header.html';
 ?>
-
 <!-- start of page content -->
 </head>
 
@@ -113,7 +112,50 @@ include_once 'templates/header.html';
 
     <!-- end of page content -->
 
+
+    
+
     <?php include_once 'templates/footer.html' ?>
+
+    <script>
+        
+        const tour = new Shepherd.Tour({
+        defaultStepOptions: {
+            classes: 'shadow-md bg-purple-dark',
+            scrollTo: { behavior: 'smooth', block: 'center' }
+        }
+        });
+
+        tour.addStep({
+        title: 'Welcome!',
+        text: `Creating a Shepherd tour is easy. too!\
+        Just create a \`Tour\` instance, and add as many steps as you want.`,
+        attachTo: {
+            element: '.box-container',
+            on: 'top'
+        },
+        buttons: [
+            {
+            action() {
+                return this.back();
+            },
+            classes: 'shepherd-button-secondary',
+            text: 'Back'
+            },
+            {
+            action() {
+                $('.shepherd-modal-overlay-container').css('display', 'none');
+                return this.next();
+            },
+            text: 'Next'
+            }
+        ],
+        id: 'creating'
+        });
+
+        tour.start();
+        $('.shepherd-modal-overlay-container').css('display', 'visable');
+    </script>
 
 </body>
 
