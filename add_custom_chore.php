@@ -62,28 +62,32 @@ include_once 'templates/header.html';
         </div>
         <div class="col-12 col-md-4 m-0 ">
             <div class="box-container">
-                <table class="chore-table">
-                    <tr>
-                        <th>Chore</th>
-                        <th>Category</th>
-                        <th>Style</th>
-                        <th>Remove</th>
-                    </tr>
-                    <?php
-
-                    foreach ($customChores as $customChore) {
-                        $id = $customChore['id'];
-                        $color = $customChore['style'];
+                <?php
+                $ChoresCount = $customChores->num_rows;
+                if ($ChoresCount > 0) {
+                    echo "<table class='chore-table'>";
+                    echo "<tr>";
+                    echo "<th>Chore</th>";
+                    echo "<th>Category</th>";
+                    echo "<th>Style</th>";
+                    echo "<th>Remove</th>";
+                    echo "</tr>";
+                    foreach ($customChores as $chore) {
+                        $id = $chore['id'];
+                        $color = $chore['style'];
                         echo '<tr>';
-                        echo '<td>' . $customChore['chore'] . '</td>';
-                        echo '<td>' . $customChore['category'] . '</td>';
+                        echo '<td>' . $chore['chore'] . '</td>';
+                        echo '<td>' . $chore['category'] . '</td>';
                         echo "<td class='text-center' style='background-color:$color;'></td>";
                         echo "<td><a href='forms/remove_custom_chore.php?id=$id'>Delete</a></td>";
                         echo '</tr>';
                     }
-                    ?>
-                </table>
-                <p class="m-0 mt-1">Chores: <b><?php echo $customChores->num_rows ?></b></p>
+                    echo "</table>";
+                    echo "<p class='m-0 mt-1'>Chores:$ChoresCount</p>";
+                } else {
+                    echo "<p class='text-secondary m-0'>No chores have been created yet.</p>";
+                }
+                ?>
             </div>
         </div>
     </div>

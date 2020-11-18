@@ -96,7 +96,7 @@ hr {
 }
 
 .day-container:hover {
-    background-color: rgb(255, 254, 212);
+    background-color: rgb(255, 254, 252);
     text-decoration: none;
     font-weight: 800;
 }
@@ -165,7 +165,7 @@ th {
 }
 
 .selected-day {
-    background-color: rgb(255, 222, 91);
+    background-color: rgb(255, 255, 217);
     box-shadow: inset 0px 0px 5px 5px rgba(0, 0, 0, 0.08);
 }
 

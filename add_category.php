@@ -42,12 +42,14 @@ include_once 'templates/header.html';
         </div>
         <div class="col-12 col-md-4 m-0 ">
             <div class="box-container">
-                <table class="chore-table">
-                    <tr>
-                        <th>Category</th>
-                        <th>Remove</th>
-                    </tr>
-                    <?php
+                <?php
+                $categoriesCount = $categories->num_rows;
+                if ($categoriesCount > 0) {
+                    echo "<table class='chore-table'>";
+                    echo "<tr>";
+                    echo "<th>Category</th>";
+                    echo "<th>Remove</th>";
+                    echo "</tr>";
                     foreach ($categories as $category) {
                         $id = $category['id'];
                         echo '<tr>';
@@ -55,9 +57,12 @@ include_once 'templates/header.html';
                         echo "<td><a href='forms/remove_category.php?id=$id'>Delete</a></td>";
                         echo '</tr>';
                     }
-                    ?>
-                </table>
-                <p class="m-0 mt-1">Categories: <b><?php echo $categories->num_rows ?></b></p>
+                    echo "</table>";
+                    echo "<p class='m-0 mt-1'>Categories:$categoriesCount</p>";
+                } else {
+                    echo "<p class='text-secondary m-0'>No categories have been created yet.</p>";
+                }
+                ?>
             </div>
         </div>
     </div>

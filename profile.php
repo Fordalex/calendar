@@ -52,19 +52,22 @@ include_once 'templates/header.html';
                 <h3>Basic Stats</h3>
                 <hr>
                 <?php
-                    if ($categories->num_rows > 0) {
-                        echo "<a href='stats.php' class='btn btn-dark container-fluid mb-3'>Advanced Stats</a>";
-                        echo "<p class='text-secondary'>All Chores Completed for each category.</p>";
-                        // Display the chores for each category and display the category.
-                        foreach ($categories as $category) {
-                            $cat = $category['category'];
-                            $catChores = mysqli_query($conn, "SELECT * FROM `chore` WHERE category='$cat'");
-                            $choresCount = $catChores->num_rows;
-                            echo "<h4>$cat". "<span class='float-right mr-2'>$choresCount</span></h4>";
+                if ($categories->num_rows > 0) {
+                    echo "<a href='stats.php' class='btn btn-dark container-fluid mb-3'>Advanced Stats</a>";
+                    echo "<p class='text-secondary'>All Chores Completed for each category.</p>";
+                    // Display the chores for each category and display the category.
+                    foreach ($categories as $category) {
+                        $cat = $category['category'];
+                        $catChores = mysqli_query($conn, "SELECT * FROM `chore` WHERE category='$cat'");
+                        $choresCount = $catChores->num_rows;
+                        echo "<hr>";
+                        echo "<h4>$cat" . "<span class='float-right mr-2'>$choresCount</span></h4>";
+
+                        if ($catChores->num_rows > 0) {
                             echo "<table class='container-fluid chore-table mb-3'>";
                             echo "<tr><th>Chore</th><th>Count</th></tr>";
                             // Find the chores completed related to this category and remove doubles.
-                            $listChores = Array();
+                            $listChores = array();
                             foreach ($catChores as $chore) {
                                 if (!in_array($chore['chore'], $listChores)) {
                                     array_push($listChores, $chore['chore']);
@@ -79,11 +82,14 @@ include_once 'templates/header.html';
                                 echo "</tr>";
                             }
                             echo "</table>";
+                        } else {
+                            echo "<p class='text-secondary'>No chores for this category have been completed.</p>";
                         }
-                    } else {
-                        echo "<p>No categories have been created yet</p>";
-                        echo "<a href='add_category.php' class='btn btn-warning'>Create Category</a>";
                     }
+                } else {
+                    echo "<p>No categories have been created yet</p>";
+                    echo "<a href='add_category.php' class='btn btn-warning'>Create Category</a>";
+                }
                 ?>
             </div>
         </div>

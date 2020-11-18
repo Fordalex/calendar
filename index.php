@@ -55,26 +55,31 @@ include_once 'templates/header.html';
             <div class="box-container">
                 <h4>All</h4>
                 <hr>
-                <table class="chore-table">
-                    <tr>
-                        <th>Name</th>
-                        <th>Chore</th>
-                        <th>Date</th>
-                        <th>Remove</th>
-                    </tr>
-                    <?php
-                    foreach ($allChores as $chore) {
-                        $id = $chore['id'];
-                        $choreDate = $chore['date'];
-                        echo '<tr>';
-                        echo '<td>' . $chore['user'] . '</td>';
-                        echo '<td>' . $chore['chore'] . '</td>';
-                        echo "<td><a href='forms/set_date.php?date=$choreDate&redirect=index'>$choreDate</a></td>";
-                        echo "<td><a href='forms/remove_date_data.php?id=$id'>Delete</a></td>";
-                        echo '</tr>';
+                <?php 
+                    if ($allChores->num_rows > 0) {
+                        echo "<table class='chore-table'>";
+                        echo "<tr>";
+                        echo "<th>Name</th>";
+                        echo "<th>Chore</th>";
+                        echo "<th>Date</th>";
+                        echo "<th>Remove</th>";
+                        echo "</tr>";
+                        
+                        foreach ($allChores as $chore) {
+                            $id = $chore['id'];
+                            $choreDate = $chore['date'];
+                            echo '<tr>';
+                            echo '<td>' . $chore['user'] . '</td>';
+                            echo '<td>' . $chore['chore'] . '</td>';
+                            echo "<td><a href='forms/set_date.php?date=$choreDate&redirect=index'>$choreDate</a></td>";
+                            echo "<td><a href='forms/remove_date_data.php?id=$id'>Delete</a></td>";
+                            echo '</tr>';
+                        }
+                        echo "</table>";
+                    } else {
+                        echo "<p class='text-secondary'>Nothing has been added yet.</p>";
                     }
-                    ?>
-                </table>
+                ?>
             </div>
         </div>
     </div>

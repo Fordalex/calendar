@@ -57,38 +57,34 @@ include_once 'templates/header.html';
         </div>
         <div class="col-12 col-md-4 m-0">
             <div class="box-container">
-                <table class="chore-table">
-                    <tr>
-                        <th>Event</th>
-                        <th>Style</th>
-                        <th>Date</th>
-                        <th>Repeat</th>
-                        <th>Remove</th>
-                    </tr>
-                    <?php
+                <?php
+                $occasionsCount = $occasions->num_rows;
+                if ($occasionsCount > 0) {
+                    echo "<table class='chore-table'>";
+                    echo "<tr>";
+                    echo "<th>Event</th>";
+                    echo "<th>Style</th>";
+                    echo "<th>Date</th>";
+                    echo "<th>Repeat</th>";
+                    echo "<th>Remove</th>";
+                    echo "</tr>";
                     foreach ($occasions as $occasion) {
                         $id = $occasion['id'];
                         $color = $occasion['style'];
-                        if ($occasion['icon'] == 'cake') {
-                            $icon = '<img src="https://img.icons8.com/cotton/25/000000/birthday-cake.png"/>';
-                        } elseif ($occasion['icon'] == 'present') {
-                            $icon = '<img src="https://img.icons8.com/doodle/25/000000/gift.png"/>';
-                        }
                         echo '<tr>';
                         echo '<td>' . $occasion['event'] . '</td>';
-                        echo "<td class='text-center' style='background-color:$color;'>" . $icon . "</td>";
-                        if ($occasion['repeat'] == 'yearly') {
-                            echo '<td>' . substr($occasion['date'], 5, 12) . '</td>';
-                        } else {
-                            echo '<td>' . $occasion['date'] . '</td>';
-                        }
+                        echo "<td class='text-center' style='background-color:$color;'></td>";
+                        echo '<td>' . $occasion['date'] . '</td>';
                         echo '<td>' . $occasion['repeat'] . '</td>';
                         echo "<td><a href='forms/remove_event.php?id=$id'>Delete</a></td>";
                         echo '</tr>';
                     }
-                    ?>
-                </table>
-                <p class="m-0 mt-1">Events: <b><?php echo $occasions->num_rows ?></b></p>
+                    echo "</table>";
+                    echo "<p class='m-0 mt-1'>Chores:$occasionsCount</p>";
+                } else {
+                    echo "<p class='text-secondary m-0'>No events have been created yet.</p>";
+                }
+                ?>
             </div>
         </div>
     </div>
