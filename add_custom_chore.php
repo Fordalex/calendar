@@ -60,10 +60,7 @@ include_once 'templates/header.html';
                     }
                     ?>
                     <label>Icon</label>
-                    <select class="form-control" name="icon">
-                        <option value="cake">Cake</option>
-                        <option value="present">Present</option>
-                    </select>
+                    <?php include_once 'templates/icons_dropdown.html'; ?>
                     <button type="submit" class="btn btn-success container-fluid mt-3">Create Chore</button>
                 </form>
             </div>

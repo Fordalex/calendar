@@ -184,6 +184,10 @@ th {
     background-color: rgba(245, 156, 73, 0.8);
 }
 
+.icon-dropdown img {
+    width: 40px;
+}
+
 
 /* footer */
 
