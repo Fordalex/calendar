@@ -28,11 +28,11 @@ foreach ($occasions as $occasion) {
 // add the chores to the relevant day.
 foreach ($allChores as $chore) {
     $choreDate = $chore['date'];
-    if ($chore['user'] == 'Alex') {
-        $choreDiv = '<div class="chore-done"></div>';
-    } else {
-        $choreDiv = '<div class="chore-done bg-orange"></div>';
+    $category_id = $chore['category_id'];
+    $category = mysqli_query($conn, "SELECT * FROM `category` WHERE id='$category_id'");
+    foreach ($category as $cat) {
+        $style = $cat['style'];
+        $choreDiv = '<div class="chore-done" style="background-color:' . $style . '"></div>';
+        echo "$('#date-$choreDate').append('$choreDiv');";
     }
-    
-    echo "$('#date-$choreDate').append('$choreDiv');";
 }

@@ -17,7 +17,7 @@
                         View Calendar
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="view_daily.php">Daily</a>
+                        
                         <a class="dropdown-item" href="view_monthly.php">Monthly</a>
                         <a class="dropdown-item" href="view_yearly.php">Yearly</a>
                     </div>

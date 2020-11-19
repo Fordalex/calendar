@@ -152,7 +152,7 @@ include_once 'templates/header.html';
 
         tour.addStep({
         title: 'Profile',
-        text: `This page is your profile and you'll be able to keep track of your chores, categories and events. Also, you can add other users and view your stats.`,
+        text: `This page is your profile and you'll be able to keep track of your chores, categories and events. Also, you can add other users to complete tasks together.`,
         attachTo: {
             element: '#userNavLink',
             on: 'top'

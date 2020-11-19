@@ -44,6 +44,8 @@ include_once 'templates/header.html';
                 <form action="forms/add_category.php" method="GET" class="container-fluid p-0">
                     <label>Category</label>
                     <input type="text" name="category" class="form-control" id="categoryInput">
+                    <label>Style</label>
+                    <input type="color" name="style" class="form-control" id="categoryInput">
                     <button type="submit" class="btn btn-success container-fluid mt-3">Create Category</button>
                 </form>
             </div>
@@ -57,12 +59,15 @@ include_once 'templates/header.html';
                     echo "<table class='chore-table'>";
                     echo "<tr>";
                     echo "<th>Category</th>";
+                    echo "<th>Style</th>";
                     echo "<th>Remove</th>";
                     echo "</tr>";
                     foreach ($categories as $category) {
                         $id = $category['id'];
+                        $color = $category['style'];
                         echo '<tr>';
                         echo '<td>' . $category['category'] . '</td>';
+                        echo "<td class='text-center' style='background-color:$color;'></td>";
                         echo "<td><a href='forms/remove_category.php?id=$id'>Delete</a></td>";
                         echo '</tr>';
                     }

@@ -45,15 +45,14 @@ include_once 'templates/header.html';
                 <form action="forms/add_custom_chore.php" method="GET" class="container-fluid p-0">
                     <label>Chore</label>
                     <input type="text" name="chore" class="form-control" id="choreInput">
-                    <label>Style</label>
-                    <input type="color" name="style" class="form-control">
                     <label>Category</label>
                     <?php
                     if ($categories->num_rows > 0) {
-                        echo "<select name='category' class='form-control'>";
+                        echo "<select name='category_id' class='form-control'>";
                         foreach ($categories as $category) {
                             $cat = $category['category'];
-                            echo "<option value='$cat'>$cat</option>";
+                            $id = $category['id'];
+                            echo "<option value='$id'>$cat</option>";
                         }
                         echo "</select>";
                     } else {
@@ -83,13 +82,18 @@ include_once 'templates/header.html';
                     echo "</tr>";
                     foreach ($customChores as $chore) {
                         $id = $chore['id'];
-                        $color = $chore['style'];
-                        echo '<tr>';
-                        echo '<td>' . $chore['chore'] . '</td>';
-                        echo '<td>' . $chore['category'] . '</td>';
-                        echo "<td class='text-center' style='background-color:$color;'></td>";
-                        echo "<td><a href='forms/remove_custom_chore.php?id=$id'>Delete</a></td>";
-                        echo '</tr>';
+                        $categoryId = $chore['category_id'];
+                        $category = mysqli_query($conn, "SELECT * FROM `category` WHERE id='$categoryId'");
+                        foreach ($category as $cat) {
+                            $color = $cat['style'];
+                            $categoryName = $cat['category'];
+                            echo '<tr>';
+                            echo '<td>' . $chore['chore'] . '</td>';
+                            echo '<td>' . $categoryName . '</td>';
+                            echo "<td class='text-center' style='background-color:$color;'></td>";
+                            echo "<td><a href='forms/remove_custom_chore.php?id=$id'>Delete</a></td>";
+                            echo '</tr>';
+                        }
                     }
                     echo "</table>";
                     echo "<p class='m-0 mt-1'>Chores:$ChoresCount</p>";
