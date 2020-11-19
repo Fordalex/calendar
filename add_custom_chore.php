@@ -64,7 +64,7 @@ include_once 'templates/header.html';
                         <button class="" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Select Icon
                         </button>
-                        <div class="dropdown-menu icon-dropdown" id="iconContainer" aria-labelledby="dropdownMenuButton">
+                        <div class="dropdown-menu icon-dropdown p-2" id="iconContainer" aria-labelledby="dropdownMenuButton">
                             <h6>House Work</h6>
                             <img src="https://img.icons8.com/metro/40/000000/full-trash.png" />
                             <img src="https://img.icons8.com/metro/40/000000/delete.png"/>
@@ -86,13 +86,28 @@ include_once 'templates/header.html';
 
                             <hr class="m-0">
 
-                            <h6>Fitness</h6>
+                            <h6>Sports</h6>
+                            <img src="https://img.icons8.com/metro/40/000000/bench-press.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/pullups.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/pushups.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/squats.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/curls-with-dumbbells.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/running.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/football2.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/treadmill.png"/>
                             <img src="https://img.icons8.com/metro/40/000000/boots.png"/>
                             <img src="https://img.icons8.com/metro/40/000000/rucksack.png"/>
 
                             <hr class="m-0">
 
                             <h6>Studying</h6>
+                            <img src="https://img.icons8.com/metro/40/000000/book.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/library.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/calculator.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/informatics.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/dna-helix.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/physics.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/clock.png"/>
 
                             <hr class="m-0">
 
@@ -102,8 +117,23 @@ include_once 'templates/header.html';
                             <img src="https://img.icons8.com/metro/40/000000/tank.png"/>
                             <img src="https://img.icons8.com/metro/40/000000/military-helicopter.png"/>
 
-
                             <hr class="m-0">
+
+                            <h6>Holidays</h6>
+                            <img src="https://img.icons8.com/metro/40/000000/santa.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/christmas-star.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/gingerbread-man.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/christmas-penguin.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/christmas-candle.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/christmas-gift.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/easter-egg.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/ghost.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/zombie.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/wedding-gift.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/two-hearts.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/wedding-rings.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/champagne.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/engagement-ring.png"/>
 
                         </div>
                     </div>
