@@ -65,7 +65,8 @@ include_once 'templates/header.html';
                     // Display the chores for each category and display the category.
                     foreach ($categories as $category) {
                         $cat = $category['category'];
-                        $catChores = mysqli_query($conn, "SELECT * FROM `chore` WHERE category='$cat'");
+                        $categoryId = $category['id'];
+                        $catChores = mysqli_query($conn, "SELECT * FROM `chore` WHERE category_id='$categoryId'");
                         $choresCount = $catChores->num_rows;
                         echo "<hr>";
                         echo "<h4>$cat" . "<span class='float-right mr-2'>$choresCount</span></h4>";
@@ -76,17 +77,22 @@ include_once 'templates/header.html';
                             // Find the chores completed related to this category and remove doubles.
                             $listChores = array();
                             foreach ($catChores as $chore) {
-                                if (!in_array($chore['chore'], $listChores)) {
-                                    array_push($listChores, $chore['chore']);
+                                if (!in_array($chore['chore_id'], $listChores)) {
+                                    array_push($listChores, $chore['chore_id']);
                                 }
                             }
                             // Count the chores completed in the category and display them in the table.
                             foreach ($listChores as $chore) {
-                                $chores = mysqli_query($conn, "SELECT * FROM `chore` WHERE chore='$chore'");
-                                echo "<tr>";
-                                echo "<td>$chore</td>";
-                                echo "<td>" . $chores->num_rows . "</td>";
-                                echo "</tr>";
+                                $chores = mysqli_query($conn, "SELECT * FROM `chore` WHERE chore_id='$chore'");
+
+                                $customChore = mysqli_query($conn, "SELECT * FROM `custom_chore` WHERE id='$chore'");
+                                foreach ($customChore as $c) {
+                                    $chroeName = $c['chore'];
+                                    echo "<tr>";
+                                    echo "<td>$chroeName</td>";
+                                    echo "<td>" . $chores->num_rows . "</td>";
+                                    echo "</tr>";
+                                }
                             }
                             echo "</table>";
                         } else {
