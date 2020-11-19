@@ -13,6 +13,7 @@ $date = $_SESSION['date'];
 $year = $_SESSION['year'];
 $month = $_SESSION['month'];
 $day = $_SESSION['day'];
+$_SESSION['redirect'] = 'view_yearly.php';
 
 include_once 'database/get_all_users_chores.php';
 include_once 'database/get_date_users_chores.php';
