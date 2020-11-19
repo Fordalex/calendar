@@ -25,6 +25,14 @@ include_once 'database/get_all_occasions.php';
 include_once 'database/get_all_categories.php';
 include_once 'database/get_list_of_chores.php';
 
+// Update users guide.
+$username = $_SESSION['username'];
+$user = mysqli_query($conn, "SELECT * FROM `users` WHERE username='$username'");
+
+foreach ($user as $u) {
+    $_SESSION["guide"] = $u['guide'];
+}  
+
 include_once 'templates/header.html';
 ?>
 <!-- start of page content -->
@@ -152,6 +160,24 @@ include_once 'templates/header.html';
         buttons: [
             {
             action() {
+                return this.next();
+            },
+            text: 'Next',
+            }
+        ],
+        id: 'creating'
+        });
+
+        tour.addStep({
+        title: 'Add',
+        text: `Start by creating a category.`,
+        attachTo: {
+            element: '#addNavLink',
+            on: 'top'
+        },
+        buttons: [
+            {
+            action() {
                 $('.shepherd-modal-overlay-container').css('display', 'none');
                 window.location.href = "http://localhost/calendar/add_category.php";
                 return this.next();
@@ -162,7 +188,7 @@ include_once 'templates/header.html';
         id: 'creating'
         });
 
-        if (<?php echo $customChores->num_rows ?> == 0) {
+        if (<?php echo $_SESSION['guide'] ?> == 0) {
             tour.start();
             $('.shepherd-modal-overlay-container').css('display', 'visable');
         } else {

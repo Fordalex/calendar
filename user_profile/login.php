@@ -57,11 +57,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         if(password_verify($password, $hashed_password)){
                             // Password is correct, so start a new session
                             session_start();
+
+                            $user = mysqli_query($conn, "SELECT * FROM `users` WHERE username='$username'");
                             
                             // Store data in session variables
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
-                            $_SESSION["username"] = $username;                            
+                            $_SESSION["username"] = $username;    
+
+                            foreach ($user as $u) {
+                                $_SESSION["guide"] = $u['guide'];
+                            }                                  
                             
                             // Redirect user to welcome page
                             header("location: ../profile.php");

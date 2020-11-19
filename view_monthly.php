@@ -9,6 +9,14 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 include_once "forms/connect_mysql.php";
 
+// Update users guide.
+$username = $_SESSION['username'];
+$user = mysqli_query($conn, "SELECT * FROM `users` WHERE username='$username'");
+
+foreach ($user as $u) {
+    $_SESSION["guide"] = $u['guide'];
+}   
+
 $date = $_SESSION['date'];
 $year = $_SESSION['year'];
 $month = $_SESSION['month'];
@@ -70,6 +78,45 @@ include_once 'templates/header.html';
         createMonthCalendar(<?php echo $_SESSION['year'] . ',' . $month; ?>, 'view_monthly');
 
         <?php include_once 'templates/add_chores_events_to_calendar.php' ?>
+
+        // user guide
+        const tour = new Shepherd.Tour({
+        defaultStepOptions: {
+            classes: 'shadow-md bg-purple-dark',
+            scrollTo: { behavior: 'smooth', block: 'center' }
+        }
+        });
+
+        // Tell the user to create a category.
+        tour.addStep({
+        title: 'Adding Chores',
+        text: `Select the day you need to add your chore. Select the 'Add' Button and choose your 'chore'. <br><br> It's as easy as that. Enjoy!`,
+        attachTo: {
+            on: 'center'
+        },
+        buttons: [
+            {
+            action() {
+                $('.shepherd-modal-overlay-container').css('display', 'none');
+                <?php mysqli_query($conn, "UPDATE `users` SET guide=1 WHERE username='$username'") ?>
+                return this.next();
+            },
+            text: 'Finished'
+            }
+        ],
+        id: 'creating'
+        });
+
+
+        $('.shepherd-modal-overlay-container').css('display', 'visible');
+        
+
+        if (<?php echo $_SESSION['guide'] ?> == 0) {
+            tour.start();
+        } else {
+            $('.shepherd-modal-overlay-container').css('display', 'none');
+        }
+
     </script>
 </body>
 

@@ -9,6 +9,14 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 include_once "forms/connect_mysql.php";
 
+// Update users guide.
+$username = $_SESSION['username'];
+$user = mysqli_query($conn, "SELECT * FROM `users` WHERE username='$username'");
+
+foreach ($user as $u) {
+    $_SESSION["guide"] = $u['guide'];
+}    
+
 $date = $_SESSION['date'];
 $year = $_SESSION['year'];
 $month = $_SESSION['month'];
@@ -119,6 +127,7 @@ include_once 'templates/header.html';
             {
             action() {
                 $('.shepherd-modal-overlay-container').css('display', 'none');
+                this.next();
                 return this.next();
             },
             text: 'Next'
@@ -130,7 +139,7 @@ include_once 'templates/header.html';
         // Tell the user add a chore to the calendar.
         tour.addStep({
         title: 'Calendar',
-        text: `Great! Now these chores can easily be added to your calendar.`,
+        text: `Great! <br> <br>Now these chores can easily be added to your calendar.`,
         attachTo: {
             element: '#calendarNavLink',
             on: 'top'
@@ -150,9 +159,9 @@ include_once 'templates/header.html';
 
         $('.shepherd-modal-overlay-container').css('display', 'visible');
         
-        if (<?php echo $customChores->num_rows ?> == 0) {
+        if (<?php echo $_SESSION['guide'] ?> == 0 && <?php echo $customChores->num_rows ?> == 0) {
             tour.start();
-        } else if (<?php echo $allChores->num_rows ?> == 0) {
+        } else if (<?php echo $_SESSION['guide'] ?> == 0 && <?php echo $customChores->num_rows ?> == 1) {
             tour.start();
             tour.next();
         } else {

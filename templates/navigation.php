@@ -49,6 +49,8 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="profile.php">Profile</a>
                 <hr class="my-0">
+                <a class="dropdown-item" href="forms/start_guide.php">Get Set Up</a>
+                <hr class="my-0">
                 <a class="dropdown-item" href="user_profile/logout.php">Logout</a>
             </div>
         </li>
