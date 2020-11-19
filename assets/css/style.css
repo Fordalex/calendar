@@ -155,7 +155,7 @@ th {
 
 .today {
     position: relative;
-    border: solid red 3px;
+    border: solid rgb(0, 0, 0) 3px;
 }
 
 .day-container img {
@@ -165,8 +165,7 @@ th {
 }
 
 .selected-day {
-    background-color: rgb(255, 255, 217);
-    box-shadow: inset 0px 0px 5px 5px rgba(0, 0, 0, 0.08);
+    box-shadow: inset 0px 0px 12px 5px rgba(0, 0, 0, 0.1);
 }
 
 .no-text {

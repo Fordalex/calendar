@@ -165,6 +165,8 @@ include_once 'templates/header.html';
         if (<?php echo $customChores->num_rows ?> == 0) {
             tour.start();
             $('.shepherd-modal-overlay-container').css('display', 'visable');
+        } else {
+            $('.shepherd-modal-overlay-container').css('display', 'none');
         }
 
       

@@ -134,8 +134,7 @@ include_once 'templates/header.html';
             $('.shepherd-modal-overlay-container').css('display', 'none');
         }
 
-        
-
+    
     </script>
 
 </body>

@@ -17,6 +17,7 @@ The layout of this project is broken up into a few sections, First the user will
 
 - Need to give the user the ability to repeat an event yearly or it be a one time occasion.
 - Add a carousel for the monthly calendar view.
+- Need to add a variable on the users account to confirm if you have already completed the tutorial.
 
 ### Acknowledgements
 

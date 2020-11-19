@@ -15,6 +15,7 @@ $month = $_SESSION['month'];
 $day = $_SESSION['day'];
 
 include_once "database/get_list_of_chores.php";
+include_once "database/get_all_users_chores.php";
 include_once "database/get_all_categories.php";
 
 include_once 'templates/header.html';
@@ -35,7 +36,7 @@ include_once 'templates/header.html';
             <div class="box-container">
                 <form action="forms/add_custom_chore.php" method="GET" class="container-fluid p-0">
                     <label>Chore</label>
-                    <input type="text" name="chore" class="form-control">
+                    <input type="text" name="chore" class="form-control" id="choreInput">
                     <label>Style</label>
                     <input type="color" name="style" class="form-control">
                     <label>Category</label>
@@ -96,6 +97,70 @@ include_once 'templates/header.html';
     <!-- end of page content -->
 
     <?php include_once 'templates/footer.html' ?>
+
+      <!-- user guide -->
+      <script>    
+        const tour = new Shepherd.Tour({
+        defaultStepOptions: {
+            classes: 'shadow-md bg-purple-dark',
+            scrollTo: { behavior: 'smooth', block: 'center' }
+        }
+        });
+
+        // Tell the user to create a chore.
+        tour.addStep({
+        title: 'Chores',
+        text: `Create chores for the categories you have created. <br><br> <b>House work:</b> <br> <ol><li>Cutting the lawn</li> <li>Changing the bedding</li></ol> <b>Studing:</b> <ol><li>Reading</li> <li>Coding</li></ol>`,
+        attachTo: {
+            element: '#choreInput',
+            on: 'top'
+        },
+        buttons: [
+            {
+            action() {
+                $('.shepherd-modal-overlay-container').css('display', 'none');
+                return this.next();
+            },
+            text: 'Next'
+            }
+        ],
+        id: 'creating'
+        });
+
+        // Tell the user add a chore to the calendar.
+        tour.addStep({
+        title: 'Calendar',
+        text: `Great! Now these chores can easily be added to your calendar.`,
+        attachTo: {
+            element: '#calendarNavLink',
+            on: 'top'
+        },
+        buttons: [
+            {
+            action() {
+                $('.shepherd-modal-overlay-container').css('display', 'none');
+                window.location.href = "http://localhost/calendar/view_monthly.php";
+                return this.next();
+            },
+            text: 'Next'
+            }
+        ],
+        id: 'creating'
+        });
+
+        $('.shepherd-modal-overlay-container').css('display', 'visible');
+        
+        if (<?php echo $customChores->num_rows ?> == 0) {
+            tour.start();
+        } else if (<?php echo $allChores->num_rows ?> == 0) {
+            tour.start();
+            tour.next();
+        } else {
+            $('.shepherd-modal-overlay-container').css('display', 'none');
+        }
+
+    
+    </script>
 
 </body>
 
