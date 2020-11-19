@@ -68,13 +68,18 @@ include_once 'templates/header.html';
                         
                         foreach ($allChores as $chore) {
                             $id = $chore['id'];
-                            $choreDate = $chore['date'];
-                            echo '<tr>';
-                            echo '<td>' . $chore['user'] . '</td>';
-                            echo '<td>' . $chore['chore'] . '</td>';
-                            echo "<td><a href='forms/set_date.php?date=$choreDate&redirect=index'>$choreDate</a></td>";
-                            echo "<td><a href='forms/remove_date_data.php?id=$id'>Delete</a></td>";
-                            echo '</tr>';
+                            $chore_id = $chore['chore_id'];
+                            $chores = mysqli_query($conn, "SELECT * FROM `custom_chore` WHERE id='$chore_id'");
+                            foreach ($chores as $c) {
+                                $choreName = $c['chore'];
+                                $choreDate = $chore['date'];
+                                echo '<tr>';
+                                echo '<td>' . $chore['user'] . '</td>';
+                                echo '<td>' . $choreName . '</td>';
+                                echo "<td><a href='forms/set_date.php?date=$choreDate&redirect=index'>$choreDate</a></td>";
+                                echo "<td><a href='forms/remove_date_data.php?id=$id'>Delete</a></td>";
+                                echo '</tr>';
+                            }
                         }
                         echo "</table>";
                     } else {
