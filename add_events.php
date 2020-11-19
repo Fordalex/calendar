@@ -44,14 +44,10 @@ include_once 'templates/header.html';
                         <option value="Yearly">Yearly</option>
                         <option value="Once">Once</option>
                     </select>
-                    <label>Icon</label>
-                    <select class="form-control" name="icon">
-                        <option value="cake">Cake</option>
-                        <option value="present">Present</option>
-                    </select>
+                    <?php include_once 'templates/icons_dropdown.html'; ?>
                     <label>Date</label>
                     <input type="date" name="date" class="form-control my-3" value="<?php echo "$date"; ?>">
-                    <button type="submit" class="btn btn-success container-fluid">Create Event</button>
+                    <button type="submit" class="btn btn-success container-fluid mt-3" name="icon" value="" id="submitButton">Create Event</button>
                 </form>
             </div>
         </div>
@@ -73,7 +69,7 @@ include_once 'templates/header.html';
                         $color = $occasion['style'];
                         echo '<tr>';
                         echo '<td>' . $occasion['event'] . '</td>';
-                        echo "<td class='text-center' style='background-color:$color;'></td>";
+                        echo "<td class='text-center' style='background-color:$color;'><img class='chore-icon' src='" . $occasion['icon'] . "'></td>";
                         echo '<td>' . $occasion['date'] . '</td>';
                         echo '<td>' . $occasion['repeat'] . '</td>';
                         echo "<td><a href='forms/remove_event.php?id=$id'>Delete</a></td>";
@@ -93,6 +89,8 @@ include_once 'templates/header.html';
     <!-- end of page content -->
 
     <?php include_once 'templates/footer.html' ?>
+
+    <script src="assets/js/icons.js"></script>
 
 </body>
 

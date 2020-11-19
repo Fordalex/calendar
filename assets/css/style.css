@@ -95,6 +95,13 @@ hr {
     left: 3px;
 }
 
+.day-container img {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 80%;
+}
+
 .day-container:hover {
     background-color: rgb(255, 254, 252);
     text-decoration: none;
@@ -163,12 +170,6 @@ th {
     border: solid rgb(0, 0, 0) 3px;
 }
 
-.day-container img {
-    position: absolute;
-    right: 1.5px;
-    top: 2px;
-}
-
 .selected-day {
     box-shadow: inset 0px 0px 12px 5px rgba(0, 0, 0, 0.1);
 }
@@ -183,6 +184,15 @@ th {
     float: left;
     border-radius: 20%;
     margin: 0.5px;
+    position: relative;
+}
+
+.chore-done img {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 80%;
+    height: 80%;
 }
 
 .bg-orange {

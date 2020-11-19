@@ -59,85 +59,8 @@ include_once 'templates/header.html';
                         echo "<a class='btn btn-warning container-fluid my-2' href='add_category.php'>Add Category</a>";
                     }
                     ?>
-                    <label>Icon</label>
-                    <div class="dropdown">
-                        <button class="" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Select Icon
-                        </button>
-                        <div class="dropdown-menu icon-dropdown p-2" id="iconContainer" aria-labelledby="dropdownMenuButton">
-                            <h6>House Work</h6>
-                            <img src="https://img.icons8.com/metro/40/000000/full-trash.png" />
-                            <img src="https://img.icons8.com/metro/40/000000/delete.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/broom.png" />
-                            <img src="https://img.icons8.com/metro/40/000000/carpet-cleaning.png" />
-                            <img src="https://img.icons8.com/metro/40/000000/housekeeping.png" />
-                            <img src="https://img.icons8.com/metro/40/000000/cooker.png" />
-                            <img src="https://img.icons8.com/metro/40/000000/toaster.png" />
-                            <img src="https://img.icons8.com/metro/40/000000/bedroom.png" />
-                            <img src="https://img.icons8.com/metro/40/000000/dining-room.png" />
-                            <img src="https://img.icons8.com/metro/40/000000/kitchen.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/electrical.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/plumbing.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/exit-sign.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/toilet-bowl.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/widescreen-tv.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/teapot.png"/>
-
-
-                            <hr class="m-0">
-
-                            <h6>Sports</h6>
-                            <img src="https://img.icons8.com/metro/40/000000/bench-press.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/pullups.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/pushups.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/squats.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/curls-with-dumbbells.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/running.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/football2.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/treadmill.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/boots.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/rucksack.png"/>
-
-                            <hr class="m-0">
-
-                            <h6>Studying</h6>
-                            <img src="https://img.icons8.com/metro/40/000000/book.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/library.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/calculator.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/informatics.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/dna-helix.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/physics.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/clock.png"/>
-
-                            <hr class="m-0">
-
-                            <h6>Games</h6>
-                            <img src="https://img.icons8.com/metro/40/000000/firing-gun.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/knight.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/tank.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/military-helicopter.png"/>
-
-                            <hr class="m-0">
-
-                            <h6>Holidays</h6>
-                            <img src="https://img.icons8.com/metro/40/000000/santa.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/christmas-star.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/gingerbread-man.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/christmas-penguin.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/christmas-candle.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/christmas-gift.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/easter-egg.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/ghost.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/zombie.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/wedding-gift.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/two-hearts.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/wedding-rings.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/champagne.png"/>
-                            <img src="https://img.icons8.com/metro/40/000000/engagement-ring.png"/>
-
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-success container-fluid mt-3" name="icon" value="" id="choreButton">Create Chore</button>
+                    <?php include_once 'templates/icons_dropdown.html'; ?>
+                    <button type="submit" class="btn btn-success container-fluid mt-3" name="icon" value="" id="submitButton">Create Chore</button>
                 </form>
             </div>
         </div>
