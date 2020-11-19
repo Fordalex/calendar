@@ -140,7 +140,7 @@ include_once 'templates/header.html';
 
         if (<?php echo $_SESSION['guide'] ?> == 0 && <?php echo $categoriesCount ?> == 0) {
             tour.start();
-        } else if (<?php echo $_SESSION['guide'] ?> == 0 && <?php echo $categoriesCount ?> == 1) {
+        } else if (<?php echo $_SESSION['guide'] ?> == 0 && <?php echo $categoriesCount ?> > 0) {
             tour.start();
             tour.next();
         } else {

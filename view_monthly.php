@@ -45,7 +45,7 @@ include_once 'templates/header.html';
             <h5 class="text-secondary text-center">All Categories</h5>
             <hr class="mb-0">
         </div>
-        <div class="col-12 col-md-9 py-4 d-flex justify-content-center">
+        <div class="col-12 col-lg-9 py-4 d-flex justify-content-center">
             <div class="d-flex align-items-center mr-2">
                 <a href="forms/change_month.php?crement=decrement">
                     <img src="https://img.icons8.com/material-outlined/30/000000/circled-left.png" />
@@ -58,7 +58,7 @@ include_once 'templates/header.html';
                 </a>
             </div>
         </div>
-        <div class="col-12 col-md-3 left-divider py-4">
+        <div class="col-12 col-md-12 col-lg-3 left-divider py-4">
             <div class="row m-0 box-container">
                 <!-- Add chore to calendar drop down -->
                 <?php include_once 'templates/add_chore_dropdown.php'; ?> 

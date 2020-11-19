@@ -34,7 +34,7 @@ include_once 'templates/header.html';
     <?php include_once 'templates/navigation.php'; ?>
 
     <div class="row m-0 p-0 py-5 justify-content-center">
-        <div class="col-12 col-md-3 m-0 mb-4">
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3 m-0 mb-4">
             <div class="box-container">
                 <h4>Day Searched</h4>
                 <hr>
@@ -42,9 +42,9 @@ include_once 'templates/header.html';
                 <?php include_once 'templates/chores_by_date_table.php'; ?>
             </div>
         </div>
-        <div class="col-12 col-md-3 d-flex justify-content-center mb-4">
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center mb-4">
             <div class="box-container">
-                <form action="forms/set_date.php" method="GET" class="d-inline-block container-fluid p-0">
+                <form action="forms/set_date.php" method="GET" class="d-inline-block w-100 p-0">
                     <h4 class="mb-0">Search A Date</h4>
                     <hr>
                     <input type="date" name="date" class="form-control my-3" value="<?php echo "$date"; ?>">
@@ -52,7 +52,7 @@ include_once 'templates/header.html';
                 </form>
             </div>
         </div>
-        <div class="col-12 col-md-3 m-0">
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3 m-0">
             <div class="box-container">
                 <h4>All</h4>
                 <hr>

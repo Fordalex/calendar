@@ -148,6 +148,7 @@ include_once 'templates/header.html';
         buttons: [
             {
             action() {
+                $('#userNavLink').click();
                 return this.next();
             },
             text: 'Next'

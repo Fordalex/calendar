@@ -81,7 +81,7 @@
     border: solid rgb(0, 0, 0) 3px;
 }
 
-@media only screen and (min-width: 767px) {
+@media only screen and (min-width: 992px) {
     .day-container {
         height: 8vw;
     }

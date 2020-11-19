@@ -15,7 +15,7 @@ $user = mysqli_query($conn, "SELECT * FROM `users` WHERE username='$username'");
 
 foreach ($user as $u) {
     $_SESSION["guide"] = $u['guide'];
-}    
+}
 
 $date = $_SESSION['date'];
 $year = $_SESSION['year'];
@@ -60,8 +60,54 @@ include_once 'templates/header.html';
                     }
                     ?>
                     <label>Icon</label>
-                    <?php include_once 'templates/icons_dropdown.html'; ?>
-                    <button type="submit" class="btn btn-success container-fluid mt-3">Create Chore</button>
+                    <div class="dropdown">
+                        <button class="" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Select Icon
+                        </button>
+                        <div class="dropdown-menu icon-dropdown" id="iconContainer" aria-labelledby="dropdownMenuButton">
+                            <h6>House Work</h6>
+                            <img src="https://img.icons8.com/metro/40/000000/full-trash.png" />
+                            <img src="https://img.icons8.com/metro/40/000000/delete.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/broom.png" />
+                            <img src="https://img.icons8.com/metro/40/000000/carpet-cleaning.png" />
+                            <img src="https://img.icons8.com/metro/40/000000/housekeeping.png" />
+                            <img src="https://img.icons8.com/metro/40/000000/cooker.png" />
+                            <img src="https://img.icons8.com/metro/40/000000/toaster.png" />
+                            <img src="https://img.icons8.com/metro/40/000000/bedroom.png" />
+                            <img src="https://img.icons8.com/metro/40/000000/dining-room.png" />
+                            <img src="https://img.icons8.com/metro/40/000000/kitchen.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/electrical.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/plumbing.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/exit-sign.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/toilet-bowl.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/widescreen-tv.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/teapot.png"/>
+
+
+                            <hr class="m-0">
+
+                            <h6>Fitness</h6>
+                            <img src="https://img.icons8.com/metro/40/000000/boots.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/rucksack.png"/>
+
+                            <hr class="m-0">
+
+                            <h6>Studying</h6>
+
+                            <hr class="m-0">
+
+                            <h6>Games</h6>
+                            <img src="https://img.icons8.com/metro/40/000000/firing-gun.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/knight.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/tank.png"/>
+                            <img src="https://img.icons8.com/metro/40/000000/military-helicopter.png"/>
+
+
+                            <hr class="m-0">
+
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success container-fluid mt-3" name="icon" value="" id="choreButton">Create Chore</button>
                 </form>
             </div>
         </div>
@@ -87,7 +133,7 @@ include_once 'templates/header.html';
                             echo '<tr>';
                             echo '<td>' . $chore['chore'] . '</td>';
                             echo '<td>' . $categoryName . '</td>';
-                            echo "<td class='text-center' style='background-color:$color;'></td>";
+                            echo "<td class='text-center' style='background-color:$color;'><img class='chore-icon' src='" . $chore['icon'] . "'></td>";
                             echo "<td><a href='forms/remove_custom_chore.php?id=$id'>Delete</a></td>";
                             echo '</tr>';
                         }
@@ -107,70 +153,68 @@ include_once 'templates/header.html';
 
     <?php include_once 'templates/footer.html' ?>
 
-      <!-- user guide -->
-      <script>    
+    <!-- user guide -->
+    <script>
         const tour = new Shepherd.Tour({
-        defaultStepOptions: {
-            classes: 'shadow-md bg-purple-dark',
-            scrollTo: { behavior: 'smooth', block: 'center' }
-        }
+            defaultStepOptions: {
+                classes: 'shadow-md bg-purple-dark',
+                scrollTo: {
+                    behavior: 'smooth',
+                    block: 'center'
+                }
+            }
         });
 
         // Tell the user to create a chore.
         tour.addStep({
-        title: 'Chores',
-        text: `Create chores for the categories you have created. <br><br> <b>House work:</b> <br> <ol><li>Cutting the lawn</li> <li>Changing the bedding</li></ol> <b>Studing:</b> <ol><li>Reading</li> <li>Coding</li></ol>`,
-        attachTo: {
-            element: '#choreInput',
-            on: 'top'
-        },
-        buttons: [
-            {
-            action() {
-                $('.shepherd-modal-overlay-container').css('display', 'none');
-                this.next();
-                return this.next();
+            title: 'Chores',
+            text: `Create chores for the categories you have created. <br><br> <b>House work:</b> <br> <ol><li>Cutting the lawn</li> <li>Changing the bedding</li></ol> <b>Studing:</b> <ol><li>Reading</li> <li>Coding</li></ol>`,
+            attachTo: {
+                element: '#choreInput',
+                on: 'top'
             },
-            text: 'Next'
-            }
-        ],
-        id: 'creating'
+            buttons: [{
+                action() {
+                    $('.shepherd-modal-overlay-container').css('display', 'none');
+                    this.next();
+                    return this.next();
+                },
+                text: 'Next'
+            }],
+            id: 'creating'
         });
 
         // Tell the user add a chore to the calendar.
         tour.addStep({
-        title: 'Calendar',
-        text: `Great! <br> <br>Now these chores can easily be added to your calendar.`,
-        attachTo: {
-            element: '#calendarNavLink',
-            on: 'top'
-        },
-        buttons: [
-            {
-            action() {
-                $('.shepherd-modal-overlay-container').css('display', 'none');
-                window.location.href = "http://localhost/calendar/view_monthly.php";
-                return this.next();
+            title: 'Calendar',
+            text: `Great! <br> <br>Now these chores can easily be added to your calendar.`,
+            attachTo: {
+                element: '#calendarNavLink',
+                on: 'top'
             },
-            text: 'Next'
-            }
-        ],
-        id: 'creating'
+            buttons: [{
+                action() {
+                    $('.shepherd-modal-overlay-container').css('display', 'none');
+                    window.location.href = "http://localhost/calendar/view_monthly.php";
+                    return this.next();
+                },
+                text: 'Next'
+            }],
+            id: 'creating'
         });
 
         $('.shepherd-modal-overlay-container').css('display', 'visible');
-        
+
         if (<?php echo $_SESSION['guide'] ?> == 0 && <?php echo $customChores->num_rows ?> == 0) {
             tour.start();
-        } else if (<?php echo $_SESSION['guide'] ?> == 0 && <?php echo $customChores->num_rows ?> == 1) {
+        } else if (<?php echo $_SESSION['guide'] ?> == 0 && <?php echo $customChores->num_rows ?> > 0) {
             tour.start();
             tour.next();
         } else {
             $('.shepherd-modal-overlay-container').css('display', 'none');
         }
-
-    
     </script>
+    <script src="assets/js/icons.js"></script>
 
 </body>
 

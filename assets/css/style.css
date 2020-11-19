@@ -141,6 +141,11 @@ th {
     background-color: rgb(250, 250, 250);
 }
 
+.chore-icon {
+    padding: 2px;
+    height: 25px;
+}
+
 .box-container {
     border: solid grey 1px;
     border-radius: 5px;
@@ -184,8 +189,17 @@ th {
     background-color: rgba(245, 156, 73, 0.8);
 }
 
+
+/* icon drop down */
+
 .icon-dropdown img {
     width: 40px;
+    padding: 8px;
+}
+
+.icon-dropdown img:hover {
+    background-color: rgb(226, 226, 226);
+    cursor: pointer;
 }
 
 
