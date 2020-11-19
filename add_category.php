@@ -68,7 +68,19 @@ include_once 'templates/header.html';
                         echo '<tr>';
                         echo '<td>' . $category['category'] . '</td>';
                         echo "<td class='text-center' style='background-color:$color;'></td>";
-                        echo "<td><a href='forms/remove_category.php?id=$id'>Delete</a></td>";
+                        echo '<td class="d-flex justify-content-end">
+
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-danger p-1" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Remove
+                            </button>
+                            <div class="dropdown-menu p-2" aria-labelledby="dropdownMenuButton">
+                            <p>This will also remove all chores with is category.</p>
+                            <a class="btn btn-sm btn-danger" href="forms/remove_category.php?id=' . $id . '">Delete</a>
+                            </div>
+                            </div>
+                        
+                        </td>';
                         echo '</tr>';
                     }
                     echo "</table>";

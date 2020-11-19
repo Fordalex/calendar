@@ -87,7 +87,20 @@ include_once 'templates/header.html';
                             echo '<td>' . $chore['chore'] . '</td>';
                             echo '<td>' . $categoryName . '</td>';
                             echo "<td class='text-center' style='background-color:$color;'><img class='chore-icon' src='" . $chore['icon'] . "'></td>";
-                            echo "<td><a href='forms/remove_custom_chore.php?id=$id'>Delete</a></td>";
+                            echo '<td class="d-flex justify-content-end">
+
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-danger p-1" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Remove
+                            </button>
+                            <div class="dropdown-menu p-2" aria-labelledby="dropdownMenuButton">
+                            <p>This will remove all ' . $chore['chore'] . ' from the calendar.</p>
+                            <a class="btn btn-sm btn-danger" href="forms/remove_custom_chore.php?id=' . $id . '">Delete</a>
+                            </div>
+                            </div>
+                        
+                        </td>';
+                        echo '</tr>';
                             echo '</tr>';
                         }
                     }
