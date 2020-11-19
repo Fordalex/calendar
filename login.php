@@ -4,12 +4,12 @@ session_start();
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: welcome.php");
+    header("location: profile.php");
     exit;
 }
  
 // Include config file
-require_once "../forms/connect_mysql.php";
+require_once "forms/connect_mysql.php";
  
 // Define variables and initialize with empty values
 $username = $password = "";
@@ -70,7 +70,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             }                                  
                             
                             // Redirect user to welcome page
-                            header("location: ../profile.php");
+                            header("location: profile.php");
                         } else{
                             // Display an error message if password is not valid
                             $password_err = "The password you entered was not valid.";
@@ -92,16 +92,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Close connection
     mysqli_close($conn);
 }
-include_once '../templates/header.html';
+include_once 'templates/header.html';
 ?>
-<link rel="stylesheet" href="../assets/css/style.css">
-<link rel="stylesheet" href="../assets/css/user_profile.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/user_profile.css">
 <!-- start of page content -->
 </head>
 
 <body>
 
-    <?php include_once '../templates/navigation.php'; ?>
+    <?php include_once 'templates/navigation.php'; ?>
 
     <div class="box-container wrapper my-5">
         <h2>Login</h2>
@@ -123,4 +123,4 @@ include_once '../templates/header.html';
             <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
         </form>
     </div>    
-<?php include_once '../templates/footer.html'; ?>
+<?php include_once 'templates/footer.html'; ?>

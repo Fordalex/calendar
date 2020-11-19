@@ -1,6 +1,6 @@
 <?php
 // Include config file
-require_once "../forms/connect_mysql.php";
+require_once "forms/connect_mysql.php";
  
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = "";
@@ -91,16 +91,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Close connection
     mysqli_close($link);
 }
-include_once '../templates/header.html';
+include_once 'templates/header.html';
 ?>
-<link rel="stylesheet" href="../assets/css/style.css">
-<link rel="stylesheet" href="../assets/css/user_profile.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/user_profile.css">
 <!-- start of page content -->
 </head>
 
 <body>
 
-    <?php include_once '../templates/navigation.php'; ?>
+    <?php include_once 'templates/navigation.php'; ?>
 
     <div class="box-container wrapper my-5">
         <h2>Sign Up</h2>
@@ -128,4 +128,4 @@ include_once '../templates/header.html';
             <p>Already have an account? <a href="login.php">Login here</a>.</p>
         </form>
     </div>    
-    <?php include_once '../templates/footer.html'; ?>
+    <?php include_once 'templates/footer.html'; ?>

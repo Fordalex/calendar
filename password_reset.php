@@ -4,12 +4,12 @@ session_start();
  
 // Check if the user is logged in, if not then redirect to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: login.php");
+    header("location: profile.php");
     exit;
 }
  
 // Include config file
-require_once "../forms/connect_mysql.php";
+require_once "forms/connect_mysql.php";
  
 // Define variables and initialize with empty values
 $new_password = $confirm_password = "";
@@ -76,7 +76,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta charset="UTF-8">
     <title>Reset Password</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <link rel="stylesheet" href="../assets/css/user_profile.css">
+    <link rel="stylesheet" href="assets/css/user_profile.css">
 </head>
 <body>
     <div class="wrapper">
