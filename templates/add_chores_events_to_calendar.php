@@ -24,6 +24,10 @@ foreach ($occasions as $occasion) {
     }
 }
 
+
+/* This would be much better if the categoreis that the user selected are only shown.
+there is no need to get chores that are not going to be displayed for the user */
+
 // add the chores to the relevant day.
 foreach ($allChores as $chore) {
     // Get the chore icon
@@ -37,8 +41,10 @@ foreach ($allChores as $chore) {
     $category_id = $chore['category_id'];
     $category = mysqli_query($conn, "SELECT * FROM `category` WHERE id='$category_id'");
     foreach ($category as $cat) {
-        $style = $cat['style'];
-        $choreDiv = '<div class="chore-done" style="background-color:' . $style . '"><img src="' . $iconUrl . '"></div>';
-        echo "$('#date-$choreDate').append('$choreDiv');";
+        if ($cat['category'] == $_SESSION['filterCategories'] || $_SESSION['filterCategories'] == 'All') {
+            $style = $cat['style'];
+            $choreDiv = '<div class="chore-done" style="background-color:' . $style . '"><img src="' . $iconUrl . '"></div>';
+            echo "$('#date-$choreDate').append('$choreDiv');";
+        }
     }
 }
