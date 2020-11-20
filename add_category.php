@@ -41,11 +41,12 @@ include_once 'templates/header.html';
         </div>
         <div class="col-12 col-md-4 d-flex justify-content-center mb-4">
             <div class="box-container">
-                <form action="forms/add_category.php" method="GET" class="container-fluid p-0">
+                <form action="forms/add_category.php" method="GET" class="container-fluid p-0" id="categoryForm">
                     <label>Category</label>
                     <input type="text" name="category" class="form-control" id="categoryInput">
+                    <div id="categoryErrorContainer"></div>
                     <label>Style</label>
-                    <input type="color" name="style" class="form-control" id="categoryInput">
+                    <input type="color" name="style" class="form-control">
                     <button type="submit" class="btn btn-success container-fluid mt-3">Create Category</button>
                 </form>
             </div>
@@ -161,6 +162,8 @@ include_once 'templates/header.html';
 
     
     </script>
+
+    <script src="assets/js/category_validation_form.js"></script>
 
 </body>
 
