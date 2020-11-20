@@ -46,7 +46,6 @@ include_once 'templates/header.html';
                         <option value="Once">Once</option>
                     </select>
                     <?php include_once 'templates/icons_dropdown.html'; ?>
-                    <div id="iconErrorContainer"></div>
                     <label>Date</label>
                     <input type="date" name="date" class="form-control my-3" value="<?php echo "$date"; ?>">
                     <button type="submit" class="btn btn-success container-fluid mt-3" name="icon" value="" id="submitButton">Create Event</button>

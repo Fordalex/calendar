@@ -42,9 +42,10 @@ include_once 'templates/header.html';
         </div>
         <div class="col-12 col-md-4 d-flex justify-content-center mb-4">
             <div class="box-container">
-                <form action="forms/add_custom_chore.php" method="GET" class="container-fluid p-0">
+                <form action="forms/add_custom_chore.php" method="GET" class="container-fluid p-0" id="choreForm">
                     <label>Chore</label>
                     <input type="text" name="chore" class="form-control" id="choreInput">
+                    <div id="choreErrorContainer"></div>
                     <label>Category</label>
                     <?php
                     if ($categories->num_rows > 0) {
@@ -181,6 +182,7 @@ include_once 'templates/header.html';
         }
     </script>
     <script src="assets/js/icons.js"></script>
+    <script src="assets/js/chore_validation_form.js"></script>
 
 </body>
 

@@ -10,8 +10,6 @@ The layout of this project is broken up into a few sections, First the user will
 
 ### Bugs
 
-- When creating an event, if the input has "'" the data won't save to the database.
-- If a date isn't saved in the session the yearly and monthly calendar won't be displayed.
 
 ### Left to implement
 
