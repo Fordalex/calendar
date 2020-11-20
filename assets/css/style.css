@@ -47,6 +47,10 @@ nav a:hover {
     color: rgb(182, 182, 182);
 }
 
+.acknowledgements-list {
+    list-style: none;
+}
+
 
 /* calendar */
 

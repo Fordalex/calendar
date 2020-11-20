@@ -32,19 +32,21 @@ include_once 'templates/header.html';
         </div>
         <div class="col-12 col-md-4 d-flex justify-content-center mb-4">
             <div class="box-container">
-                <form action="forms/add_event.php" method="GET" class="container-fluid p-0">
+                <form action="forms/add_event.php" method="GET" class="container-fluid p-0" id="eventForm">
                     <label>Event</label>
-                    <input type="text" name="event" class="form-control">
+                    <input type="text" name="event" class="form-control" id="eventInput">
+                    <div id="eventErrorContainer"></div>
                     <label>Style</label>
-                    <input type="color" name="style" class="form-control">
+                    <input type="color" name="style" class="form-control" id="styleInput">
                     <label>Repeat</label>
-                    <select class="form-control" name="repeat">
+                    <select class="form-control" name="repeat" id="repeatInput">
                         <!-- <option value="weekly">Weekly</option>
                     <option value="monthly">Monthly</option> -->
                         <option value="Yearly">Yearly</option>
                         <option value="Once">Once</option>
                     </select>
                     <?php include_once 'templates/icons_dropdown.html'; ?>
+                    <div id="iconErrorContainer"></div>
                     <label>Date</label>
                     <input type="date" name="date" class="form-control my-3" value="<?php echo "$date"; ?>">
                     <button type="submit" class="btn btn-success container-fluid mt-3" name="icon" value="" id="submitButton">Create Event</button>
@@ -91,6 +93,7 @@ include_once 'templates/header.html';
     <?php include_once 'templates/footer.html' ?>
 
     <script src="assets/js/icons.js"></script>
+    <script src="assets/js/event_validation_form.js"></script>
 
 </body>
 
