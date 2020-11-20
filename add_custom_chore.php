@@ -49,7 +49,7 @@ include_once 'templates/header.html';
                     <label>Category</label>
                     <?php
                     if ($categories->num_rows > 0) {
-                        echo "<select name='category_id' class='form-control'>";
+                        echo "<select name='category_id' class='form-control' id='categoryInput'>";
                         foreach ($categories as $category) {
                             $cat = $category['category'];
                             $id = $category['id'];
@@ -58,6 +58,7 @@ include_once 'templates/header.html';
                         echo "</select>";
                     } else {
                         echo "<a class='btn btn-warning container-fluid my-2' href='add_category.php'>Add Category</a>";
+                        echo "<div id='categoryErrorContainer'></div>";
                     }
                     ?>
                     <?php include_once 'templates/icons_dropdown.html'; ?>

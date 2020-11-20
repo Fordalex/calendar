@@ -16,4 +16,8 @@ $('#choreForm').submit(function(e) {
         e.preventDefault();
         $('#iconErrorContainer').html("<p class='text-danger mt-1 mb-0'>You haven't selected an icon for your chore.</p>")
     }
+    if ($('#categoryInput').val() === undefined) {
+        e.preventDefault();
+        $('#categoryErrorContainer').html("<p class='text-danger mt-1 mb-0'>First you need to create a category.</p>")
+    }
 });

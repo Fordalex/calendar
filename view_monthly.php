@@ -38,13 +38,7 @@ include_once 'templates/header.html';
 <body>
     <?php include_once 'templates/navigation.php'; ?>
     <div class="row m-0 p-0">
-        <div class="col-12 pt-4 px-0 header">
-            <h1 class="text-center mb-0">
-                <?php echo $_SESSION['year']; ?>
-            </h1>
-            <h5 class="text-secondary text-center">All Categories</h5>
-            <hr class="mb-0">
-        </div>
+        <?php include_once 'templates/calendar_title_and_sort.php'; ?>
         <div class="col-12 col-lg-9 py-4 d-flex justify-content-center">
             <div class="d-flex align-items-center mr-2">
                 <a href="forms/change_month.php?crement=decrement">
