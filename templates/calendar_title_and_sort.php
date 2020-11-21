@@ -12,6 +12,7 @@
                 <label class="mt-2"><b>Category</b></label>
 
                 <select class="form-control" name="category">
+
                     <option value="All">All</option>
                     <?php
                     foreach ($categories as $category) {

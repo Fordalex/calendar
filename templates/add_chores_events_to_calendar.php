@@ -24,9 +24,12 @@ foreach ($occasions as $occasion) {
     }
 }
 
+
 $filterCategory = $_SESSION['filterCategories'];
 
-foreach ($categories as $category) {
+$allCategories = mysqli_query($conn, "SELECT * FROM `category` WHERE user='$username'");
+
+foreach ($allCategories as $category) {
     if ($category['category'] == $filterCategory || $filterCategory == 'All') {
 
         $categoryId = $category['id'];
