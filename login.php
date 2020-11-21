@@ -65,6 +65,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;    
                             $_SESSION["filterCategories"] = "All";
+                            $_SESSION['filterCategoriesId'] = 1;
+                            $_SESSION['sortDateBy'] = 'DESC';
 
                             foreach ($user as $u) {
                                 $_SESSION["guide"] = $u['guide'];
