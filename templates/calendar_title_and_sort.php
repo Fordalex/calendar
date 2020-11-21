@@ -7,10 +7,10 @@
     <h6 class="text-secondary text-center"><?php echo $_SESSION['filterCategories'] ?></h6>
     <hr class="mb-0">
     <form action="forms/filter_categories.php" method="GET" class="container-fluid p-0">
-    <div class="row m-0 p-0">
-        <div class="col-6 col-md-4 col-lg-2">
-            <label class="mt-2"><b>Category</b></label>
-            
+        <div class="row m-0 p-0">
+            <div class="col-6 col-md-4 col-lg-2">
+                <label class="mt-2"><b>Category</b></label>
+
                 <select class="form-control" name="category">
                     <option value="All">All</option>
                     <?php
@@ -20,12 +20,12 @@
                     }
                     ?>
                 </select>
-                
+
+            </div>
+            <div class="col-6 col-md-4 col-lg-3 d-flex align-items-end p-0">
+                <button type="submit" class="btn btn-dark">Filter</button>
+            </div>
         </div>
-        <div class="col-6 col-md-4 col-lg-3 d-flex align-items-end p-0">
-            <button type="submit" class="btn btn-dark">Filter</button>
-        </div>
-    </div>
     </form>
     <hr class="mb-0">
 </div>

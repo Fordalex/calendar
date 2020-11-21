@@ -24,27 +24,27 @@ foreach ($occasions as $occasion) {
     }
 }
 
+$filterCategory = $_SESSION['filterCategories'];
 
-/* This would be much better if the categoreis that the user selected are only shown.
-there is no need to get chores that are not going to be displayed for the user */
+foreach ($categories as $category) {
+    if ($category['category'] == $filterCategory || $filterCategory == 'All') {
 
-// add the chores to the relevant day.
-foreach ($allChores as $chore) {
-    // Get the chore icon
-    $choreId = $chore['chore_id'];
-    $chores = mysqli_query($conn, "SELECT * FROM `custom_chore` WHERE id='$choreId'");
-    foreach ($chores as $c) {
-        $iconUrl = $c['icon'];
-    }
+        $categoryId = $category['id'];
+        $allCategoryChores = mysqli_query($conn, "SELECT * FROM `chore` WHERE category_id='$categoryId'");
 
-    $choreDate = $chore['date'];
-    $category_id = $chore['category_id'];
-    $category = mysqli_query($conn, "SELECT * FROM `category` WHERE id='$category_id'");
-    foreach ($category as $cat) {
-        if ($cat['category'] == $_SESSION['filterCategories'] || $_SESSION['filterCategories'] == 'All') {
-            $style = $cat['style'];
+        foreach ($allCategoryChores as $chore) {
+            $choreId = $chore['chore_id'];
+            $customChore = mysqli_query($conn, "SELECT * FROM `custom_chore` WHERE id='$choreId'");
+            foreach ($customChore as $choreIcon) {
+                $iconUrl = $choreIcon['icon'];
+            }
+
+            $style = $category['style'];
+            $choreDate = $chore['date'];
+
             $choreDiv = '<div class="chore-done" style="background-color:' . $style . '"><img src="' . $iconUrl . '"></div>';
             echo "$('#date-$choreDate').append('$choreDiv');";
         }
     }
+    
 }

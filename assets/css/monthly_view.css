@@ -43,7 +43,7 @@
 }
 
 .blank-day-container:hover {
-    background-color: white;
+    background-color: rgb(55, 55, 55);
     text-decoration: none;
     cursor: default;
 }

@@ -64,6 +64,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;    
+                            $_SESSION["filterCategories"] = "All";
 
                             foreach ($user as $u) {
                                 $_SESSION["guide"] = $u['guide'];
