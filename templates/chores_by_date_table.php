@@ -2,16 +2,7 @@
 
 // Not happy with this. The cateogories interated through first not the chores.
 
-$filterCategory = $_SESSION['filterCategories'];
-
-$choresCount = 0;
-foreach ($choresByDate as $c) {
-    if ($c['category_id'] == $_SESSION['filterCategoriesId']) {
-        $choresCount += 1;
-    }
-}
-
-if ($choresCount > 0) {
+if ($choresByDate->num_rows > 0) {
     echo "<table class='chore-table'>";
     echo "<tr>";
     echo "<th>User</th>";
@@ -34,16 +25,14 @@ if ($choresCount > 0) {
             $categoryName = $category['category'];
         }
 
-        if ($categoryName == $filterCategory || $filterCategory == 'All') {
-            echo '<tr>';
-            echo '<td>' . $chore['user'] . '</td>';
-            echo '<td>' . $choreName . '</td>';
-            echo '<td>' . $categoryName . '</td>';
-            echo "<td><a href='forms/remove_date_data.php?id=$id'>Delete</a></td>";
-            echo '</tr>';
-        }
+        echo '<tr>';
+        echo '<td>' . $chore['user'] . '</td>';
+        echo '<td>' . $choreName . '</td>';
+        echo '<td>' . $categoryName . '</td>';
+        echo "<td><a href='forms/remove_date_data.php?id=$id'>Delete</a></td>";
+        echo '</tr>';
     }
     echo "</table>";
-}   else {
+} else {
     echo "<p class='text-secondary'>Nothing has been added yet.</p>";
 }
