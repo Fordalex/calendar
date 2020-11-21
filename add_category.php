@@ -47,6 +47,8 @@ include_once 'templates/header.html';
                     <div id="categoryErrorContainer"></div>
                     <label>Style</label>
                     <input type="color" name="style" class="form-control">
+                    <label>Private</label>
+                    <input type="checkbox" name="private" class="d-block">
                     <button type="submit" class="btn btn-success container-fluid mt-3">Create Category</button>
                 </form>
             </div>
@@ -61,19 +63,27 @@ include_once 'templates/header.html';
                     echo "<tr>";
                     echo "<th>Category</th>";
                     echo "<th>Style</th>";
+                    echo "<th>Private</th>";
                     echo "<th>Remove</th>";
                     echo "</tr>";
                     foreach ($categories as $category) {
                         $id = $category['id'];
                         $color = $category['style'];
+                        if ($category['private'] == 'true') {
+                            $private = '<img src="https://img.icons8.com/ios-filled/25/000000/private-lock.png"/>';
+                        } else {
+                            $private = '<img src="https://img.icons8.com/ios-filled/25/000000/open-sign.png"/>';
+                        }
+
                         echo '<tr>';
                         echo '<td>' . $category['category'] . '</td>';
                         echo "<td class='text-center' style='background-color:$color;'></td>";
-                        echo '<td class="d-flex justify-content-end">
+                        echo "<td class='text-center'>$private</td>";
+                        echo '<td class="text-end">
 
-                        <div class="dropdown">
-                            <button class="btn btn-sm btn-danger p-1" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Remove
+                        <div class="dropdown d-flex justify-content-end">
+                            <button class="no-style d-inline-block" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="https://img.icons8.com/fluent/25/000000/delete-forever.png"/>
                             </button>
                             <div class="dropdown-menu p-2" aria-labelledby="dropdownMenuButton">
                             <p>This will also remove all chores with is category.</p>

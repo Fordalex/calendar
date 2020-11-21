@@ -143,9 +143,10 @@ hr {
     font-family: 'Oswald', sans-serif;
 }
 
-.chore-table td,
-th {
-    border: solid grey 1px;
+.chore-table,
+td {
+    border-right: solid rgb(221, 221, 221) 1px;
+    border-left: solid rgb(221, 221, 221) 1px;
 }
 
 .chore-table tr:nth-child(odd) {
@@ -164,6 +165,11 @@ th {
     width: 100%;
     background-color: white;
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.05);
+}
+
+.no-style {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
 }
 
 
