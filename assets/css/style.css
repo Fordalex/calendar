@@ -121,7 +121,7 @@ hr {
 }
 
 .blank-day-container:hover {
-    background-color: white;
+    background-color: rgb(65, 65, 65);
     text-decoration: none;
     cursor: default;
 }

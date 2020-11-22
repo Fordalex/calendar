@@ -40,7 +40,7 @@ include_once 'templates/header.html';
             <p class="text-secondary text-center">Create chores to be added to the calendar.</p>
             <hr class="mb-0">
         </div>
-        <div class="col-12 col-md-4 d-flex justify-content-center mb-4">
+        <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center mb-4">
             <div class="box-container">
                 <form action="forms/add_custom_chore.php" method="GET" class="container-fluid p-0" id="choreForm">
                     <label>Chore</label>
@@ -66,7 +66,7 @@ include_once 'templates/header.html';
                 </form>
             </div>
         </div>
-        <div class="col-12 col-md-4 m-0 ">
+        <div class="col-12 col-md-6 col-lg-4 m-0 ">
             <div class="box-container">
                 <?php
                 $ChoresCount = $customChores->num_rows;

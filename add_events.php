@@ -30,7 +30,7 @@ include_once 'templates/header.html';
             <p class="text-secondary text-center">Create events so you don't forget birthdays/occasions ect.</p>
             <hr class="mb-0">
         </div>
-        <div class="col-12 col-md-4 d-flex justify-content-center mb-4">
+        <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center mb-4">
             <div class="box-container">
                 <form action="forms/add_event.php" method="GET" class="container-fluid p-0" id="eventForm">
                     <label>Event</label>
@@ -52,7 +52,7 @@ include_once 'templates/header.html';
                 </form>
             </div>
         </div>
-        <div class="col-12 col-md-4 m-0">
+        <div class="col-12 col-md-6 col-lg-4 m-0">
             <div class="box-container">
                 <?php
                 $occasionsCount = $occasions->num_rows;

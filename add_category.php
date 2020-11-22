@@ -39,7 +39,7 @@ include_once 'templates/header.html';
             <p class="text-secondary text-center">Create new categories to sort your chores when viewing the calendar.</p>
             <hr class="mb-0">
         </div>
-        <div class="col-12 col-md-4 d-flex justify-content-center mb-4">
+        <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center mb-4">
             <div class="box-container">
                 <form action="forms/add_category.php" method="GET" class="container-fluid p-0" id="categoryForm">
                     <label>Category</label>
@@ -54,7 +54,7 @@ include_once 'templates/header.html';
             </div>
 
         </div>
-        <div class="col-12 col-md-4 m-0 ">
+        <div class="col-md-6 col-lg-4 m-0 ">
             <div class="box-container">
                 <?php
                 $categoriesCount = $categories->num_rows;

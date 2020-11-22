@@ -25,7 +25,7 @@ $user = mysqli_query($conn, "SELECT * FROM `users` WHERE username='$username'");
 
 foreach ($user as $u) {
     $_SESSION["guide"] = $u['guide'];
-}  
+}
 
 include_once 'templates/header.html';
 ?>
@@ -106,59 +106,45 @@ include_once 'templates/header.html';
                 <hr>
                 <a href="search_users.php" class="btn btn-dark container-fluid mb-3">Find Users</a>
                 <?php
-                    // Find friend quests sent to the logged in user.
-                    $id = $_SESSION['id'];
-                    $sql = "SELECT * FROM friend_request WHERE to_user_id='$id'";
-                    $friendRequests = $conn->query($sql);
-                    if ($friendRequests->num_rows > 0) {
-                        echo "<h5>Friend Requests</h5>";
-                        echo "<table class='chore-table'>";
-                        echo "<tr><th>Username</th><th>Action</th></tr>";
-                        foreach ($friendRequests as $request) {
-                            // Get the username of the friend request.
-                            $fromUserId = $request['from_user_id'];
-                            $sql = "SELECT * FROM users WHERE id='$fromUserId'";
-                            $requestUserProfile = $conn->query($sql);
-                            foreach ($requestUserProfile as $profile) {
-                                $requestUsername = $profile['username'];
-                            }
-                            echo "<tr><td>$requestUsername</td><td class='d-flex justify-content-between'><a href='forms/accept_friend_request.php?fromUserId=$fromUserId'>Accept</a><a href='forms/remove_friend_request.php?fromUserId=$fromUserId'>Decline</a></td></tr>";
+                // Find friend quests sent to the logged in user.
+                $id = $_SESSION['id'];
+                $sql = "SELECT * FROM friend_request WHERE to_user_id='$id'";
+                $friendRequests = $conn->query($sql);
+                if ($friendRequests->num_rows > 0) {
+                    echo "<h5>Friend Requests</h5>";
+                    echo "<table class='chore-table'>";
+                    echo "<tr><th>Username</th><th>Action</th></tr>";
+                    foreach ($friendRequests as $request) {
+                        // Get the username of the friend request.
+                        $fromUserId = $request['from_user_id'];
+                        $sql = "SELECT * FROM users WHERE id='$fromUserId'";
+                        $requestUserProfile = $conn->query($sql);
+                        foreach ($requestUserProfile as $profile) {
+                            $requestUsername = $profile['username'];
                         }
-                        echo "</table>";
-                    } else {
-                        echo "<p>You current have no new friend requests.</p>";
+                        echo "<tr><td>$requestUsername</td><td class='d-flex justify-content-between'><a href='forms/accept_friend_request.php?fromUserId=$fromUserId'>Accept</a><a href='forms/remove_friend_request.php?fromUserId=$fromUserId'>Decline</a></td></tr>";
                     }
-                    
-                    // Display all users friends
-                    $sql = "SELECT * FROM friends WHERE users_id=$id";
-                    $friendList = $conn->query($sql);
+                    echo "</table>";
+                } else {
+                    echo "<p>You current have no new friend requests.</p>";
+                }
 
-                    // if the user has friends display the table.
-                    if ($friendList->num_rows > 0) {
-                        echo "<hr>";
-                        echo "<h5>Friend Requests</h5>";
-                        echo "<table class='chore-table'>";
-                        echo "<tr><th>Username</th><th>Edit</th></tr>";
-                        foreach ($friendList as $list) {
-                            $friendsIds = $list['friends_ids'];
-                            // convert the sting into an array.
-                            $friendsIdsArray = explode(",", $friendsIds);
-                            foreach ($friendsIdsArray as $friendsId) {
-                                // Get the users profile from the database by the id.
-                                $sql = "SELECT * FROM users WHERE id='$friendsIds'";
-                                $friendsProfile = $conn->query($sql);
-                                // display the friends username on the profile.
-                                foreach ($friendsProfile as $profile) {
-                                    $profileUsername = $profile['username'];
-                                    echo "<tr><td>$profileUsername</td><td><a>Remove</a></td></tr>";
-                                }
-                            }
-                        }
-                        echo "</table>";
-                    } else {
-                        echo "<p>You cuirrently don't have any frineds.</p>";
+                include_once 'database/get_all_users_friends.php';
+
+                // if the user has friends display the table.
+                if ($friendList->num_rows > 0) {
+                    echo "<hr>";
+                    echo "<h5>Friend Requests</h5>";
+                    echo "<table class='chore-table'>";
+                    echo "<tr><th>Username</th><th>Edit</th></tr>";
+                    foreach ($allFriendsProfiles as $friendsProfile) {
+                        $friendsUsername = $friendsProfile['username'];
+                        echo "<tr><td>$friendsUsername</td><td><a>Remove</a></td></tr>";
                     }
-                   
+                    echo "</table>";
+                } else {
+                    echo "<p>You cuirrently don't have any frineds.</p>";
+                }
                 ?>
             </div>
         </div>
@@ -176,72 +162,69 @@ include_once 'templates/header.html';
     <!-- end of page content -->
 
 
-    
+
 
     <?php include_once 'templates/footer.html' ?>
 
-    <script>    
+    <script>
         const tour = new Shepherd.Tour({
-        defaultStepOptions: {
-            classes: 'shadow-md bg-purple-dark',
-            scrollTo: { behavior: 'smooth', block: 'center' }
-        }
+            defaultStepOptions: {
+                classes: 'shadow-md bg-purple-dark',
+                scrollTo: {
+                    behavior: 'smooth',
+                    block: 'center'
+                }
+            }
         });
 
         tour.addStep({
-        title: 'Welcome!',
-        text: `Calendar will help you track your, work, studies, fitness or any custom category and give you insights on your hard work.`,
-        attachTo: {
-            on: 'center'
-        },
-        buttons: [
-            {
-            action() {
-                $('#userNavLink').click();
-                return this.next();
+            title: 'Welcome!',
+            text: `Calendar will help you track your, work, studies, fitness or any custom category and give you insights on your hard work.`,
+            attachTo: {
+                on: 'center'
             },
-            text: 'Next'
-            }
-        ],
-        id: 'creating'
+            buttons: [{
+                action() {
+                    $('#userNavLink').click();
+                    return this.next();
+                },
+                text: 'Next'
+            }],
+            id: 'creating'
         });
 
         tour.addStep({
-        title: 'Profile',
-        text: `This page is your profile and you'll be able to keep track of your chores, categories and events. Also, you can add other users to complete tasks together.`,
-        attachTo: {
-            element: '#userNavLink',
-            on: 'top'
-        },
-        buttons: [
-            {
-            action() {
-                return this.next();
+            title: 'Profile',
+            text: `This page is your profile and you'll be able to keep track of your chores, categories and events. Also, you can add other users to complete tasks together.`,
+            attachTo: {
+                element: '#userNavLink',
+                on: 'top'
             },
-            text: 'Next',
-            }
-        ],
-        id: 'creating'
+            buttons: [{
+                action() {
+                    return this.next();
+                },
+                text: 'Next',
+            }],
+            id: 'creating'
         });
 
         tour.addStep({
-        title: 'Add',
-        text: `Start by creating a category.`,
-        attachTo: {
-            element: '#addNavLink',
-            on: 'top'
-        },
-        buttons: [
-            {
-            action() {
-                $('.shepherd-modal-overlay-container').css('display', 'none');
-                window.location.href = "http://localhost/calendar/add_category.php";
-                return this.next();
+            title: 'Add',
+            text: `Start by creating a category.`,
+            attachTo: {
+                element: '#addNavLink',
+                on: 'top'
             },
-            text: 'Next',
-            }
-        ],
-        id: 'creating'
+            buttons: [{
+                action() {
+                    $('.shepherd-modal-overlay-container').css('display', 'none');
+                    window.location.href = "http://localhost/calendar/add_category.php";
+                    return this.next();
+                },
+                text: 'Next',
+            }],
+            id: 'creating'
         });
 
         if (<?php echo $_SESSION['guide'] ?> == 0) {
@@ -250,8 +233,6 @@ include_once 'templates/header.html';
         } else {
             $('.shepherd-modal-overlay-container').css('display', 'none');
         }
-
-      
     </script>
 
 </body>
