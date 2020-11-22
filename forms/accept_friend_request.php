@@ -42,5 +42,5 @@ if ($friendListRequest->num_rows > 0) {
 
 
 
-// Redriect the user back to the calendar
+// Redriect the user back to the profile
 header("Location: ../profile.php");

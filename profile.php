@@ -129,21 +129,35 @@ include_once 'templates/header.html';
                     echo "<p>You current have no new friend requests.</p>";
                 }
 
-                include_once 'database/get_all_users_friends.php';
+                echo '<hr>';
 
                 // if the user has friends display the table.
-                if ($friendList->num_rows > 0) {
-                    echo "<hr>";
+                include_once 'database/get_all_users_friends.php';
+                if ($allFriendsProfiles->num_rows > 0) {
                     echo "<h5>Friend Requests</h5>";
                     echo "<table class='chore-table'>";
-                    echo "<tr><th>Username</th><th>Edit</th></tr>";
+                    echo "<tr><th>Username</th><th>Remove</th></tr>";
                     foreach ($allFriendsProfiles as $friendsProfile) {
                         $friendsUsername = $friendsProfile['username'];
-                        echo "<tr><td>$friendsUsername</td><td><a>Remove</a></td></tr>";
+                        $friendsId = $friendsProfile['id'];
+                        echo "<tr>";
+                        echo "<td>$friendsUsername</td>";
+                        echo '<td style="width: 50px;">
+                                    <div class="dropdown dropleft d-flex justify-content-center">
+                                        <button class="no-style d-inline-block" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img src="https://img.icons8.com/fluent/25/000000/delete-forever.png"/>
+                                        </button>
+                                        <div class="dropdown-menu p-2" aria-labelledby="dropdownMenuButton">
+                                            <p>Are you sure you want to remove this friend?</p>
+                                            <a class="btn btn-sm btn-danger container-fluid" href="forms/remove_friend.php?removeId=' . $friendsId . '">Delete</a>
+                                        </div>
+                                    </div>
+                                </td>';
                     }
                     echo "</table>";
+                    echo "<p class='mt-2 mb-0'>Friends: " . $allFriendsProfiles->num_rows . "</p>";
                 } else {
-                    echo "<p>You cuirrently don't have any frineds.</p>";
+                    echo "<p>You currently don't have any frineds.</p>";
                 }
                 ?>
             </div>
@@ -160,9 +174,6 @@ include_once 'templates/header.html';
     </div>
 
     <!-- end of page content -->
-
-
-
 
     <?php include_once 'templates/footer.html' ?>
 
