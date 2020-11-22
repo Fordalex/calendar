@@ -18,7 +18,7 @@ if ($friendListRequest->num_rows > 0) {
     foreach ($friendListRequest as $friendList) {
         $friends = $friendList['friends_ids'];
     }
-    // Check if user is already in friends list
+    // Check if user is already in friends list.
     
 
     // update the string with the new friend id.
@@ -30,16 +30,31 @@ if ($friendListRequest->num_rows > 0) {
     // Create user a friend list if they don't have one.
     $sql = "INSERT INTO friends (`users_id`, `friends_ids`) VALUES ('$id', '$fromUserId')";
     $conn->query($sql);
-
-    // Check if new friend has a friend list
-
-
-
-    // Update friends friend list with the current users id
-
-
 }
 
+
+// Get the friend friends list from the database.
+$sql = "SELECT * FROM friends WHERE users_id='$fromUserId'";
+$friendListRequest = $conn->query($sql);
+
+if ($friendListRequest->num_rows > 0) {
+    // already has a friend list
+    foreach ($friendListRequest as $friendList) {
+        $friends = $friendList['friends_ids'];
+    }
+    // Check if user is already in friends list.
+    
+
+    // update the string with the new friend id.
+    $friendsUpdated = $friends . ',' . $id;
+
+    // Update the database with the new value.
+    mysqli_query($conn, "UPDATE friends SET friends_ids='$friendsUpdated' WHERE users_id='$fromUserId'") or die('There was a problem submitting the form!');
+} else {
+    // Create user a friend list if they don't have one.
+    $sql = "INSERT INTO friends (`users_id`, `friends_ids`) VALUES ('$fromUserId', '$id')";
+    $conn->query($sql);
+}
 
 
 // Redriect the user back to the profile
