@@ -64,6 +64,7 @@ include_once 'templates/header.html';
                     echo "<th>Category</th>";
                     echo "<th>Style</th>";
                     echo "<th>Private</th>";
+                    echo "<th>Edit</th>";
                     echo "<th>Remove</th>";
                     echo "</tr>";
                     foreach ($categories as $category) {
@@ -79,17 +80,18 @@ include_once 'templates/header.html';
                         echo '<td>' . $category['category'] . '</td>';
                         echo "<td class='text-center' style='background-color:$color;'></td>";
                         echo "<td class='text-center'>$private</td>";
-                        echo '<td class="text-end">
+                        echo "<td class='text-center'><a href='edit_category.php?id=$id'><img src='https://img.icons8.com/color/25/000000/edit-property.png'/></td>";
+                        echo '<td class="text-end" style="width:50px;">
 
-                        <div class="dropdown d-flex justify-content-end">
-                            <button class="no-style d-inline-block" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="https://img.icons8.com/fluent/25/000000/delete-forever.png"/>
-                            </button>
-                            <div class="dropdown-menu p-2" aria-labelledby="dropdownMenuButton">
-                            <p>This will also remove all chores with is category.</p>
-                            <a class="btn btn-sm btn-danger" href="forms/remove_category.php?id=' . $id . '">Delete</a>
-                            </div>
-                            </div>
+                                <div class="dropdown dropleft d-flex justify-content-center">
+                                    <button class="no-style d-inline-block" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="https://img.icons8.com/fluent/25/000000/delete-forever.png"/>
+                                    </button>
+                                    <div class="dropdown-menu p-2" aria-labelledby="dropdownMenuButton">
+                                        <p>This will also remove all chores with is category.</p>
+                                        <a class="btn btn-sm btn-danger container-fluid" href="forms/remove_category.php?id=' . $id . '">Delete</a>
+                                    </div>
+                                </div>
                         
                         </td>';
                         echo '</tr>';
