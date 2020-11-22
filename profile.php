@@ -14,12 +14,6 @@ if (!isset($_SESSION['date'])) {
     $_SESSION['day'] = substr($_SESSION['date'], 8, 10);
 }
 
-$date = $_SESSION['date'];
-$year = $_SESSION['year'];
-$month = $_SESSION['month'];
-$day = $_SESSION['day'];
-$username = $_SESSION['username'];
-
 include_once 'database/get_all_users_chores.php';
 include_once 'database/get_all_occasions.php';
 include_once 'database/get_all_categories.php';
@@ -110,7 +104,29 @@ include_once 'templates/header.html';
             <div class="box-container">
                 <h3>Friends</h3>
                 <hr>
-                <a href="search_users.php" class="btn btn-dark container-fluid">Find Users</a>
+                <a href="search_users.php" class="btn btn-dark container-fluid mb-3">Find Users</a>
+                <?php
+                    $id = $_SESSION['id'];
+                    $sql = "SELECT * FROM friend_request WHERE to_user_id='$id'";
+                    $friendRequests = $conn->query($sql);
+                    if ($friendRequests->num_rows > 0) {
+                        echo "<h5>Friend Requests</h5>";
+                        echo "<table class='chore-table'>";
+                        echo "<tr><th>Username</th><th>Action</th></tr>";
+                        foreach ($friendRequests as $request) {
+                            $fromUserId = $request['from_user_id'];
+                            $sql = "SELECT * FROM users WHERE id='$fromUserId'";
+                            $requestUserProfile = $conn->query($sql);
+                            foreach ($requestUserProfile as $profile) {
+                                $requestUsername = $profile['username'];
+                            }
+                            echo "<tr><td>$requestUsername</td><td class='d-flex justify-content-between'><a>Accept</a><a>Decline</a></td></tr>";
+                        }
+                        echo "</table>";
+                    } else {
+                        echo "<p>You current have no new friend requests.</p>";
+                    }
+                ?>
             </div>
         </div>
         <div class="col-12 col-md-6 col-lg-3 m-0 mb-3">

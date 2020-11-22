@@ -46,16 +46,16 @@ include_once 'templates/header.html';
                     </tr>';
                     foreach ($userResult as $user) {
                         $username = $user['username'];
+                        $userId = $user['id'];
                         echo "<tr>";
                         echo "<td>$username</td>";
-                        echo "<td>Add User</td>";
+                        echo "<td><a href='forms/create_friend_request.php?userId=$userId'>Add User</a></td>";
                         echo "</tr>";
                     }
                     echo "</table>";
                 } else {
                     echo "<p class='m-0'>Please input a username to find users.</p>";
                 }
-
                 ?>
             </div>
         </div>
