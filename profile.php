@@ -106,6 +106,7 @@ include_once 'templates/header.html';
                 <hr>
                 <a href="search_users.php" class="btn btn-dark container-fluid mb-3">Find Users</a>
                 <?php
+                    // Find friend quests sent to the logged in user.
                     $id = $_SESSION['id'];
                     $sql = "SELECT * FROM friend_request WHERE to_user_id='$id'";
                     $friendRequests = $conn->query($sql);
@@ -114,18 +115,22 @@ include_once 'templates/header.html';
                         echo "<table class='chore-table'>";
                         echo "<tr><th>Username</th><th>Action</th></tr>";
                         foreach ($friendRequests as $request) {
+                            // Get the username of the friend request.
                             $fromUserId = $request['from_user_id'];
                             $sql = "SELECT * FROM users WHERE id='$fromUserId'";
                             $requestUserProfile = $conn->query($sql);
                             foreach ($requestUserProfile as $profile) {
                                 $requestUsername = $profile['username'];
                             }
-                            echo "<tr><td>$requestUsername</td><td class='d-flex justify-content-between'><a>Accept</a><a>Decline</a></td></tr>";
+                            echo "<tr><td>$requestUsername</td><td class='d-flex justify-content-between'><a>Accept</a><a href='forms/remove_friend_request.php?fromUserId=$fromUserId'>Decline</a></td></tr>";
                         }
                         echo "</table>";
                     } else {
                         echo "<p>You current have no new friend requests.</p>";
                     }
+                    
+                    // Display all users friends
+                    $sql = "SELECT * FROM ";
                 ?>
             </div>
         </div>
