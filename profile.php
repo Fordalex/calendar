@@ -122,7 +122,7 @@ include_once 'templates/header.html';
                             foreach ($requestUserProfile as $profile) {
                                 $requestUsername = $profile['username'];
                             }
-                            echo "<tr><td>$requestUsername</td><td class='d-flex justify-content-between'><a>Accept</a><a href='forms/remove_friend_request.php?fromUserId=$fromUserId'>Decline</a></td></tr>";
+                            echo "<tr><td>$requestUsername</td><td class='d-flex justify-content-between'><a href='forms/accept_friend_request.php?fromUserId=$fromUserId'>Accept</a><a href='forms/remove_friend_request.php?fromUserId=$fromUserId'>Decline</a></td></tr>";
                         }
                         echo "</table>";
                     } else {
