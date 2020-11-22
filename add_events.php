@@ -73,7 +73,19 @@ include_once 'templates/header.html';
                         echo "<td class='text-center' style='background-color:$color;'><img class='chore-icon' src='" . $occasion['icon'] . "'></td>";
                         echo '<td>' . $occasion['date'] . '</td>';
                         echo '<td>' . $occasion['repeat'] . '</td>';
-                        echo "<td><a href='forms/remove_event.php?id=$id'>Delete</a></td>";
+                        echo '<td class="text-end" style="width:50px;">
+
+                                <div class="dropdown dropleft d-flex justify-content-center">
+                                    <button class="no-style d-inline-block" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="https://img.icons8.com/fluent/25/000000/delete-forever.png"/>
+                                    </button>
+                                    <div class="dropdown-menu p-2" aria-labelledby="dropdownMenuButton">
+                                        <p>Are you sure you want to remove this event?</p>
+                                        <a class="btn btn-sm btn-danger container-fluid" href="forms/remove_event.php?id=' . $id . '">Delete</a>
+                                    </div>
+                                </div>
+                        
+                        </td>';
                         echo '</tr>';
                     }
                     echo "</table>";

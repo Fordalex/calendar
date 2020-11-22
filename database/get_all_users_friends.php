@@ -3,6 +3,8 @@
 include_once "forms/connect_mysql.php";
 
 // Get the users friends list.
+$id = $_SESSION['id'];
+
 $sql = "SELECT * FROM friends WHERE users_id=$id";
 $friendList = $conn->query($sql);
 

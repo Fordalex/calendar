@@ -18,6 +18,7 @@ include_once 'database/get_all_users_chores.php';
 include_once 'database/get_all_occasions.php';
 include_once 'database/get_all_categories.php';
 include_once 'database/get_list_of_chores.php';
+include_once 'database/get_all_users_friends.php';
 
 // Update users guide.
 $username = $_SESSION['username'];
@@ -41,7 +42,11 @@ include_once 'templates/header.html';
                 <h3>Account Information</h3>
                 <hr>
                 <h6><b>Username:</b> <span class="float-right"><?php echo $_SESSION['username'] ?></span></h6>
-                <h6><b>Friends:</b> <span class="float-right"><?php echo "N/A" ?></span></h6>
+                <h6><b>Friends:</b> <span class="float-right">
+                    <?php 
+                    echo $allFriendsProfiles->num_rows 
+                    ?>
+                </span></h6>
                 <h6><b>Events:</b> <span class="float-right"><?php echo $occasions->num_rows ?></span></h6>
                 <h6><b>Categories:</b> <span class="float-right"><?php echo $categories->num_rows ?></span></h6>
                 <h6><b>Custom Chores:</b> <span class="float-right"><?php echo $customChores->num_rows ?></span></h6>
@@ -132,7 +137,6 @@ include_once 'templates/header.html';
                 echo '<hr>';
 
                 // if the user has friends display the table.
-                include_once 'database/get_all_users_friends.php';
                 if ($allFriendsProfiles->num_rows > 0) {
                     echo "<h5>Friend Requests</h5>";
                     echo "<table class='chore-table'>";
