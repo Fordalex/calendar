@@ -130,7 +130,35 @@ include_once 'templates/header.html';
                     }
                     
                     // Display all users friends
-                    $sql = "SELECT * FROM ";
+                    $sql = "SELECT * FROM friends WHERE users_id=$id";
+                    $friendList = $conn->query($sql);
+
+                    // if the user has friends display the table.
+                    if ($friendList->num_rows > 0) {
+                        echo "<hr>";
+                        echo "<h5>Friend Requests</h5>";
+                        echo "<table class='chore-table'>";
+                        echo "<tr><th>Username</th><th>Edit</th></tr>";
+                        foreach ($friendList as $list) {
+                            $friendsIds = $list['friends_ids'];
+                            // convert the sting into an array.
+                            $friendsIdsArray = explode(",", $friendsIds);
+                            foreach ($friendsIdsArray as $friendsId) {
+                                // Get the users profile from the database by the id.
+                                $sql = "SELECT * FROM users WHERE id='$friendsIds'";
+                                $friendsProfile = $conn->query($sql);
+                                // display the friends username on the profile.
+                                foreach ($friendsProfile as $profile) {
+                                    $profileUsername = $profile['username'];
+                                    echo "<tr><td>$profileUsername</td><td><a>Remove</a></td></tr>";
+                                }
+                            }
+                        }
+                        echo "</table>";
+                    } else {
+                        echo "<p>You cuirrently don't have any frineds.</p>";
+                    }
+                   
                 ?>
             </div>
         </div>
