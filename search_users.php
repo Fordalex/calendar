@@ -7,21 +7,12 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     exit;
 }
 
-if (!isset($_SESSION['date'])) {
-    $_SESSION['date'] = date("Y-m-d");
-    $_SESSION['year'] = substr($_SESSION['date'], 0, 4);
-    $_SESSION['month'] = substr($_SESSION['date'], 5, 2);
-    $_SESSION['day'] = substr($_SESSION['date'], 8, 10);
+if (isset($_GET['username'])) {
+    $userSearch = $_GET['username'];
+    include_once 'forms/connect_mysql.php';
+    $sql = "SELECT * FROM users WHERE username LIKE '%$userSearch%'";
+    $userResult = $conn->query($sql);
 }
-
-$date = $_SESSION['date'];
-$year = $_SESSION['year'];
-$month = $_SESSION['month'];
-$day = $_SESSION['day'];
-$username = $_SESSION['username'];
-
-include_once 'database/get_all_users_chores.php';
-include_once 'database/get_date_users_chores.php';
 
 include_once 'templates/header.html';
 ?>
@@ -33,9 +24,39 @@ include_once 'templates/header.html';
     <?php include_once 'templates/navigation.php'; ?>
 
     <div class="row m-0 p-0 py-5 justify-content-center">
-        <div class="col-12 m-0">
+        <div class="col-12 col-md-6 col-lg-4 m-0">
             <div class="box-container">
+                <h4>Find Users</h4>
+                <form action="search_users.php" method="GET">
+                    <label class="d-block">Username</label>
+                    <input type="text" class="form-control" name="username" placeholder="johnsmith55">
+                    <button class="btn btn-success container-fluid mt-3">Search</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 mt-3 mt-md-0">
+            <div class="box-container">
+                <h4>Result for <?php echo "username" ?></h4>
+                <?php
+                if (isset($userSearch)) {
+                    echo "<table class='chore-table'>";
+                    echo '<tr>
+                            <th>Username</th>
+                            <th>Add User</th>
+                    </tr>';
+                    foreach ($userResult as $user) {
+                        $username = $user['username'];
+                        echo "<tr>";
+                        echo "<td>$username</td>";
+                        echo "<td>Add User</td>";
+                        echo "</tr>";
+                    }
+                    echo "</table>";
+                } else {
+                    echo "<p class='m-0'>Please input a username to find users.</p>";
+                }
 
+                ?>
             </div>
         </div>
     </div>
