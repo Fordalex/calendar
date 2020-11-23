@@ -222,6 +222,10 @@ td {
 
 /* icon drop down */
 
+.icon-dropdown {
+    width: 88vw;
+}
+
 .icon-dropdown img {
     width: 40px;
     padding: 8px;
@@ -243,4 +247,10 @@ footer {
 
 .logo-size {
     width: 50px;
+}
+
+@media only screen and (min-width: 700px) {
+    .icon-dropdown {
+        width: 40vw;
+    }
 }

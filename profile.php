@@ -67,10 +67,11 @@ include_once 'templates/header.html';
                         $catChores = mysqli_query($conn, "SELECT * FROM `chore` WHERE category_id='$categoryId'");
                         $choresCount = $catChores->num_rows;
                         echo "<hr>";
-                        echo "<h4>$cat" . "<span class='float-right mr-2'>$choresCount</span></h4>";
+                        echo "<h5>$cat" . "<span class='float-right mr-2'>$choresCount</span></h5>";
+                        echo "<button class='btn btn-sm btn-warning' href='#category-$categoryId' data-toggle='collapse'>View Table</button>";
 
                         if ($catChores->num_rows > 0) {
-                            echo "<table class='container-fluid chore-table mb-3'>";
+                            echo "<table class='container-fluid chore-table mb-3 collapse mt-3' id='category-$categoryId'>";
                             echo "<tr><th>Chore</th><th>Count</th></tr>";
                             // Find the chores completed related to this category and remove doubles.
                             $listChores = array();
