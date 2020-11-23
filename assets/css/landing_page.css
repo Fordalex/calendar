@@ -1,15 +1,52 @@
 .main-background {
     background: url('../img/calendar_background.jpg') center;
     background-size: cover;
-    height: 100vh;
+    height: 80vh;
     position: relative;
 }
 
 .main-background::before {
     position: absolute;
     top: 0;
-    background-color: rgba(255, 255, 255, 0.5);
-    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.6);
+    height: 80vh;
     width: 100%;
     content: "";
+}
+
+.main-background h1 {
+    font-size: 4em;
+}
+
+.main-background p {
+    font-size: 1em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.main-background a {
+    padding: default;
+}
+
+.header-wrapper {
+    position: absolute;
+    top: 15%;
+    left: 2%;
+}
+
+@media only screen and (min-width: 767px) {
+    .main-background h1 {
+        font-size: 7em;
+    }
+    .main-background p {
+        font-size: 1.2em;
+    }
+    .main-background a {
+        padding: 15px 25px;
+    }
+    .header-wrapper {
+        position: absolute;
+        top: 20%;
+        left: 15%;
+    }
 }
