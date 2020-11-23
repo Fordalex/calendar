@@ -55,12 +55,11 @@ include_once 'templates/header.html';
         </div>
         <div class="col-12 col-md-6 col-lg-3 m-0 mb-3">
             <div class="box-container">
-                <h3>Basic Stats</h3>
+                <h3>2020 Stats</h3>
                 <hr>
                 <?php
                 if ($categories->num_rows > 0) {
-                    echo "<a href='stats.php' class='btn btn-dark container-fluid mb-3'>Advanced Stats</a>";
-                    echo "<p class='text-secondary'>All Chores Completed for each category.</p>";
+                    echo "<a href='stats.php' class='btn btn-dark container-fluid mb-1'>Monthly Stats</a>";
                     // Display the chores for each category and display the category.
                     foreach ($categories as $category) {
                         $cat = $category['category'];

@@ -1,0 +1,15 @@
+.main-background {
+    background: url('../img/calendar_background.jpg') center;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+}
+
+.main-background::before {
+    position: absolute;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    height: 100vh;
+    width: 100%;
+    content: "";
+}

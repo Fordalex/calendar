@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-dark pr-5">
+<nav class="navbar navbar-expand-lg navbar-light bg-dark justify-content-between">
     <?php 
         if (isset($_SESSION['username'])) {
         echo '
@@ -61,8 +61,11 @@
             </li>
             ';
             } else {
-                echo '<a class="navbar-brand text-light" >Calendar</a>';
+                echo '<a class="navbar-brand text-light" href="index.php">Calendar</a>';
+                echo '<div>';
+                echo '<a class="btn btn-sm btn-warning mr-3" href="login.php">Login</a>';
+                echo '<a class="btn btn-sm btn-light " href="register.php">Sign Up</a>';
+                echo '</div>';
             }
         ?>
-    </div>
 </nav>
