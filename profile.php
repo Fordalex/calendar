@@ -138,7 +138,7 @@ include_once 'templates/header.html';
 
                 // if the user has friends display the table.
                 if ($allFriendsProfiles->num_rows > 0) {
-                    echo "<h5>Friend Requests</h5>";
+                    echo "<h5>Friends</h5>";
                     echo "<table class='chore-table'>";
                     echo "<tr><th>Username</th><th>Remove</th></tr>";
                     foreach ($allFriendsProfiles as $friendsProfile) {
