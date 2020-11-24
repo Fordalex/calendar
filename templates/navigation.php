@@ -10,7 +10,7 @@
             <div></div>
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link text-light" href="index.php">Home</a>
+                    <a class="nav-link text-light" href="home.php">Home</a>
                 </li>
                 <li class="nav-item dropdown" id="calendarNavLink">
                     <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

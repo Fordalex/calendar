@@ -22,10 +22,12 @@ include_once 'database/get_all_users_friends.php';
 
 // Update users guide.
 $username = $_SESSION['username'];
+
 $user = mysqli_query($conn, "SELECT * FROM `users` WHERE username='$username'");
 
 foreach ($user as $u) {
     $_SESSION["guide"] = $u['guide'];
+    $_SESSION['id'] = $u['id'];
 }
 
 include_once 'templates/header.html';
@@ -171,7 +173,7 @@ include_once 'templates/header.html';
                 <h3>Account Settings</h3>
                 <hr>
                 <div class="container-fluid d-flex justify-content-end p-0">
-                    <a class="btn btn-danger">Remove Account</a>
+                    <a class="btn btn-danger" href="forms/remove_account.php">Remove Account</a>
                 </div>
             </div>
         </div>

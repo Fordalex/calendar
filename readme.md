@@ -21,3 +21,4 @@ The layout of this project is broken up into a few sections, First the user will
 
 - [Hosting on heroku](https://www.youtube.com/watch?v=LXb6f8GJ0qs)
 - [Login System](https://www.tutorialrepublic.com/php-tutorial/php-mysql-login-system.php)
+- [PHP Error message](https://stackoverflow.com/questions/17053466/how-to-display-errors-for-my-mysqli-query)
