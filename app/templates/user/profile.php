@@ -1,44 +1,4 @@
-<?php
-session_start();
-
-// Check if the user is logged in, if not then redirect him to login page
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-    header("location: user_profile/login.php");
-    exit;
-}
-
-if (!isset($_SESSION['date'])) {
-    $_SESSION['date'] = date("Y-m-d");
-    $_SESSION['year'] = substr($_SESSION['date'], 0, 4);
-    $_SESSION['month'] = substr($_SESSION['date'], 5, 2);
-    $_SESSION['day'] = substr($_SESSION['date'], 8, 10);
-}
-
-include_once 'database/get_all_users_chores.php';
-include_once 'database/get_all_occasions.php';
-include_once 'database/get_all_categories.php';
-include_once 'database/get_list_of_chores.php';
-include_once 'database/get_all_users_friends.php';
-
-// Update users guide.
-$username = $_SESSION['username'];
-
-$user = mysqli_query($conn, "SELECT * FROM `users` WHERE username='$username'");
-
-foreach ($user as $u) {
-    $_SESSION["guide"] = $u['guide'];
-    $_SESSION['id'] = $u['id'];
-}
-
-include_once 'templates/header.html';
-?>
-<!-- start of page content -->
-</head>
-
-<body>
-    <?php include_once 'templates/navigation.php'; ?>
-
-    <div class="row m-0 p-0 py-5 justify-content-center">
+<div class="row m-0 p-0 py-5 justify-content-center">
         <div class="col-12 col-md-6 col-lg-3 m-0 mb-3">
             <div class="box-container">
                 <h3>Account Information</h3>
@@ -73,7 +33,7 @@ include_once 'templates/header.html';
                         echo "<button class='btn btn-sm btn-warning' href='#category-$categoryId' data-toggle='collapse'>View Table</button>";
 
                         if ($catChores->num_rows > 0) {
-                            echo "<table class='container-fluid chore-table mb-3 collapse mt-3' id='category-$categoryId'>";
+                            echo "<table class='chore-table mb-3 collapse mt-3 container-fluid ' id='category-$categoryId'>";
                             echo "<tr><th>Chore</th><th>Count</th></tr>";
                             // Find the chores completed related to this category and remove doubles.
                             $listChores = array();
@@ -141,7 +101,7 @@ include_once 'templates/header.html';
                 // if the user has friends display the table.
                 if ($allFriendsProfiles->num_rows > 0) {
                     echo "<h5>Friends</h5>";
-                    echo "<table class='chore-table'>";
+                    echo "<table class='chore-table container-fluid p-0'>";
                     echo "<tr><th>Username</th><th>Remove</th></tr>";
                     foreach ($allFriendsProfiles as $friendsProfile) {
                         $friendsUsername = $friendsProfile['username'];
@@ -179,79 +139,4 @@ include_once 'templates/header.html';
         </div>
     </div>
 
-    <!-- end of page content -->
-
-    <?php include_once 'templates/footer.html' ?>
-
-    <script>
-        const tour = new Shepherd.Tour({
-            defaultStepOptions: {
-                classes: 'shadow-md bg-purple-dark',
-                scrollTo: {
-                    behavior: 'smooth',
-                    block: 'center'
-                }
-            }
-        });
-
-        tour.addStep({
-            title: 'Welcome!',
-            text: `Calendar will help you track your, work, studies, fitness or any custom category and give you insights on your hard work.`,
-            attachTo: {
-                on: 'center'
-            },
-            buttons: [{
-                action() {
-                    $('#userNavLink').click();
-                    return this.next();
-                },
-                text: 'Next'
-            }],
-            id: 'creating'
-        });
-
-        tour.addStep({
-            title: 'Profile',
-            text: `This page is your profile and you'll be able to keep track of your chores, categories and events. Also, you can add other users to complete tasks together.`,
-            attachTo: {
-                element: '#userNavLink',
-                on: 'top'
-            },
-            buttons: [{
-                action() {
-                    return this.next();
-                },
-                text: 'Next',
-            }],
-            id: 'creating'
-        });
-
-        tour.addStep({
-            title: 'Add',
-            text: `Start by creating a category.`,
-            attachTo: {
-                element: '#addNavLink',
-                on: 'top'
-            },
-            buttons: [{
-                action() {
-                    $('.shepherd-modal-overlay-container').css('display', 'none');
-                    window.location.href = "http://localhost/calendar/add_category.php";
-                    return this.next();
-                },
-                text: 'Next',
-            }],
-            id: 'creating'
-        });
-
-        if (<?php echo $_SESSION['guide'] ?> == 0) {
-            tour.start();
-            $('.shepherd-modal-overlay-container').css('display', 'visable');
-        } else {
-            $('.shepherd-modal-overlay-container').css('display', 'none');
-        }
-    </script>
-
-</body>
-
-</html>
+  

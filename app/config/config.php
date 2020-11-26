@@ -1,8 +1,8 @@
 <?php
 
 $config = [
-    'MODEL_PATH' => APPLICATION_PATH . DS . 'model' . DS,
     'VIEW_PATH' => APPLICATION_PATH . DS . 'view' . DS,
+    'TEMPLATES_PATH' => APPLICATION_PATH . DS . 'templates' . DS,
     'LIB_PATH' => APPLICATION_PATH . DS . 'lib' . DS,
 ];
 

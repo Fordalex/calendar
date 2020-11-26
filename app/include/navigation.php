@@ -63,7 +63,7 @@
             } else {
                 echo '<a class="navbar-brand text-light" href="?page=landing">Calendar</a>';
                 echo '<div>';
-                echo '<a class="btn btn-sm btn-warning mr-3" href="login.php">Login</a>';
+                echo '<a class="btn btn-sm btn-warning mr-3" href="?page=profile&directory=user">Login</a>';
                 echo '<a class="btn btn-sm btn-light " href="register.php">Sign Up</a>';
                 echo '</div>';
             }

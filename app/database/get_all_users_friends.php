@@ -1,6 +1,6 @@
 <?php
 
-include_once "forms/connect_mysql.php";
+include_once "../app/database/connect_mysql.php";
 
 // Get the users friends list.
 $id = $_SESSION['id'];
