@@ -2,7 +2,7 @@
     <?php 
         if (isset($_SESSION['username'])) {
         echo '
-        <a class="navbar-brand text-light" href="index.php">Calendar</a>
+        <a class="navbar-brand text-light" href="?page=landing">Calendar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -61,7 +61,7 @@
             </li>
             ';
             } else {
-                echo '<a class="navbar-brand text-light" href="index.php">Calendar</a>';
+                echo '<a class="navbar-brand text-light" href="?page=landing">Calendar</a>';
                 echo '<div>';
                 echo '<a class="btn btn-sm btn-warning mr-3" href="login.php">Login</a>';
                 echo '<a class="btn btn-sm btn-light " href="register.php">Sign Up</a>';
