@@ -1,6 +1,6 @@
-<?php include_once 'database/get_all_categories.php'; ?>
+<?php include_once '../app/database/get_all_categories.php'; ?>
 
-<div class="col-12 pt-4 px-0 header">
+<div class="col-12 pt-4 px-0 mb-5 header">
     <h1 class="text-center mb-0">
         <?php echo $_SESSION['year']; ?>
     </h1>
