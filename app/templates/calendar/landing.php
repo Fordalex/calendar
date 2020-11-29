@@ -4,7 +4,7 @@
             <h1>Calendar</h1>
             <p>Keep track on your chores and other custom activaties to help you become better than yesterday. View yearly and monthly progression insights, compare them to last month to push your limits.</p>
             <a target="_blank" href="/www.fordsdevelopment.co.uk" class="btn btn-dark mr-4">About Fordsdevelopment</a>
-            <a href="register.php" class="btn btn-light">Sign Up</a>
+            <a href="index.php?page=register&directory=user" class="btn btn-light">Sign Up</a>
         </div>
     </header>
 

@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-include_once 'connect_mysql.php';
+include_once "../app/database/connect_mysql.php";
 
 $event = $_GET['event'];
 $style = $_GET['style'];

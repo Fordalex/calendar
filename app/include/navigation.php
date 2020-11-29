@@ -41,7 +41,7 @@
                     <hr class="my-0">
                     <a class="dropdown-item" href="../forms/start_guide.php">Get Set Up</a>
                     <hr class="my-0">
-                    <a class="dropdown-item" href="../forms/logout.php">Logout</a>
+                    <a class="dropdown-item" href="../app/view/user/logout.php">Logout</a>
                 </div>
             </li>
 
@@ -54,17 +54,17 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="?page=profile&directory=user">Profile</a>
                     <hr class="my-0">
-                    <a class="dropdown-item" href="../forms/start_guide.php">Get Set Up</a>
+                    <a class="dropdown-item" href="../start_guide.php">Get Set Up</a>
                     <hr class="my-0">
-                    <a class="dropdown-item" href="../forms/logout.php">Logout</a>
+                    <a class="dropdown-item" href="../app/view/user/logout.php">Logout</a>
                 </div>
             </li>
             ';
             } else {
-                echo '<a class="navbar-brand text-light" href="?page=home&directory=calendar">Calendar</a>';
+                echo '<a class="navbar-brand text-light" href="?page=landing&directory=calendar">Calendar</a>';
                 echo '<div>';
-                echo '<a class="btn btn-sm btn-warning mr-3" href="?page=profile&directory=user">Login</a>';
-                echo '<a class="btn btn-sm btn-light " href="register.php">Sign Up</a>';
+                echo '<a class="btn btn-sm btn-warning mr-3" href="?page=login&directory=user">Login</a>';
+                echo '<a class="btn btn-sm btn-light " href="index.php?page=register&directory=user">Sign Up</a>';
                 echo '</div>';
             }
         ?>

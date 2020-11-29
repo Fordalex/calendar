@@ -18,10 +18,11 @@ $year = $_SESSION['year'];
 $month = $_SESSION['month'];
 $day = $_SESSION['day'];
 $username = $_SESSION['username'];
-$_SESSION['redirect'] = 'home.php';
+$_SESSION['redirect'] = '?page=home&directory=calendar';
+
 
 $extra_js = '';
 
-include_once '../app/database/get_all_users_chores.php';
-include_once '../app/database/get_date_users_chores.php';
+include_once '../app/database/read/get_all_users_chores.php';
+include_once '../app/database/read/get_date_users_chores.php';
 

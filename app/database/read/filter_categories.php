@@ -2,7 +2,7 @@
 
 session_start();
 
-include_once 'connect_mysql.php';
+include_once "../app/database/connect_mysql.php";
 
 $redirect = $_SESSION['redirect'];
 $_SESSION['filterCategories'] = $_GET['category'];
@@ -17,4 +17,4 @@ foreach ($category as $c) {
 }
 
 // Redriect the user back to the calendar
-header("Location: ../$redirect");
+header("Location: ../../../public/$redirect");

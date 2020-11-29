@@ -14,11 +14,11 @@ if (!isset($_SESSION['date'])) {
     $_SESSION['day'] = substr($_SESSION['date'], 8, 10);
 }
 
-include_once '../app/database/get_all_users_chores.php';
-include_once '../app/database/get_all_occasions.php';
-include_once '../app/database/get_all_categories.php';
-include_once '../app/database/get_list_of_chores.php';
-include_once '../app/database/get_all_users_friends.php';
+include_once '../app/database/read/get_all_users_chores.php';
+include_once '../app/database/read/get_all_occasions.php';
+include_once '../app/database/read/get_all_categories.php';
+include_once '../app/database/read/get_list_of_chores.php';
+include_once '../app/database/read/get_all_users_friends.php';
 
 // Update users guide.
 $username = $_SESSION['username'];
