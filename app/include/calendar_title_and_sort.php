@@ -17,7 +17,8 @@
                     <?php
                     foreach ($categories as $category) {
                         $categoryName = $category['category'];
-                        echo "<option>$categoryName</option>";
+                        
+                        echo "<option value='$categoryName'>$categoryName</option>";
                     }
                     ?>
                 </select>

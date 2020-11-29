@@ -12,7 +12,7 @@
 </div>
 <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center mb-4">
     <div class="box-container">
-        <form action="forms/set_date.php" method="GET" class="d-inline-block w-100 p-0">
+        <form action="../app/lib/set_date.php" method="GET" class="d-inline-block w-100 p-0">
             <h4 class="mb-0">Search A Date</h4>
             <hr>
             <input type="date" name="date" class="form-control my-3" value="<?php echo "$date"; ?>">
@@ -53,8 +53,8 @@
                 echo '<tr>';
                 echo '<td>' . $chore['user'] . '</td>';
                 echo '<td>' . $choreName . '</td>';
-                echo "<td><a href='forms/set_date.php?date=$choreDate&redirect=index'>$choreDate</a></td>";
-                echo "<td><a href='forms/remove_date_data.php?id=$id'>Delete</a></td>";
+                echo "<td><a href='../app/lib/set_date.php?date=$choreDate'>$choreDate</a></td>";
+                echo "<td><a href='../app/database/remove/remove_date_data.php?id=$id'>Delete</a></td>";
                 echo '</tr>';
             }
             echo "</table>";
